@@ -11,8 +11,6 @@ export class PlantDetailComponent implements OnInit {
   @Input() plant?: Plant;
   @Input() index?: number;
 
-  name = "Duftgeranie";
-  infotext = "Lorem ipsum dolor sit amet, consetetur sit amet consetetur. "
   // this will change between my_plants and all_plants -> needs setter-method or getting information by propsS + maybe enums?
   site = "my_plants";
   //@Input() name!: string;
