@@ -1,0 +1,49 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.btnRow {
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 0;
+}
+
+.icon-button {
+  margin-right: 10px;
+}
+
+button {
+    align-self: right;
+}
+
+.infotext {
+    font-size: smaller;
+}
+
+.hidden {
+    display: none;
+}
+
+img {
+    width: 100px;
+    border-radius: 10%;
+    margin-right: 15px;
+}
+
+.imgRight {
+    flex-direction: row-reverse;
+}
+
+.infoBlock {
+    margin-right: 15px;
+}
+
+
+::ng-deep .mat-icon{
+    height:20px !important;
+    width:20px !important;
+    font-size:20px !important;
+}

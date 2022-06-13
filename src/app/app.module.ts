@@ -6,12 +6,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PlantrowComponent } from './components/plantrow/plantrow.component';
+import { PlantDetailComponent } from './components/plant-detail/plant-detail.component';
+import { PlantlistComponent } from './components/plantlist/plantlist.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PlantrowComponent
+    PlantDetailComponent,
+    PlantlistComponent
   ],
   imports: [
     BrowserModule,
