@@ -10,8 +10,8 @@ import { PlantDetailComponent } from './components/plant-detail/plant-detail.com
 import { PlantlistComponent } from './components/plantlist/plantlist.component';
 
 import { MaterialModule } from './material/material.module';
-import { CareInstructionComponent } from './care-instruction/care-instruction.component';
-import { CareEventsComponent } from './care-events/care-events.component';
+import { CareInstructionComponent } from './components/care-instruction/care-instruction.component';
+import { CareEventsComponent } from './components/care-events/care-events.component';
 
 @NgModule({
   declarations: [
