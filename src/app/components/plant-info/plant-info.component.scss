@@ -1,0 +1,44 @@
+hr {
+    border: 0;
+    border-top: 1px solid gray;
+    margin-bottom: 30px;
+}
+
+h1 {
+    margin-bottom: 0;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+
+    ::ng-deep .mat-icon{
+        margin-right: 10px;
+        fill: 0;
+    }
+}
+
+.content {
+    display: flex;
+}
+
+.info-right {
+    margin-left: 15px;
+    
+    .btnRow {
+        align-items: baseline;
+        margin-bottom: 0;
+    }
+}
+
+.icon-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+img {
+    width: 100px;
+    border-radius: 10%;
+}
+

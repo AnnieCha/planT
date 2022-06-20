@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlantDetailComponent } from './components/plant-detail/plant-detail.component';
 import { PlantlistComponent } from './components/plantlist/plantlist.component';
+import { PlantInfoComponent } from './components/plant-info/plant-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlantDetailComponent,
-    PlantlistComponent
+    PlantlistComponent,
+    PlantInfoComponent
   ],
   imports: [
     BrowserModule,

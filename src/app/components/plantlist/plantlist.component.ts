@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Plant } from 'src/app/modules/plant';
+import { Plant } from 'src/app/shared/models/plant';
 
 @Component({
   selector: 'app-plantlist',
