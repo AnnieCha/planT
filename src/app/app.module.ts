@@ -9,18 +9,25 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlantDetailComponent } from './components/plant-detail/plant-detail.component';
 import { PlantlistComponent } from './components/plantlist/plantlist.component';
 
+import { MaterialModule } from './material/material.module';
+import { CareInstructionComponent } from './care-instruction/care-instruction.component';
+import { CareEventsComponent } from './care-events/care-events.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     PlantDetailComponent,
-    PlantlistComponent
+    PlantlistComponent,
+    CareInstructionComponent,
+    CareEventsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
