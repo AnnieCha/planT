@@ -2,7 +2,7 @@
     <img src={{plant.imageUrl}}>
     <div>
         <div class="row btnRow">
-            <p class="header">{{plant.name}}</p>
+            <p class="header" [routerLink]="['/plant', plant.name]">{{plant.name}}</p>
             <button mat-icon-button class="icon-button" [ngClass]="{'hidden': site!='my_plants', 'rightBtn': true}"
                 aria-label="Pflanzeneintrag bearbeiten">
                 <mat-icon>edit</mat-icon>
