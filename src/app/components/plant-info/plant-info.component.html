@@ -1,0 +1,33 @@
+<div *ngIf="currPlant" >
+<div class="header">
+    <mat-icon aria-hidden="true" aria-label="Icon Information">info_outline</mat-icon>
+    <h1>{{currPlant.name}}</h1>
+</div>
+<hr>
+<div class="content">
+    <div>
+    <img src={{currPlant?.imageUrl}}>
+        <div class="icon-row">
+            <mat-icon aria-hidden="false" aria-label="Icon Information">water_drop</mat-icon>
+            <mat-icon aria-hidden="false" aria-label="Icon Information">water_drop</mat-icon>
+            <mat-icon aria-hidden="false" aria-label="Icon Information">water_drop</mat-icon>
+        </div>
+        <div class="icon-row">
+            <mat-icon aria-hidden="false" aria-label="Icon Information">sunny</mat-icon>
+            <mat-icon aria-hidden="false" aria-label="Icon Information">sunny</mat-icon>
+            <mat-icon aria-hidden="false" aria-label="Icon Information">sunny</mat-icon>
+        </div>
+    </div>
+
+    <div class="info-right">
+        <div class="row btnRow">
+            <p class="header">{{currPlant.name}}</p>
+            <button mat-icon-button class="icon-button rightBtn"
+                aria-label="Pflanzeneintrag bearbeiten">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+        <p class="infotext">{{currPlant.longtext}}</p>
+    </div>
+</div>
+</div>
