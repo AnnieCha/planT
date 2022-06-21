@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PlantDetailComponent } from './components/plant-detail/plant-detail.component';
 
 const routes: Routes = [];
 

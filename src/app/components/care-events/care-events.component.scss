@@ -1,0 +1,19 @@
+$base-color: #e3f0e3;
+
+.container {
+    padding: 30px 20px;
+    background-color: $base-color;
+}
+
+h2 {
+    border-bottom: solid 2px gray;
+}
+
+mat-icon {
+    margin-right: 5px;
+}
+
+
+button {
+    margin: 20px 0;
+}
