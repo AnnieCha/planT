@@ -19,4 +19,19 @@ export class PlantDetailComponent implements OnInit {
   ngOnInit(): void {
     
   }
+
+  public edit(name: string) {
+    console.log('edit', name);
+    //open new side
+  }
+  
+  public add(name: string) {
+    console.log('add', name);
+    //open new side
+  }
+  
+  public like(name: string) {
+    console.log('like');
+    //http-post like plant
+  }
 }

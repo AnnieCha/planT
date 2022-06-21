@@ -1,24 +1,28 @@
 <div *ngIf="plant && index" [ngClass]="{'row': true, 'imgRight': index % 2 === 0}">
     <img src={{plant.imageUrl}}>
     <div>
-        <div class="row btnRow">
+        <div class="row btnRow" [ngSwitch]="site">
             <p class="header" [routerLink]="['/plant', plant.name]">{{plant.name}}</p>
-            <button mat-icon-button class="icon-button" [ngClass]="{'hidden': site!='my_plants', 'rightBtn': true}"
-                aria-label="Pflanzeneintrag bearbeiten">
-                <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button class="icon-button" [ngClass]="{'hidden': site!='all_plants', 'rightBtn': true}"
-                aria-label="Pflanze zu eigenen Pflanzen hinzufügen">
-                <mat-icon>add</mat-icon>
-            </button>
-            <button mat-icon-button class="icon-button" [ngClass]="{'hidden': site!='my_plants'}"
-                aria-label="Pflanze favorisieren">
-                <mat-icon>favorite</mat-icon>
-            </button>
-            <button mat-icon-button class="icon-button" [ngClass]="{'hidden': site!='all_plants'}"
-                aria-label="Weitere Informationen">
-                <mat-icon>information</mat-icon>
-            </button>
+            <div [ngSwitch]="site">
+                <div *ngSwitchCase="'my_plants'">
+                    <button class="icon-button rightBtn" aria-label="Pflanzeneintrag bearbeiten" (click)="edit(plant.name)">
+                        <mat-icon aria-hidden="false">edit</mat-icon>
+                    </button>
+                    <button mat-icon-button class="icon-button" aria-label="Pflanze favorisieren" (click)="like(plant.name)">
+                        <mat-icon *ngIf="plant.liked" aria-hidden="false" >favorite</mat-icon>
+                        <mat-icon *ngIf="!plant.liked" aria-hidden="false">favorite_outline</mat-icon>
+                    </button>
+                </div>
+                <div *ngSwitchCase="'all_plants'">
+                    <button mat-icon-button class="icon-button rightBtn" aria-label="Pflanze zu eigenen Pflanzen hinzufügen" (click)="add(plant.name)">
+                        <mat-icon aria-hidden="false">add</mat-icon>
+                    </button>
+                    <button mat-icon-button class="icon-button" aria-label="Weitere Informationen" [routerLink]="['/plant', plant.name]">
+                        <mat-icon aria-hidden="false">information</mat-icon>
+                    </button>
+                </div>
+            </div>
+
         </div>
         <p class="infotext">{{plant.infotext}}</p>
     </div>
