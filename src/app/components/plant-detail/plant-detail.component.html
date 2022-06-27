@@ -1,4 +1,4 @@
-<div *ngIf="plant && index" [ngClass]="{'row': true, 'imgRight': index % 2 === 0}">
+<div *ngIf="plant && index" [ngClass]="{'row': true}">
     <img src={{plant.imageUrl}}>
     <div>
         <div class="row btnRow" [ngSwitch]="site">

@@ -1,0 +1,10 @@
+<div *ngIf="currPlant">
+    <p class="header">{{currPlant.name}}</p>
+    <mat-form-field appearance="fill">
+        <mat-label>Neuer Name</mat-label>
+        <input matInput type="text" [(ngModel)]="ownName">
+        <mat-hint align="start">Maximal 20 Zeichen.</mat-hint>
+        <mat-hint align="end">{{ownName.length}}/20</mat-hint>
+    </mat-form-field>
+      
+</div>
