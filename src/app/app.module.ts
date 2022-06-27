@@ -13,6 +13,7 @@ import { PlantInfoComponent } from './components/plant-info/plant-info.component
 import { MaterialModule } from './material/material.module';
 import { CareInstructionComponent } from './components/care-instruction/care-instruction.component';
 import { CareEventsComponent } from './components/care-events/care-events.component';
+import { CareAccordionComponent } from './components/care-accordion/care-accordion.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CareEventsComponent } from './components/care-events/care-events.compon
     PlantlistComponent,
     CareInstructionComponent,
     CareEventsComponent,
-    PlantInfoComponent
+    PlantInfoComponent,
+    CareAccordionComponent
   ],
   imports: [
     BrowserModule,
