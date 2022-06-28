@@ -1,20 +1,19 @@
-import { partitionArray } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PlantService } from 'src/app/services/plant.service';
 import { Plant } from 'src/app/shared/models/plant';
 
 @Component({
-  selector: 'app-plant-info',
-  templateUrl: './plant-info.component.html',
-  styleUrls: ['./plant-info.component.scss']
+  selector: 'app-infotext',
+  templateUrl: './infotext.component.html',
+  styleUrls: ['./infotext.component.scss']
 })
+export class InfotextComponent implements OnInit {
 
-export class PlantInfoComponent implements OnInit {
   public currPlant?: Plant;
   private sub: any;
   private plantName: string = "";
-  status: string = "info";
+  ownName = '';
 
   constructor(
     private _plantService: PlantService,
@@ -32,10 +31,6 @@ export class PlantInfoComponent implements OnInit {
 
   public getPlantInfo(){
     this.currPlant = this._plantService.getCurrenPlant(this.plantName);
-  }
-
-  public setStatus(status: string){
-    this.status = status;
   }
 
 }

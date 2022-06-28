@@ -13,7 +13,8 @@ export class AddPlantComponent implements OnInit {
   public currPlant?: Plant;
   private sub: any;
   private plantName: string = "";
-  ownName = '';
+  ownName: string = "";
+  startDate: Date = new Date();
 
   constructor(
     private _plantService: PlantService,

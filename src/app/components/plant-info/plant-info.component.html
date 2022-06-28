@@ -1,24 +1,47 @@
-<div *ngIf="currPlant" >
-<div class="header">
-    <mat-icon aria-hidden="true" aria-label="Icon Information">info_outline</mat-icon>
-    <h1>{{currPlant.name}}</h1>
-</div>
-<hr>
-<div class="content">
-    <div>
-    <img src={{currPlant?.imageUrl}}>
-        <div class="icon-row">
-            <mat-icon [ngClass]="{'lightgray-icon': currPlant.wateramount < 1}" aria-hidden="false" aria-label="Icon Information">water_drop</mat-icon>
-            <mat-icon [ngClass]="{'lightgray-icon': currPlant.wateramount < 2}" aria-hidden="false" aria-label="Icon Information">water_drop</mat-icon>
-            <mat-icon [ngClass]="{'lightgray-icon': currPlant.wateramount < 3}" aria-hidden="false" aria-label="Icon Information">water_drop</mat-icon>
-        </div>
-        <div class="icon-row">
-            <mat-icon [ngClass]="{'lightgray-icon': currPlant.sunamount < 1}" aria-hidden="false" aria-label="Icon Information">sunny</mat-icon>
-            <mat-icon [ngClass]="{'lightgray-icon': currPlant.sunamount < 2}" aria-hidden="false" aria-label="Icon Information">sunny</mat-icon>
-            <mat-icon [ngClass]="{'lightgray-icon': currPlant.sunamount < 3}" aria-hidden="false" aria-label="Icon Information">sunny</mat-icon>
-        </div>
+<div *ngIf="currPlant">
+    <div class="header">
+        <mat-icon aria-hidden="true" aria-label="Icon Information">info_outline</mat-icon>
+        <h1>Pflanze</h1>
     </div>
+    <hr>
+    <div class="content">
+        <div>
+            <img src={{currPlant?.imageUrl}}>
+            <div class="icon-row" *ngIf="status === 'info'">
+                <mat-icon [ngClass]="{'lightgray-icon': currPlant.wateramount < 1}" aria-hidden="false"
+                    aria-label="Icon Information">water_drop</mat-icon>
+                <mat-icon [ngClass]="{'lightgray-icon': currPlant.wateramount < 2}" aria-hidden="false"
+                    aria-label="Icon Information">water_drop</mat-icon>
+                <mat-icon [ngClass]="{'lightgray-icon': currPlant.wateramount < 3}" aria-hidden="false"
+                    aria-label="Icon Information">water_drop</mat-icon>
+            </div>
+            <div class="icon-row" *ngIf="status === 'info'">
+                <mat-icon [ngClass]="{'lightgray-icon': currPlant.sunamount < 1}" aria-hidden="false"
+                    aria-label="Icon Information">sunny</mat-icon>
+                <mat-icon [ngClass]="{'lightgray-icon': currPlant.sunamount < 2}" aria-hidden="false"
+                    aria-label="Icon Information">sunny</mat-icon>
+                <mat-icon [ngClass]="{'lightgray-icon': currPlant.sunamount < 3}" aria-hidden="false"
+                    aria-label="Icon Information">sunny</mat-icon>
+            </div>
+        </div>
+        <div class="info-right">
+            <div class="row btnRow">
+                <p>{{currPlant.name}}</p>
+                <div [ngSwitch]="status">
+                    <button *ngSwitchCase="'info'" mat-icon-button class="icon-button rightBtn" (click)="setStatus('add')" aria-label="Pflanzeneintrag bearbeiten">
+                        <mat-icon [routerLink]="['/plant', currPlant.name, {outlets: {'right-side': ['add-plant']}}]">
+                            add
+                        </mat-icon>
+                    </button>
+                    <button *ngSwitchCase="'add'" mat-icon-button class="icon-button rightBtn" aria-label="Pflanzeneintrag bearbeiten">
+                        <mat-icon [routerLink]="['/plant', currPlant.name, {outlets: {'right-side': ['add-plant']}}]">
+                            check
+                        </mat-icon>
+                    </button>
+                </div>
+            </div>
+            <router-outlet name="right-side"></router-outlet>
+        </div>
 
-    <app-add-plant class="info-right"></app-add-plant>
-</div>
+    </div>
 </div>

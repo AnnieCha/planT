@@ -1,10 +1,15 @@
 <div *ngIf="currPlant">
-    <p class="header">{{currPlant.name}}</p>
-    <mat-form-field appearance="fill">
-        <mat-label>Neuer Name</mat-label>
-        <input matInput type="text" [(ngModel)]="ownName">
-        <mat-hint align="start">Maximal 20 Zeichen.</mat-hint>
-        <mat-hint align="end">{{ownName.length}}/20</mat-hint>
-    </mat-form-field>
-      
+    <form>
+        <mat-form-field appearance="fill">
+            <mat-label>Neuer Name</mat-label>
+            <input matInput type="text" name="ownName" [(ngModel)]="ownName">
+            <mat-hint align="start">Maximal 20 Zeichen.</mat-hint>
+            <mat-hint align="end">{{ownName.length}}/20</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Startdatum</mat-label>
+            <input matInput type="date" name="startDate">
+            <mat-hint align="start">Wählen Sie einen Termin für die erste Erinnerung.</mat-hint>
+        </mat-form-field>
+    </form>
 </div>
