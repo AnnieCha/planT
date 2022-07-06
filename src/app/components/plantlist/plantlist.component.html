@@ -1,7 +1,7 @@
-<h1>Alle Pflanzen</h1>
+<h1>Meine Pflanzen</h1>
 <hr>
 <table>
     <li  *ngFor="let specificPlant of plants; let i = index">
-        <app-plant-detail [plant]="specificPlant" [index]="i + 1"></app-plant-detail>
+        <app-plant-detail [plant]="specificPlant"></app-plant-detail>
     </li>
 </table>

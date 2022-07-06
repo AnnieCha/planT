@@ -14,7 +14,7 @@ export class PlantInfoComponent implements OnInit {
   public currPlant?: Plant;
   private sub: any;
   private plantName: string = "";
-  status: string = "info";
+  editMode: boolean = false;
 
   constructor(
     private _plantService: PlantService,
@@ -34,8 +34,8 @@ export class PlantInfoComponent implements OnInit {
     this.currPlant = this._plantService.getCurrenPlant(this.plantName);
   }
 
-  public setStatus(status: string){
-    this.status = status;
+  public setEditMode(status: boolean){
+    this.editMode = status;
   }
 
 }

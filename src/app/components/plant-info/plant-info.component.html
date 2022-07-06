@@ -1,13 +1,13 @@
-<div *ngIf="currPlant">
+<ng-container *ngIf="currPlant">
     <div class="header">
         <mat-icon aria-hidden="true" aria-label="Icon Information">info_outline</mat-icon>
         <h1>Pflanze</h1>
     </div>
     <hr>
-    <div class="content">
-        <div>
+    <div class="wrapper">
+        <div class="leftInfo">
             <img src={{currPlant?.imageUrl}}>
-            <div class="icon-row" *ngIf="status === 'info'">
+            <div class="icon-row" *ngIf="!editMode">
                 <mat-icon [ngClass]="{'lightgray-icon': currPlant.wateramount < 1}" aria-hidden="false"
                     aria-label="Icon Information">water_drop</mat-icon>
                 <mat-icon [ngClass]="{'lightgray-icon': currPlant.wateramount < 2}" aria-hidden="false"
@@ -15,7 +15,7 @@
                 <mat-icon [ngClass]="{'lightgray-icon': currPlant.wateramount < 3}" aria-hidden="false"
                     aria-label="Icon Information">water_drop</mat-icon>
             </div>
-            <div class="icon-row" *ngIf="status === 'info'">
+            <div class="icon-row" *ngIf="!editMode">
                 <mat-icon [ngClass]="{'lightgray-icon': currPlant.sunamount < 1}" aria-hidden="false"
                     aria-label="Icon Information">sunny</mat-icon>
                 <mat-icon [ngClass]="{'lightgray-icon': currPlant.sunamount < 2}" aria-hidden="false"
@@ -24,24 +24,25 @@
                     aria-label="Icon Information">sunny</mat-icon>
             </div>
         </div>
-        <div class="info-right">
-            <div class="row btnRow">
+        <ng-container *ngIf="currPlant && !editMode; else editModeTemplate">
+            <div class="row btnRow header">
                 <p>{{currPlant.name}}</p>
-                <div [ngSwitch]="status">
-                    <button *ngSwitchCase="'info'" mat-icon-button class="icon-button rightBtn" (click)="setStatus('add')" aria-label="Pflanzeneintrag bearbeiten">
-                        <mat-icon [routerLink]="['/plant', currPlant.name, {outlets: {'right-side': ['add-plant']}}]">
-                            add
-                        </mat-icon>
-                    </button>
-                    <button *ngSwitchCase="'add'" mat-icon-button class="icon-button rightBtn" aria-label="Pflanzeneintrag bearbeiten">
-                        <mat-icon [routerLink]="['/plant', currPlant.name, {outlets: {'right-side': ['add-plant']}}]">
-                            check
-                        </mat-icon>
-                    </button>
-                </div>
+                <button mat-icon-button class="icon-button rightBtn" (click)="setEditMode(true)"
+                    aria-label="Pflanzeneintrag bearbeiten">
+                    <mat-icon>add</mat-icon>
+                </button>
             </div>
-            <router-outlet name="right-side"></router-outlet>
-        </div>
-
+            <app-infotext class="main"></app-infotext>
+        </ng-container>
     </div>
-</div>
+</ng-container>
+
+<ng-template #editModeTemplate>
+    <div class="row btnRow header">
+        <p>{{currPlant?.name}}</p>
+        <button mat-icon-button class="icon-button rightBtn" aria-label="Pflanzeneintrag bearbeiten" (click)="setEditMode(false)">
+            <mat-icon>check</mat-icon>
+        </button>
+    </div>
+    <app-add-plant></app-add-plant>
+</ng-template>

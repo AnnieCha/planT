@@ -9,10 +9,9 @@ import { Plant } from '../../shared/models/plant';
 
 export class PlantDetailComponent implements OnInit {
   @Input() plant?: Plant;
-  @Input() index?: number;
 
   // this will change between my_plants and all_plants -> needs setter-method or getting information by propsS + maybe enums?
-  site = "all_plants";
+  status: string = "my_plants";
   //@Input() name!: string;
   //@Input() infotext!: string;
 
