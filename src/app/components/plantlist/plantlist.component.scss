@@ -1,15 +1,51 @@
+.plantlistComponent {
+    margin: 0 100px;
+}
+
 .underline {
     border-bottom: 1px solid black;
     width: 100%;
     display: block;
 }
 
-li {
-    list-style: none;
-}
-
 hr {
     border: 0;
     border-top: 1px solid gray;
     margin-bottom: 30px;
+}
+
+//try responsive design with gridlayout
+
+
+.row {
+    width: 800px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    margin: auto;
+}
+
+//try responsive design with flexlayout
+/*
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.plantDetail {
+    flex: 40%;
+    padding: 50px;
+}
+*/
+@media screen and (max-width: 600px) {
+    .row {
+        width: 100%;
+        grid-template-columns: 1fr;
+        margin: 0;
+        // maybe reset justify-items?
+    }
+
+    .plantlistComponent {
+        margin: 0;
+    }
 }

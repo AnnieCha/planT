@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    width: 100%;
     gap: 15px;
 }
 
@@ -35,15 +34,11 @@ button {
 .wrapper {
     margin-bottom: 10px;
     display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-column-gap: 20px;
+    grid-column-gap: 5px;
     grid-template-areas: 
         "sidebar header"
         "sidebar content";
-}
-
-.hidden {
-    display: none;
+    //width: 320px;
 }
 
 img {

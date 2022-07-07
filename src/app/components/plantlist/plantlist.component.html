@@ -1,7 +1,9 @@
-<h1>Meine Pflanzen</h1>
-<hr>
-<table>
-    <li  *ngFor="let specificPlant of plants; let i = index">
-        <app-plant-detail [plant]="specificPlant"></app-plant-detail>
-    </li>
-</table>
+<div class="plantlistComponent">
+    <h1>Meine Pflanzen</h1>
+    <hr>
+    <div class="row">
+        <ng-container *ngFor="let specificPlant of plants; let i = index">
+            <app-plant-detail [plant]="specificPlant" class="plantDetail"></app-plant-detail>
+        </ng-container>
+    </div>
+</div>
