@@ -39,9 +39,8 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: #e3f0e3;
+  background-color: var(--color-primary);
   color: #646E64;
-  padding: 15px;
 }
 
 :root {

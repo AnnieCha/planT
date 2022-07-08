@@ -1,1 +1,15 @@
-<router-outlet></router-outlet>
+<p>
+    <mat-toolbar class="toolbar">
+        <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon" aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span [routerLink]="'/'">PlanT</span>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item [routerLink]="'/'">Meine Pflanzen</button>
+            <button mat-menu-item [routerLink]="'/'">Alle Pflanzen</button>
+            <button mat-menu-item>Kalender</button>
+            <button mat-menu-item>Einstellungen</button>
+        </mat-menu>
+    </mat-toolbar>
+</p>
+<router-outlet class="content"></router-outlet>
