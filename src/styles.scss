@@ -31,6 +31,13 @@ $plant-app-theme: mat.define-light-theme((color: (primary: $plant-app-primary,
 
 /* You can add global styles to this file, and also import other style files */
 
+:root {
+  --color-primary: #e3f0e3;
+  --color-secondary: #b6c4b6;
+  --color-three: #646E64;
+}
+
+
 html,
 body {
   height: 100%;
@@ -43,7 +50,3 @@ body {
   color: #646E64;
 }
 
-:root {
-  --color-primary: #e3f0e3;
-  --color-secondary: #646E64;
-}

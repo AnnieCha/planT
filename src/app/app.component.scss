@@ -1,6 +1,37 @@
 .toolbar {
     background-color: var(--color-secondary);
-    color: white;
+    color: var(--color-three);
     display: flex;
     align-items: center;
+}
+
+.header {
+    height: 50px;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+    height: 30px;
+    background-color: var(--color-three);
+    color: white;
+
+    a {
+        all: unset;
+        font-size: medium;
+        font-weight: 100;
+        cursor: pointer;
+    }
+    a:hover {
+        color: var(--color-secondary);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .menu {
+        flex-direction: column;
+        height: 200px;
+        align-items:flex-start;
+    }
+
 }
