@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +15,8 @@ import { PlantInfoComponent } from './components/plant-info/plant-info.component
 import { MaterialModule } from './material/material.module';
 import { CareInstructionComponent } from './components/care-instruction/care-instruction.component';
 import { CareEventsComponent } from './components/care-events/care-events.component';
+import { AddPlantComponent } from './components/add-plant/add-plant.component';
+import { InfotextComponent } from './components/infotext/infotext.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,9 @@ import { CareEventsComponent } from './components/care-events/care-events.compon
     PlantlistComponent,
     CareInstructionComponent,
     CareEventsComponent,
-    PlantInfoComponent
+    PlantInfoComponent,
+    AddPlantComponent,
+    InfotextComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +35,9 @@ import { CareEventsComponent } from './components/care-events/care-events.compon
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
-    MaterialModule
+    MatInputModule,
+    MaterialModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

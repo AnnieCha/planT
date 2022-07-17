@@ -1,25 +1,34 @@
-<div *ngIf="plant && index" [ngClass]="{'row': true, 'imgRight': index % 2 === 0}">
-    <img src={{plant.imageUrl}}>
-    <div>
-        <div class="row btnRow">
-            <p class="header" [routerLink]="['/plant', plant.name]">{{plant.name}}</p>
-            <button mat-icon-button class="icon-button" [ngClass]="{'hidden': site!='my_plants', 'rightBtn': true}"
-                aria-label="Pflanzeneintrag bearbeiten">
-                <mat-icon>edit</mat-icon>
+<div *ngIf="plant" class="wrapper">
+    <img class="plantImage" src={{plant.imageUrl}}>
+    <ng-container *ngIf="status === 'all_plants'; else personalPlants">
+        <div class="row btnRow header">
+            <h4 [routerLink]="['/plant', plant.name]">{{plant.name}}</h4>
+            <button mat-icon-button class="icon-button innerBtn" aria-label="Pflanze zu eigenen Pflanzen hinzufügen"
+                (click)="add(plant.name)">
+                <mat-icon aria-hidden="false">add</mat-icon>
             </button>
-            <button mat-icon-button class="icon-button" [ngClass]="{'hidden': site!='all_plants', 'rightBtn': true}"
-                aria-label="Pflanze zu eigenen Pflanzen hinzufügen">
-                <mat-icon>add</mat-icon>
-            </button>
-            <button mat-icon-button class="icon-button" [ngClass]="{'hidden': site!='my_plants'}"
-                aria-label="Pflanze favorisieren">
-                <mat-icon>favorite</mat-icon>
-            </button>
-            <button mat-icon-button class="icon-button" [ngClass]="{'hidden': site!='all_plants'}"
-                aria-label="Weitere Informationen">
-                <mat-icon>information</mat-icon>
+            <button mat-icon-button class="icon-button" aria-label="Weitere Informationen"
+                [routerLink]="['/plant', plant.name]">
+                <mat-icon aria-hidden="false">information</mat-icon>
             </button>
         </div>
-        <p class="infotext">{{plant.infotext}}</p>
-    </div>
+        <p class="content">{{plant.infotext}}</p>
+    </ng-container>
 </div>
+
+<ng-template #personalPlants>
+    <div class="row btnRow header">
+        <h4 [routerLink]="['/plant', plant?.name]">{{plant?.name}}</h4>
+        <button mat-icon-button class="icon-button innerBtn" aria-label="Pflanzeneintrag bearbeiten" (click)="edit('name of plant')">
+            <mat-icon aria-hidden="false">edit</mat-icon>
+        </button>
+        <button mat-icon-button class="icon-button" aria-label="Weitere Informationen"
+            [routerLink]="['/plant', plant?.name]">
+            <mat-icon aria-hidden="false">information</mat-icon>
+        </button>
+    </div>
+    <div class="content">
+        <p>Name: {{plant?.name}}</p>
+        <p>Nächstes mal gießen am: Mittwoch</p>
+    </div>
+</ng-template>
