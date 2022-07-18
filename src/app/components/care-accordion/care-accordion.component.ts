@@ -16,11 +16,11 @@ interface SingleInformation {
 const TREE_DATA: CareEventNode[] = [
   {
     name: 'Heute',
-    children: [{name: 'Gießen Aloe Vera'}, {name: 'Gießen Palme'}, {name: 'Gießen Palme2'}],
+    children: [{name: 'Gießen Aloe Vera'}, {name: 'Gießen Palme'}, {name: 'Gießen Palme am Fenster'}],
   },
   {
     name: 'Morgen',
-    children: [{name: 'Gießen Aloe Vera'}, {name: 'Gießen Palme'}, {name: 'Gießen Palme2'}],
+    children: [{name: 'Gießen Ficus'}, {name: 'Gießen Monstrera'}, {name: 'Gießen Palme am Fenster'}],
   },
 ];
 
