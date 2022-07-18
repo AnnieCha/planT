@@ -11,7 +11,15 @@
             <a [routerLink]="'/meine-pflanzen'">Meine Pflanzen</a>
             <a [routerLink]="'/'">Alle Pflanzen</a>
             <a>Kalender</a>
-            <a>Einstellungen</a>
+            <div class="dropdown">
+                <span><a>Einstellungen</a></span>
+                <div class="dropdown-content">
+                <ul>
+                  <li><a>English</a></li>
+                  <li><button onclick="darkMode()">Klick me</button></li>
+                </ul>
+                </div>
+              </div>
             <a>Ausloggen</a>
         </mat-toolbar-row>
     </mat-toolbar>

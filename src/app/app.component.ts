@@ -12,5 +12,10 @@ export class AppComponent {
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
   }
+  
+  /*function darkMode() {
+    var element = document.body;
+    element.classList.toggle("dark-mode");
+ }*/
 
 }

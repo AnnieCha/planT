@@ -17,6 +17,7 @@
     height: 30px;
     background-color: var(--color-three);
     color: white;
+    z-index: 5;
 
     a {
         all: unset;
@@ -27,6 +28,29 @@
     a:hover {
         color: var(--color-secondary);
     }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: var(--color-three);
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        padding: 12px 16px;
+        z-index: 1;
+      }
+      
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dark-mode {
+        background-color: --color-dark-primary;
+      }
 }
 
 @media screen and (max-width: 600px) {
