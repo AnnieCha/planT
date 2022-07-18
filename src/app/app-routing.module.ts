@@ -13,6 +13,8 @@ const routes: Routes = [
       { path: 'add-plant', component: AddPlantComponent, outlet: "right-side" },
     ]
   },
+  //todo: nicht schön gelöst
+  { path: ':area', component: PlantlistComponent},
   { path: '', component: PlantlistComponent },
 ];
 
