@@ -1,41 +1,49 @@
 .row {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 40px;
-    width: 100%;
     gap: 15px;
 }
 
 .btnRow {
     align-items: baseline;
-    margin-bottom: 0;
+    justify-content: space-between;
 }
 
 button {
     width: 20px !important;
 }
 
-.rightBtn {
+.innerBtn {
     margin-left: auto;
 }
 
-.infotext {
-    font-size: smaller;
+.header {
+    grid-area: header;
 }
 
-.hidden {
-    display: none;
+.plantImage {
+    grid-area: sidebar;
+}
+
+.content {
+    font-size: smaller;
+    grid-area: content;
+}
+
+.wrapper {
+    margin-bottom: 10px;
+    display: grid;
+    grid-column-gap: 5px;
+    grid-template-areas: 
+        "sidebar header"
+        "sidebar content";
+    //width: 320px;
 }
 
 img {
     width: 100px;
     border-radius: 10%;
-}
-
-.imgRight {
-    flex-direction: row-reverse;
 }
 
 ::ng-deep .mat-icon{

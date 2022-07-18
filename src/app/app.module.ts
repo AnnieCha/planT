@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +16,8 @@ import { MaterialModule } from './material/material.module';
 import { CareInstructionComponent } from './components/care-instruction/care-instruction.component';
 import { CareEventsComponent } from './components/care-events/care-events.component';
 import { DarkmodeComponent } from './components/darkmode/darkmode.component';
+import { AddPlantComponent } from './components/add-plant/add-plant.component';
+import { InfotextComponent } from './components/infotext/infotext.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,9 @@ import { DarkmodeComponent } from './components/darkmode/darkmode.component';
     CareInstructionComponent,
     CareEventsComponent,
     PlantInfoComponent,
-    DarkmodeComponent
+    DarkmodeComponent,
+    AddPlantComponent,
+    InfotextComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +37,9 @@ import { DarkmodeComponent } from './components/darkmode/darkmode.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
-    MaterialModule
+    MatInputModule,
+    MaterialModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
