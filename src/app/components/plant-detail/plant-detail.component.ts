@@ -14,8 +14,6 @@ export class PlantDetailComponent implements OnInit {
 
   // this will change between my_plants and all_plants -> needs setter-method or getting information by propsS + maybe enums?
   type: string = "all";
-  //@Input() name!: string;
-  //@Input() infotext!: string;
 
   constructor(
     private _openPlantService: OpenPlantService,

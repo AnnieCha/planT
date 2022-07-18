@@ -20,5 +20,12 @@ export class AppComponent {
   showMenue() {
     return this._userService.getLoggedIn()
   }
+  
+  onBtnClick = () => {
+    document.body.classList.toggle("dark-theme");
+    console.log("darkThemeWorks");
+  };
+
 
 }
+

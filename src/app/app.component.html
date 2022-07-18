@@ -2,20 +2,31 @@
     <mat-toolbar class="toolbar">
         <mat-toolbar-row class="header">
             <span [routerLink]="'/'">PlanT</span>
-            <button *ngIf="showMenue()" mat-icon-button class="example-icon"
-            aria-label="Example icon-button with menu icon" (click)="toggleMenu()">
-            <mat-icon>menu</mat-icon>
-        </button>
+            <button mat-icon-button *ngIf="showMenue()" class="example-icon" aria-label="Example icon-button with menu icon"
+                (click)="toggleMenu()">
+                <mat-icon>menu</mat-icon>
+            </button>
         </mat-toolbar-row>
         <mat-toolbar-row *ngIf="this.menuOpen" class="menu">
             <a [routerLink]="'/meine-pflanzen'">Meine Pflanzen</a>
-            <a [routerLink]="'/alle-pflanzen'">Alle Pflanzen</a>
+            <a [routerLink]="'/'">Alle Pflanzen</a>
             <a [routerLink]="'/mein-kalender'">Kalender</a>
-            <a>Einstellungen</a>
+            <div class="dropdown">
+                <span><a>Einstellungen</a></span>
+                <div class="dropdown-content">
+                    <ul>
+                        <li><a>English</a></li>
+                        <li><button id="btn-dark-theme" (click)="onBtnClick()">
+                                Dark Mode</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             <a>Ausloggen</a>
         </mat-toolbar-row>
     </mat-toolbar>
 
 </p>
+
 <router-outlet class="content"></router-outlet>
 <router-outlet></router-outlet>
