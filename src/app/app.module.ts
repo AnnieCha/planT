@@ -15,7 +15,6 @@ import { PlantlistComponent } from './components/plantlist/plantlist.component';
 import { PlantInfoComponent } from './components/plant-info/plant-info.component';
 
 import { MaterialModule } from './material/material.module';
-import { ReactiveFormsModule } from '@angular/forms';
 import { CareInstructionComponent } from './components/care-instruction/care-instruction.component';
 import { CareEventsComponent } from './components/care-events/care-events.component';
 import { AddPlantComponent } from './components/add-plant/add-plant.component';
