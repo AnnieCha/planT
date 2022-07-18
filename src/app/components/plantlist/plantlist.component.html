@@ -1,5 +1,5 @@
 <div class="plantlistComponent">
-    <h1>{{title}}</h1>
+    <h1>{{title | translate}}</h1>
     <hr>
     <div class="row">
         <ng-container *ngIf="plants && plants.length > 0; else noOwnPlants">
@@ -11,6 +11,6 @@
 </div>
 
 <ng-template #noOwnPlants>
-    <h4>Du hast noch keine Pflanzen hinzugefügt.</h4>
-    <button mat-raised-button color="primary" [routerLink]="'/'">Übersicht</button>
+    <h4>{{'HINT.NO-PLANTS' | translate}}</h4>
+    <button mat-raised-button color="primary" [routerLink]="'/'">{{'BUTTON.OVERVIEW' | translate}}</button>
 </ng-template>

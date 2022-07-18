@@ -5,5 +5,12 @@
         "SETTINGS": "Settings",
         "CALENDAR": "Calendar",
         "LOG-OUT": "Log out"
+    },
+    "HINT": {
+        "NO-PLANTS": "You don't have any plants yet.",
+        "DATE": "Choose a date for the next watering."
+    },
+    "BUTTON": {
+        "OVERVIEW": "New plant"
     }
 }

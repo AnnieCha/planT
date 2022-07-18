@@ -26,11 +26,11 @@ export class PlantlistComponent implements OnInit {
       console.log("params", params);
       //TODO: der routerlink ist so noch nicht korrekt
       if(params['area'] === "meine-pflanzen"){
-        this.title = "Meine Pflanzen";
+        this.title = 'MENU.OWN-PLANTS';
         this.type = "own";
         this._plantListService.setListType('own');
       } else {
-        this.title = "Alle Pflanzen";
+        this.title = 'MENU.ALL-PLANTS';
         this.type = "all";
         this._plantListService.setListType('all');
       }

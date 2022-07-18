@@ -5,5 +5,15 @@
         "SETTINGS": "Einstellungen",
         "CALENDAR": "Kalender",
         "LOG-OUT": "Ausloggen"
+    },
+    "HINT": {
+        "NO-PLANTS": "Du hast noch keine Pflanzen hinzugefügt.",
+        "DATE": "Wählen Sie einen Termin für die erste Erinnerung."
+    },
+    "BUTTON": {
+        "OVERVIEW": "Neue Pflanze"
+    },
+    "FORM": {
+        "NAME": "Name"
     }
 }

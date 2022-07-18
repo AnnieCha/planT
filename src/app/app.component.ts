@@ -10,13 +10,19 @@ export class AppComponent {
   title = 'plant-app';
   menuOpen: boolean = false;
 
-  constructor(_translateService: TranslateService) {
+  
+  constructor(private _translateService: TranslateService) {
     _translateService.setDefaultLang('en');
     _translateService.use('en');
   }
 
+
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
+  }
+
+  chooseLanguage(lang: string){
+    this._translateService.use(lang);
   }
 
   onBtnClick = () => {
