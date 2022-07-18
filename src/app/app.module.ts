@@ -17,6 +17,8 @@ import { CareInstructionComponent } from './components/care-instruction/care-ins
 import { CareEventsComponent } from './components/care-events/care-events.component';
 import { AddPlantComponent } from './components/add-plant/add-plant.component';
 import { InfotextComponent } from './components/infotext/infotext.component';
+import { CareAccordionComponent } from './components/care-accordion/care-accordion.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { InfotextComponent } from './components/infotext/infotext.component';
     CareEventsComponent,
     PlantInfoComponent,
     AddPlantComponent,
-    InfotextComponent
+    InfotextComponent,
+    CareAccordionComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
