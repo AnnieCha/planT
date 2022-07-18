@@ -1,0 +1,9 @@
+{
+    "MENU": {
+        "ALL-PLANTS": "All plants",
+        "OWN-PLANTS": "My plants",
+        "SETTINGS": "Settings",
+        "CALENDAR": "Calendar",
+        "LOG-OUT": "Log out"
+    }
+}

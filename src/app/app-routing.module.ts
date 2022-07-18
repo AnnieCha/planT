@@ -15,7 +15,6 @@ const routes: Routes = [
   },
   //todo: nicht schön gelöst
   { path: ':area', component: PlantlistComponent},
-  { path: '', component: PlantlistComponent },
 ];
 
 @NgModule({

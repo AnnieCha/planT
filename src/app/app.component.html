@@ -8,11 +8,11 @@
         </button>
         </mat-toolbar-row>
         <mat-toolbar-row *ngIf="this.menuOpen" class="menu">
-            <a [routerLink]="'/meine-pflanzen'">Meine Pflanzen</a>
-            <a [routerLink]="'/'">Alle Pflanzen</a>
-            <a>Kalender</a>
-            <a>Einstellungen</a>
-            <a>Ausloggen</a>
+            <a [routerLink]="'/meine-pflanzen'">{{ 'MENU.OWN-PLANTS' | translate }}</a>
+            <a [routerLink]="'/alle-pflanzen'">{{ 'MENU.ALL-PLANTS' | translate }}</a>
+            <a>{{ 'MENU.CALENDAR' | translate }}</a>
+            <a>{{ 'MENU.SETTINGS' | translate }}</a>
+            <a>{{ 'MENU.LOG-OUT' | translate }}</a>
         </mat-toolbar-row>
     </mat-toolbar>
 
