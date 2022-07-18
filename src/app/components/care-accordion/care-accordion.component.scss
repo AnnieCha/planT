@@ -1,0 +1,10 @@
+.mat-tree {
+    background: inherit;
+    padding-bottom: 50px;
+
+    .mat-tree-node.parent {
+        justify-content: space-between;
+        border-bottom: solid 1px gray;
+    }
+}
+
