@@ -1,5 +1,4 @@
-<p>login works!</p>
-
+<div class="loginContainer">
 <h2>Login</h2>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <div>
@@ -14,40 +13,8 @@
       <input type="password" matInput formControlName="password" placeholder="Type your password">
     </mat-form-field>
   </div>
-  <div>
+  <div class="btn">
     <button mat-raised-button>Login</button>
   </div>
 </form>
-
-
-<!--
-<form >
-  <p>
-    <mat-form-field>
-      <input type="text" matInput placeholder="Username" formControlName="username">
-    </mat-form-field>
-  </p>
-
-  <p>
-    <mat-form-field>
-      <input type="password" matInput placeholder="Password" formControlName="password">
-    </mat-form-field>
-  </p>
-
-
-  <div class="button">
-    <button type="submit" mat-button>Login</button>
-  </div>
-
-</form>
-
-
-
-
-<mat-card>
-    <mat-card-title>Login</mat-card-title>
-<mat-card-content>
-    
-
-</mat-card-content>
-</mat-card> -->
+</div>

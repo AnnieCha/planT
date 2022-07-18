@@ -26,7 +26,7 @@ import { Injectable } from '@angular/core';
         switch(tag){
           case "Heute":
             return  { 
-              children: [{name: 'Gießen Aloe Vera123'}, {name: 'Gießen Palme123'}, {name: 'Gießen Palme2'}]};
+              children: [{name: 'Gießen Aloe Vera'}, {name: 'Gießen Palme'}, {name: 'Gießen Palme am Fenster'}]};
             break;
           case "Morgen":
             return  { children: [{name: 'Gießen Aloe Vera'}, {name: 'Gießen Palme'}, {name: 'Gießen Palme2'}] };

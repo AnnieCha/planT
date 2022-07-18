@@ -1,10 +1,12 @@
-.mat-tree {
-    background: inherit;
-    padding-bottom: 50px;
+.accordion-container {
+    padding: 0 15%;
+    .mat-tree {
+        background: inherit;
+        padding-bottom: 50px;
 
-    .mat-tree-node.parent {
-        justify-content: space-between;
-        border-bottom: solid 1px gray;
+        .mat-tree-node.parent {
+            justify-content: space-between;
+            border-bottom: solid 1px gray;
+        }
     }
 }
-
