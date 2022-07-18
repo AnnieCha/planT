@@ -11,8 +11,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$plant-app-primary: mat.define-palette(mat.$indigo-palette);
-$plant-app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$plant-app-primary: mat.define-palette(mat.$light-green-palette, 300, 500);
+$plant-app-accent: mat.define-palette(mat.$orange-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $plant-app-warn: mat.define-palette(mat.$red-palette);
@@ -32,8 +32,8 @@ $plant-app-theme: mat.define-light-theme((color: (primary: $plant-app-primary,
 /* You can add global styles to this file, and also import other style files */
 
 :root {
-  --color-primary: #e3f0e3;
-  --color-secondary: #b6c4b6;
+  --color-primary: #f1f8f1;
+  --color-secondary: #d6e3d6;
   --color-three: #646E64;
 }
 

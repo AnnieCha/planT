@@ -1,3 +1,8 @@
+.plantinfoComponent {
+    margin: 0 15%;
+}
+
+
 hr {
     border: 0;
     border-top: 1px solid gray;
@@ -89,4 +94,10 @@ img {
     grid-template-areas:
         "sidebar header"
         "sidebar main";
+}
+
+@media screen and (max-width: 600px) {
+    .plantinfoComponent {
+        margin: 0 10px;
+    }
 }

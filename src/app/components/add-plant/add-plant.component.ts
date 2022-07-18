@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { EditPlantService } from 'src/app/services/editPlant.service';
 import { PlantService } from 'src/app/services/plant.service';
 import { Plant } from 'src/app/shared/models/plant';
 
@@ -18,6 +19,7 @@ export class AddPlantComponent implements OnInit {
 
   constructor(
     private _plantService: PlantService,
+    private _editPlantService: EditPlantService,
     private route: ActivatedRoute
     ) {}
 
@@ -32,6 +34,10 @@ export class AddPlantComponent implements OnInit {
 
   public getPlantInfo(){
     this.currPlant = this._plantService.getCurrenPlant(this.plantName);
+  }
+
+  ngOnChange() {
+    console.log("change", this.ownName, this.startDate);
   }
 }
 

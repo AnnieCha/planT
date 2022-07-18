@@ -1,10 +1,10 @@
 <div *ngIf="plant" class="wrapper">
     <img class="plantImage" src={{plant.imageUrl}}>
-    <ng-container *ngIf="status === 'all_plants'; else personalPlants">
-        <div class="row btnRow header">
+    <ng-container *ngIf="type === 'all'; else personalPlants">
+        <div class="header">
             <h4 [routerLink]="['/plant', plant.name]">{{plant.name}}</h4>
             <button mat-icon-button class="icon-button innerBtn" aria-label="Pflanze zu eigenen Pflanzen hinzufügen"
-                (click)="add(plant.name)">
+            (click)="add(plant.name, true)" [routerLink]="['/plant', plant.name]">
                 <mat-icon aria-hidden="false">add</mat-icon>
             </button>
             <button mat-icon-button class="icon-button" aria-label="Weitere Informationen"
@@ -17,7 +17,7 @@
 </div>
 
 <ng-template #personalPlants>
-    <div class="row btnRow header">
+    <div class="header">
         <h4 [routerLink]="['/plant', plant?.name]">{{plant?.name}}</h4>
         <button mat-icon-button class="icon-button innerBtn" aria-label="Pflanzeneintrag bearbeiten" (click)="edit('name of plant')">
             <mat-icon aria-hidden="false">edit</mat-icon>
