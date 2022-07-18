@@ -1,13 +1,12 @@
-.row {
+.header {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     gap: 15px;
-}
-
-.btnRow {
     align-items: baseline;
     justify-content: space-between;
+    grid-area: header;
+    width: 200px;
 }
 
 button {
@@ -16,10 +15,6 @@ button {
 
 .innerBtn {
     margin-left: auto;
-}
-
-.header {
-    grid-area: header;
 }
 
 .plantImage {
@@ -34,11 +29,12 @@ button {
 .wrapper {
     margin-bottom: 10px;
     display: grid;
-    grid-column-gap: 5px;
+    grid-column-gap: 15px;
     grid-template-areas: 
         "sidebar header"
         "sidebar content";
-    //width: 320px;
+    width: 320px;
+    justify-content: flex-start;
 }
 
 img {
@@ -46,8 +42,17 @@ img {
     border-radius: 10%;
 }
 
+h4 {
+    cursor: pointer;
+}
+
+
 ::ng-deep .mat-icon{
-    height:20px !important;
-    width:20px !important;
     font-size:20px !important;
+}
+
+@media screen and (max-width: 600px) {
+    .header {
+        width: 200px;
+    }
 }

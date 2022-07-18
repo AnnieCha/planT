@@ -1,4 +1,5 @@
-<ng-container *ngIf="currPlant">
+<!-- TODO: statt div evtl. ng-container -->
+<div *ngIf="currPlant" class="plantinfoComponent">
     <div class="header">
         <mat-icon aria-hidden="true" aria-label="Icon Information">info_outline</mat-icon>
         <h1>Pflanze</h1>
@@ -35,13 +36,16 @@
             <app-infotext class="main"></app-infotext>
         </ng-container>
     </div>
-</ng-container>
+</div>
 
 <ng-template #editModeTemplate>
     <div class="row btnRow header">
         <p>{{currPlant?.name}}</p>
-        <button mat-icon-button class="icon-button rightBtn" aria-label="Pflanzeneintrag bearbeiten" (click)="setEditMode(false)">
+        <button mat-icon-button class="icon-button rightBtn" aria-label="Pflanzeneintrag bearbeiten" (click)="add()">
             <mat-icon>check</mat-icon>
+        </button>
+        <button mat-icon-button class="icon-button rightBtn" aria-label="Pflanzeneintrag bearbeiten" (click)="setEditMode(false)">
+            <mat-icon>close</mat-icon>
         </button>
     </div>
     <app-add-plant></app-add-plant>

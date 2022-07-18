@@ -1,3 +1,14 @@
 .form-field {
     margin-bottom: 10px;
 }
+
+::ng-deep .mat-form-field {
+    margin-right: 50px;
+}
+
+@media screen and (max-width: 600px) {
+    ::ng-deep .mat-form-field {
+        margin-right: 0px;
+        width: auto;
+    }
+}

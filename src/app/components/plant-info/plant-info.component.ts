@@ -1,6 +1,6 @@
-import { partitionArray } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { OpenPlantService } from 'src/app/services/openPlant.service';
 import { PlantService } from 'src/app/services/plant.service';
 import { Plant } from 'src/app/shared/models/plant';
 
@@ -11,13 +11,14 @@ import { Plant } from 'src/app/shared/models/plant';
 })
 
 export class PlantInfoComponent implements OnInit {
-  public currPlant?: Plant;
+  public currPlant!: Plant;
   private sub: any;
-  private plantName: string = "";
-  editMode: boolean = false;
+  private _plantName: string = "";
+  public editMode: boolean = false;
 
   constructor(
     private _plantService: PlantService,
+    private _openPlantService: OpenPlantService,
     private route: ActivatedRoute
     ) {}
 
@@ -25,13 +26,19 @@ export class PlantInfoComponent implements OnInit {
   ngOnInit(): void {
  //   this.currPlant = this._plantService.getCurrenPlant();
     this.sub = this.route.params.subscribe(params => {
-      this.plantName = params['name'];
+      this._plantName = params['name'];
     })
     this.getPlantInfo();
+    this.editMode = this._openPlantService.getEditMode();
   }
 
   public getPlantInfo(){
-    this.currPlant = this._plantService.getCurrenPlant(this.plantName);
+    this.currPlant = this._plantService.getCurrenPlant(this._plantName);
+  }
+
+  public add(){
+    this._plantService.addPlant("TestName", this.currPlant);
+    this.setEditMode(false);
   }
 
   public setEditMode(status: boolean){

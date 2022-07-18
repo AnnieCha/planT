@@ -1,1 +1,22 @@
+<p>
+    <mat-toolbar class="toolbar">
+        <mat-toolbar-row class="header">
+            <span [routerLink]="'/'">PlanT</span>
+            <button mat-icon-button class="example-icon"
+            aria-label="Example icon-button with menu icon" (click)="toggleMenu()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        </mat-toolbar-row>
+        <mat-toolbar-row *ngIf="this.menuOpen" class="menu">
+            <a [routerLink]="'/meine-pflanzen'">Meine Pflanzen</a>
+            <a [routerLink]="'/'">Alle Pflanzen</a>
+            <a>Kalender</a>
+            <a>Einstellungen</a>
+            <a>Ausloggen</a>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+</p>
+<router-outlet class="content"></router-outlet>
 <router-outlet></router-outlet>
+<app-login></app-login>
