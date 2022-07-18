@@ -5,6 +5,8 @@ import { PlantInfoComponent } from './components/plant-info/plant-info.component
 import { PlantlistComponent } from './components/plantlist/plantlist.component';
 import { AddPlantComponent } from './components/add-plant/add-plant.component';
 import { InfotextComponent } from './components/infotext/infotext.component';
+import { LoginComponent } from './components/login/login.component';
+import { CareAccordionComponent } from './components/care-accordion/care-accordion.component';
 
 const routes: Routes = [
   {
@@ -14,7 +16,12 @@ const routes: Routes = [
     ]
   },
   //todo: nicht schön gelöst
+  { path: 'mein-kalender', component: CareAccordionComponent},
   { path: ':area', component: PlantlistComponent},
+<<<<<<< HEAD
+=======
+  { path: '', component: LoginComponent}
+>>>>>>> main
 ];
 
 @NgModule({
