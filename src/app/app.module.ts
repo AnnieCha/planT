@@ -19,6 +19,8 @@ import { CareEventsComponent } from './components/care-events/care-events.compon
 import { AddPlantComponent } from './components/add-plant/add-plant.component';
 import { InfotextComponent } from './components/infotext/infotext.component';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
+import { CareAccordionComponent } from './components/care-accordion/care-accordion.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { SearchbarComponent } from './components/searchbar/searchbar.component';
     PlantInfoComponent,
     AddPlantComponent,
     InfotextComponent,
-    SearchbarComponent
+    SearchbarComponent,
+    CareAccordionComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
