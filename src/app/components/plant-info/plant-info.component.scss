@@ -31,38 +31,17 @@ h1 {
     color: lightgray;
 }
 
-.info-right {
-    margin-left: 15px;
-
-    .row {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 40px;
-        width: 100%;
-        gap: 15px;
-    }
-
-    .btnRow {
-        align-items: baseline;
-        margin-bottom: 0;
-    }
-}
-
 .row {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 40px;
     width: 100%;
     gap: 15px;
-}
-
-.btnRow {
     align-items: baseline;
-    margin-bottom: 0;
+
+    .innerBtn {
+        margin-left: auto;
+    }
 }
 
 .icon-row {
@@ -72,7 +51,7 @@ h1 {
 }
 
 img {
-    width: 100px;
+    width: 200px;
     border-radius: 10%;
 }
 
@@ -92,12 +71,36 @@ img {
     display: grid;
     gap: 20px;
     grid-template-areas:
-        "sidebar header"
-        "sidebar main";
+        "sidebar header header header"
+        "sidebar main main main"
+        "sidebar main main main";
+}
+
+//Die form field sachen sind eigentlich im css der anderen komponente
+::ng-deep .mat-form-field {
+    margin-right: 50px;
 }
 
 @media screen and (max-width: 600px) {
     .plantinfoComponent {
         margin: 0 10px;
+    }
+
+    .wrapper {
+        display: grid;
+        gap: 20px;
+        grid-template-areas:
+            "sidebar header"
+            "sidebar main";
+    }
+    
+
+    ::ng-deep .mat-form-field {
+        margin-right: 0px;
+        width: auto;
+    }
+
+    img{
+        width: 100px;
     }
 }

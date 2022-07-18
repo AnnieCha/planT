@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { EditPlantService } from 'src/app/services/editPlant.service';
 import { PlantService } from 'src/app/services/plant.service';
 import { Plant } from 'src/app/shared/models/plant';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-add-plant',
@@ -16,6 +18,11 @@ export class AddPlantComponent implements OnInit {
   private plantName: string = "";
   ownName: string = "";
   startDate: Date = new Date();
+
+  formGroup: FormGroup = new FormGroup({
+    name: new FormControl('', [Validators.required, Validators.minLength(1)]),
+    date: new FormControl('', [Validators.required, Validators.minLength(1)])
+  });
 
   constructor(
     private _plantService: PlantService,
