@@ -19,4 +19,11 @@ export class AppComponent {
     this.menuOpen = !this.menuOpen;
   }
 
+  onBtnClick = () => {
+    document.body.classList.toggle("dark-theme");
+    console.log("darkThemeWorks");
+  };
+
+
 }
+

@@ -21,6 +21,7 @@ import { PlantInfoComponent } from './components/plant-info/plant-info.component
 import { MaterialModule } from './material/material.module';
 import { CareInstructionComponent } from './components/care-instruction/care-instruction.component';
 import { CareEventsComponent } from './components/care-events/care-events.component';
+import { DarkmodeComponent } from './components/darkmode/darkmode.component';
 import { AddPlantComponent } from './components/add-plant/add-plant.component';
 import { InfotextComponent } from './components/infotext/infotext.component';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
@@ -39,6 +40,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     CareInstructionComponent,
     CareEventsComponent,
     PlantInfoComponent,
+    DarkmodeComponent,
     AddPlantComponent,
     InfotextComponent,
     SearchbarComponent,

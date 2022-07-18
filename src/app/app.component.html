@@ -2,10 +2,10 @@
     <mat-toolbar class="toolbar">
         <mat-toolbar-row class="header">
             <span [routerLink]="'/'">PlanT</span>
-            <button mat-icon-button class="example-icon"
-            aria-label="Example icon-button with menu icon" (click)="toggleMenu()">
-            <mat-icon>menu</mat-icon>
-        </button>
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+                (click)="toggleMenu()">
+                <mat-icon>menu</mat-icon>
+            </button>
         </mat-toolbar-row>
         <mat-toolbar-row *ngIf="this.menuOpen" class="menu">
             <a [routerLink]="'/meine-pflanzen'">{{ 'MENU.OWN-PLANTS' | translate }}</a>
@@ -17,6 +17,7 @@
     </mat-toolbar>
 
 </p>
+
 <router-outlet class="content"></router-outlet>
 <router-outlet></router-outlet>
 <app-login></app-login>

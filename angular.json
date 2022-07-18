@@ -109,5 +109,8 @@
       }
     }
   },
-  "defaultProject": "plant-app"
+  "defaultProject": "plant-app",
+  "cli": {
+    "analytics": false
+  }
 }
