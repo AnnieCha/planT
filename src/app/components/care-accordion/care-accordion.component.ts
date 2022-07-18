@@ -1,6 +1,7 @@
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {Component} from '@angular/core';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
+import {EventService} from 'src/app/services/event.service';
 
 interface CareEventNode {
   name: string;
@@ -58,7 +59,12 @@ export class CareAccordionComponent {
  
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);  // dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-  constructor() {
+  constructor(private _eventService: EventService) {
+    // this.dataSource.data = TREE_DATA;
+    var data =  _eventService.getCurrenPlant("Heute");
+    console.log(data);
+    TREE_DATA[0].children = data.children;
+    console.log(TREE_DATA);
     this.dataSource.data = TREE_DATA;
   }
   

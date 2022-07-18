@@ -18,22 +18,24 @@ import { Injectable } from '@angular/core';
 
     *
     */
+   
 
 
         /* Okay das muss man noch mal gucken und überlegen, nach was man tatsächlich sucht */
     getCurrenPlant(tag: string) {
         switch(tag){
           case "Heute":
-            return  { eventId: 0, tag: "Heute", infotext: "Monstrera muss gegossen werden."};
+            return  { 
+              children: [{name: 'Gießen Aloe Vera123'}, {name: 'Gießen Palme123'}, {name: 'Gießen Palme2'}]};
             break;
-          case "Roter Klee":
-            return  { eventId: 1, tag: "Heute", infotext: "Klee muss gegossen werden." };
-          case "Duftgeranie":
-            return  { eventId: 2, tag: "Morgen", infotext: "Duftgeranie muss gegossen werden." };
-          case "Aloe Vera":
-            return  { eventId: 3, tag: "Morgen", infotext: "Klee muss gegossen werden." };
+          case "Morgen":
+            return  { children: [{name: 'Gießen Aloe Vera'}, {name: 'Gießen Palme'}, {name: 'Gießen Palme2'}] };
+          case "Mittwoch":
+            return  { children: [{name: 'Gießen Aloe Vera'}, {name: 'Gießen Palme'}, {name: 'Gießen Palme2'}] };
+          case "Donnerstag":
+            return  { children: [{name: 'Gießen Aloe Vera'}, {name: 'Gießen Palme'}, {name: 'Gießen Palme2'}] };
         }
-        return  { eventId: 3, tag: "Morgen", infotext: "Klee muss gegossen werden." };
+        return  { children: [{name: 'Gießen Aloe Vera'}, {name: 'Gießen Palme'}, {name: 'Gießen Palme2'}] };
           
       }
 
