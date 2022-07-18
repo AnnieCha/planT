@@ -18,10 +18,7 @@ const routes: Routes = [
   //todo: nicht schön gelöst
   { path: 'mein-kalender', component: CareAccordionComponent},
   { path: ':area', component: PlantlistComponent},
-<<<<<<< HEAD
-=======
   { path: '', component: LoginComponent}
->>>>>>> main
 ];
 
 @NgModule({
