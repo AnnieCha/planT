@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EditPlantService } from 'src/app/services/editPlant.service';
 import { PlantService } from 'src/app/services/plant.service';
 import { Plant } from 'src/app/shared/models/plant';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { EventEmitter } from 'stream';
+import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
 
 
 @Component({
@@ -13,6 +15,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 
 export class AddPlantComponent implements OnInit {
+
+  //das in den header
+  @Output() btnClick = new EventEmitter()
+
   public currPlant?: Plant;
   private sub: any;
   private plantName: string = "";
@@ -28,7 +34,10 @@ export class AddPlantComponent implements OnInit {
     private _plantService: PlantService,
     private _editPlantService: EditPlantService,
     private route: ActivatedRoute
-    ) {}
+    ) {
+      //bei check icon click diese funktion aufrufen
+      this.btnClick.emit;
+    }
 
 
   ngOnInit(): void {

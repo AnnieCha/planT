@@ -3,6 +3,7 @@
     <ng-container *ngIf="type === 'all'; else personalPlants">
         <div class="header">
             <h4 [routerLink]="['/plant', plant.name]">{{plant.name}}</h4>
+            <!--Button Interface/ACtion Interface-->
             <button mat-icon-button class="icon-button innerBtn" aria-label="Pflanze zu eigenen Pflanzen hinzufügen"
             (click)="add(plant.name, true)" [routerLink]="['/plant', plant.name]">
                 <mat-icon aria-hidden="false">add</mat-icon>
