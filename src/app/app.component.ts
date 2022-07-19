@@ -18,6 +18,11 @@ export class AppComponent {
     console.log("darkThemeWorks");
   };
 
+  /*function myFunction() {
+    var element = document.body;
+    element.classList.toggle("dark-theme");
+    
+}*/
 
 }
 
