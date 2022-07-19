@@ -6,14 +6,19 @@
         "CALENDAR": "Kalender",
         "LOG-OUT": "Ausloggen"
     },
+    "TITLE": {
+        "PLANT": "Pflanze"
+    },
     "HINT": {
         "NO-PLANTS": "Du hast noch keine Pflanzen hinzugefügt.",
-        "DATE": "Wählen Sie einen Termin für die erste Erinnerung."
+        "DATE": "Wählen Sie einen Termin für die erste Erinnerung.",
+        "MAX": "Maximal 20 Zeichen."
     },
     "BUTTON": {
         "OVERVIEW": "Neue Pflanze"
     },
     "FORM": {
-        "NAME": "Name"
+        "NAME": "Name",
+        "DATE-START": "Startdatum"
     }
 }

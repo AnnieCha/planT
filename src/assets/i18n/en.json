@@ -6,11 +6,19 @@
         "CALENDAR": "Calendar",
         "LOG-OUT": "Log out"
     },
+    "TITLE": {
+        "PLANT": "Plant"
+    },
     "HINT": {
         "NO-PLANTS": "You don't have any plants yet.",
-        "DATE": "Choose a date for the next watering."
+        "DATE": "Choose a date for the next watering.",
+        "MAX": "Maximum 20 characters."
     },
     "BUTTON": {
         "OVERVIEW": "New plant"
+    },
+    "FORM": {
+        "NAME": "Name",
+        "DATE-START": "Start date"
     }
 }
