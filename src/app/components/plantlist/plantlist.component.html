@@ -14,3 +14,7 @@
     <h4>{{'HINT.NO-PLANTS' | translate}}</h4>
     <button mat-raised-button color="primary" [routerLink]="'/alle-pflanzen'">{{'BUTTON.OVERVIEW' | translate}}</button>
 </ng-template>
+
+<ng-container *ngFor="let action of (actions$ |async)">
+
+</ng-container>

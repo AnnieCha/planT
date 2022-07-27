@@ -10,10 +10,6 @@ export enum PLANT_LIST_VIEW {
     ALL_PLANTS = 1,
 }
 
-export interface BtnAction {
-    icon: string;
-    btnText: string;
-}
 
 // TODO: Dieser Service ist eventuell überflüssig -> je nachdem wie wir die Pflanzenliste erstellen wollen
 export class PlantListService {

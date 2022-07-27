@@ -11,12 +11,12 @@ import { Observable } from 'rxjs';
   styleUrls: ['./plantlist.component.scss']
 })
 export class PlantlistComponent implements OnInit {
-  @Input
+  //@Input
   // type eher als enum?
   public type: string = "all";
   public title: string = "Alle Pflanzen";
   private _sub: any;
-  actions$: Observable<BtnAction[]> = this._plantListService.btnActions;
+  actions$: Observable<BtnAction[]> = this._plantListService.actions;
 
   constructor(
     private _plantService: PlantService,
@@ -32,7 +32,7 @@ export class PlantlistComponent implements OnInit {
         this.title = 'MENU.OWN-PLANTS';
         this.type = "own";
         this._plantListService.setListType('own');
-      } else {
+      } else if (params['area'] === "alle-pflanzen") {
         this.title = 'MENU.ALL-PLANTS';
         this.type = "all";
         this._plantListService.setListType('all');

@@ -27,6 +27,7 @@ import { InfotextComponent } from './components/infotext/infotext.component';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { CareAccordionComponent } from './components/care-accordion/care-accordion.component';
 import { LoginComponent } from './components/login/login.component';
+import { PlantHeaderComponent } from './components/plant-header/plant-header.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
@@ -45,7 +46,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     InfotextComponent,
     SearchbarComponent,
     CareAccordionComponent,
-    LoginComponent
+    LoginComponent,
+    PlantHeaderComponent
   ],
   imports: [
     BrowserModule,

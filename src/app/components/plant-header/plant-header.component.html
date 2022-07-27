@@ -1,0 +1,9 @@
+<div class="row header">
+    <p>{{currPlant?.name}}</p>
+    <button mat-icon-button class="icon-button innerBtn" aria-label="Pflanzeneintrag bearbeiten" type="submit" [disabled]="formGroup.invalid">
+        <mat-icon>check</mat-icon>
+    </button>
+    <button mat-icon-button class="icon-button" aria-label="Pflanzeneintrag bearbeiten" (onBtnClick)="setEditMode(false)">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
