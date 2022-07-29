@@ -1,14 +1,19 @@
 import { Plant } from '../shared/models/plant';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
     providedIn: 'root'
   })
   export class PlantService {
+    private _rootAdress = 'http://localhost:5200/';
     ownPlants: Plant[] = [];
+    allPlants: Plant[] = [];
   
-    constructor() { }
+    constructor(private _http: HttpClient) {
+      this.getPlantsFromDB();
+     }
 
     addPlant(ownName: string, plant: Plant){
       this.ownPlants.push(new Plant(plant.plantid, plant.name, plant.infotext, plant.longtext, plant.wateramount, plant.sunamount, plant.imageUrl, plant.liked, ownName))
@@ -16,6 +21,16 @@ import { Injectable } from '@angular/core';
 
     getOwnPlants(){
       return this.ownPlants;
+    }
+
+    getPlantsFromDB() {
+      this._http.get<Plant[]>(this._rootAdress + 'all-plants').subscribe((result) => {
+        this.allPlants = result;
+      })
+    }
+
+    getAllPlants(): Plant[] {
+      return this.allPlants;
     }
 
     getCurrenPlant(name: string) {
@@ -34,7 +49,7 @@ import { Injectable } from '@angular/core';
         
     }
 
-    getAllPlants() {
+    getAllPlantsOld() {
         return [
             { plantid: 0, name: "Monstera", infotext: "Text über die Pflanze Monstrera, muss gegossen werden.", longtext: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", wateramount: 2, sunamount: 3, imageUrl: "https://static.blume2000.de/pictures/20004000/022_Water-Plant-Monstera-Monkey.jpg?1643313767", liked: false },
             { plantid: 1, name: "Roter Klee", infotext: "Text über die Pflanze Klee, muss nicht so viel gegossen werden. Kann im Baumarkt gekauft werden", longtext: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", wateramount: 1, sunamount: 5, imageUrl: "https://www.mein-schoener-garten.de/sites/default/files/roter-gluecksklee-oxalis-triangularis-14397-blumenbuero.jpg", liked: false },

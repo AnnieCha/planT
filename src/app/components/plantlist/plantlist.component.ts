@@ -40,5 +40,9 @@ export class PlantlistComponent implements OnInit {
   get plants(): Plant[]{
     return this.type === "all" ? this._plantService.getAllPlants() : this._plantService.getOwnPlants();
   }
+
+  get allPlants(): Plant[]{
+    return this._plantService.getAllPlants();
+  }
   
 }

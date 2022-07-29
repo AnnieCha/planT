@@ -2,7 +2,7 @@
     <h1>{{title | translate}}</h1>
     <hr>
     <div class="row">
-        <ng-container *ngIf="plants && plants.length > 0; else noOwnPlants">
+        <ng-container *ngIf="allPlants && allPlants.length > 0; else noOwnPlants">
             <ng-container *ngFor="let specificPlant of plants; let i = index">
                 <app-plant-detail [plant]="specificPlant" class="plantDetail"></app-plant-detail>
             </ng-container>
