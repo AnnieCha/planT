@@ -30,7 +30,7 @@ export class InfotextComponent implements OnInit {
   }
 
   public getPlantInfo(){
-    this.currPlant = this._plantService.getCurrenPlant(this.plantName);
+   // this.currPlant = this._plantService.getCurrenPlant(this.plantName);
   }
 
 }

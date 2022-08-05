@@ -20,5 +20,15 @@
     "FORM": {
         "NAME": "Name",
         "DATE-START": "Start date"
+    },
+    "MY_PLANTS": {
+        "MONDAY": "Monday",
+        "TUESDAY": "Tuesday",
+        "WEDNESDAY": "Wednesday",
+        "THURSDAY": "Thursday",
+        "FRIDAY": "Friday",
+        "SATURDAY": "Saturday",
+        "SUNDAY": "Sunday",
+        "NEXT_WATERING": "Next watering on:"
     }
 }

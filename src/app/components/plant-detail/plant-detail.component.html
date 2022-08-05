@@ -12,23 +12,23 @@
                 <mat-icon aria-hidden="false">information</mat-icon>
             </button>
         </div>
-        <p class="content">{{plant.infotext}}</p>
+        <p class="content">{{plant.short_desc}}</p>
     </ng-container>
 </div>
 
 <ng-template #personalPlants>
     <div class="header">
-        <h4 [routerLink]="['/plant', plant?.name]">{{plant?.name}}</h4>
+        <h4 [routerLink]="['/plant', plant.name]">{{plant.name}}</h4>
         <button mat-icon-button class="icon-button innerBtn" aria-label="Pflanzeneintrag bearbeiten" (click)="edit('name of plant')">
             <mat-icon aria-hidden="false">edit</mat-icon>
         </button>
         <button mat-icon-button class="icon-button" aria-label="Weitere Informationen"
-            [routerLink]="['/plant', plant?.name]">
+            [routerLink]="['/plant', plant.name]">
             <mat-icon aria-hidden="false">information</mat-icon>
         </button>
     </div>
     <div class="content">
-        <p>Name: {{plant?.ownName}}</p>
-        <p>Nächstes mal gießen am: Mittwoch</p>
+        <p>Name: {{plant.ownName}}</p>
+        <p>{{'MY_PLANTS.NEXT_WATERING' | translate}} {{ 'MY_PLANTS.' + nextWateringDay | translate }}</p>
     </div>
 </ng-template>

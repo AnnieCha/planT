@@ -41,10 +41,10 @@ import { Injectable } from '@angular/core';
 
     getAllPlants() {
         return [
-            { eventId: 0, tag: "Heute", infotext: "Monstrera muss gegossen werden."},
-            { eventId: 1, tag: "Heute", infotext: "Klee muss gegossen werden." },
-            { eventId: 2, tag: "Morgen", infotext: "Duftgeranie muss gegossen werden." },
-            { eventId: 3, tag: "Morgen", infotext: "Klee muss gegossen werden." },
+            { eventId: 0, tag: "Heute", short_desc: "Monstrera muss gegossen werden."},
+            { eventId: 1, tag: "Heute", short_desc: "Klee muss gegossen werden." },
+            { eventId: 2, tag: "Morgen", short_desc: "Duftgeranie muss gegossen werden." },
+            { eventId: 3, tag: "Morgen", short_desc: "Klee muss gegossen werden." },
           ]
     }
 

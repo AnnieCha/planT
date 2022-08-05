@@ -20,5 +20,15 @@
     "FORM": {
         "NAME": "Name",
         "DATE-START": "Startdatum"
+    },
+    "MY_PLANTS": {
+        "MONDAY": "Montag",
+        "TUESDAY": "Dienstag",
+        "WEDNESDAY": "Mittwoch",
+        "THURSDAY": "Donnerstag",
+        "FRIDAY": "Freitag",
+        "SATURDAY": "Samstag",
+        "SUNDAY": "Sonntag",
+        "NEXT_WATERING": "Nächstes mal gießen am:"
     }
 }

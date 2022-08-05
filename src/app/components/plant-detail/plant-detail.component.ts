@@ -10,10 +10,13 @@ import { Plant } from '../../shared/models/plant';
 })
 
 export class PlantDetailComponent implements OnInit {
-  @Input() plant?: Plant;
+  @Input() plant!: Plant;
 
   // this will change between my_plants and all_plants -> needs setter-method or getting information by propsS + maybe enums?
   type: string = "all";
+  nextWateringDay: string = "";
+  weekdays = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+
 
   constructor(
     private _openPlantService: OpenPlantService,
@@ -22,6 +25,10 @@ export class PlantDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.type = this._plantListService.getListType();
+    console.log('detail plant', this.plant);
+    if(this.plant.nextWateringDay){
+      this.nextWateringDay = this.weekdays[new Date(this.plant.nextWateringDay).getDay()];
+    }
   }
 
   public edit(name: string) {

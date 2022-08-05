@@ -7,7 +7,7 @@
     <hr>
     <div class="wrapper">
         <div class="leftInfo">
-            <img src={{currPlant?.imageUrl}}>
+            <img src={{currPlant.imageUrl}}>
             <div class="icon-row" *ngIf="!editMode">
                 <mat-icon [ngClass]="{'lightgray-icon': currPlant.wateramount < 1}" aria-hidden="false"
                     aria-label="Icon Information">water_drop</mat-icon>
@@ -33,7 +33,9 @@
                     <mat-icon>add</mat-icon>
                 </button>
             </div>
-            <app-infotext class="main"></app-infotext>
+            <p class="main">{{currPlant.long_desc}}</p>
+
+          <!--  <app-infotext class="main"></app-infotext>-->
         </ng-container>
     </div>
 </div>
@@ -42,7 +44,7 @@
     <!-- hier kommt eigentlich die app-add-plant component hin-->
     <form [formGroup]="formGroup" (ngSubmit)="onFormSubmit()">
         <div class="row header">
-            <p>{{currPlant?.name}}</p>
+            <p>{{currPlant.name}}</p>
             <button mat-icon-button class="icon-button innerBtn" aria-label="Pflanzeneintrag bearbeiten" type="submit" [disabled]="formGroup.invalid">
                 <mat-icon>check</mat-icon>
             </button>
@@ -57,8 +59,15 @@
         </mat-form-field>
         <mat-form-field class="form-field" appearance="outline">
             <mat-label>{{'FORM.DATE-START' | translate}}</mat-label>
-            <input matInput type="date" name="startDate">
+            <input matInput [matDatepicker]="datepicker" formControlName="startDate">
             <mat-hint align="start">{{'HINT.DATE' | translate}}</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+            <mat-datepicker #datepicker>
+              <mat-datepicker-actions>
+                <button mat-button matDatepickerCancel>Cancel</button>
+                <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+              </mat-datepicker-actions>
+            </mat-datepicker>
         </mat-form-field>
     </form>
 </ng-template>

@@ -4,6 +4,7 @@ import { EditPlantService } from 'src/app/services/editPlant.service';
 import { PlantService } from 'src/app/services/plant.service';
 import { Plant } from 'src/app/shared/models/plant';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { response } from 'express';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 
 export class AddPlantComponent implements OnInit {
-  public currPlant?: Plant;
+  public currPlant?: any;
   private sub: any;
   private plantName: string = "";
   ownName: string = "";
@@ -32,7 +33,7 @@ export class AddPlantComponent implements OnInit {
 
 
   ngOnInit(): void {
- //   this.currPlant = this._plantService.getCurrenPlant();
+    //this.currPlant = this._plantService.getCurrenPlant();
     this.sub = this.route.params.subscribe(params => {
       this.plantName = params['name'];
     })
@@ -41,6 +42,14 @@ export class AddPlantComponent implements OnInit {
 
   public getPlantInfo(){
     this.currPlant = this._plantService.getCurrenPlant(this.plantName);
+  }
+
+  public savePlant(){
+    let newPlant = {'plant_id': 0, 'user_id': 0, 'ownname': 'name from form'};
+    this._plantService.addPlantToUser(newPlant).subscribe((result) => {
+      console.log(result);
+    })
+
   }
 
   ngOnChange() {
