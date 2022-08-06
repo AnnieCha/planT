@@ -34,6 +34,7 @@ export class PlantDetailComponent implements OnInit {
   }
 
   public edit(plant_id: number) {
+    this._openPlantService.setEditMode(true);
     console.log('edit', plant_id);
     
   }

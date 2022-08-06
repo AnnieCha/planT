@@ -7,7 +7,6 @@ import { Injectable } from '@angular/core';
     // TODO: suchbegriff statt daten, die in der suchfeld-component ermittelt werden
     editMode: boolean = false;
     selectedPlant!: string; // später vielleicht eher Plant? 
-  
     
     public setEditMode(editmode: boolean){
         this.editMode = editmode;
