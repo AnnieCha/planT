@@ -8,12 +8,12 @@ import { response } from 'express';
 
 
 @Component({
-  selector: 'app-add-plant',
-  templateUrl: './add-plant.component.html',
-  styleUrls: ['./add-plant.component.scss']
+  selector: 'app-edit-plant',
+  templateUrl: './edit-plant.component.html',
+  styleUrls: ['./edit-plant.component.scss']
 })
 
-export class AddPlantComponent implements OnInit {
+export class EditPlantComponent implements OnInit {
   public currPlant?: any;
   private sub: any;
   private plantName: string = "";

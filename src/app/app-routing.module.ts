@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PlantDetailComponent } from './components/plant-detail/plant-detail.component';
 import { PlantInfoComponent } from './components/plant-info/plant-info.component';
 import { PlantlistComponent } from './components/plantlist/plantlist.component';
-import { AddPlantComponent } from './components/add-plant/add-plant.component';
+import { EditPlantComponent } from './components/edit-plant/edit-plant.component';
 import { InfotextComponent } from './components/infotext/infotext.component';
 import { LoginComponent } from './components/login/login.component';
 import { CareAccordionComponent } from './components/care-accordion/care-accordion.component';
@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: 'plant/:name', component: PlantInfoComponent, children: [
       { path: '', component: InfotextComponent, outlet: "right-side" },
-      { path: 'add-plant', component: AddPlantComponent, outlet: "right-side" },
+      { path: 'add-plant', component: EditPlantComponent, outlet: "right-side" },
     ]
   },
   //todo: nicht schön gelöst

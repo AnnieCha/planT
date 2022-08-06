@@ -33,9 +33,9 @@ export class PlantDetailComponent implements OnInit {
     }
   }
 
-  public edit(name: string) {
-    console.log('edit', name);
-    //open new side
+  public edit(plant_id: number) {
+    console.log('edit', plant_id);
+    
   }
 
   public add(name: string, editMode: boolean) {
@@ -45,9 +45,7 @@ export class PlantDetailComponent implements OnInit {
   }
 
   public delete(user_id: number, ownName: string) {
-    console.log('delete plant');
     this._plantService.deleteOwnPlant(user_id, ownName).subscribe((result) => {
-      console.log('plant deleted', result);
       this.plantDeleted.emit();
     })
   }

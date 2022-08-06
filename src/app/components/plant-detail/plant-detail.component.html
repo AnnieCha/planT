@@ -19,7 +19,7 @@
 <ng-template #personalPlants>
     <div class="header">
         <h4 [routerLink]="['/plant', plant.name]">{{plant.name}}</h4>
-        <button mat-icon-button class="icon-button innerBtn" aria-label="Pflanzeneintrag bearbeiten" (click)="edit('name of plant')">
+        <button mat-icon-button class="icon-button innerBtn" aria-label="Pflanzeneintrag bearbeiten" (click)="edit(plant.plant_id)">
             <mat-icon aria-hidden="false">edit</mat-icon>
         </button>
         <button mat-icon-button class="icon-button" aria-label="Weitere Informationen" (click)="delete(1, plant.ownName!)">

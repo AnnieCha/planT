@@ -48,11 +48,19 @@ plantRouter.post('/plant/newplant', async (req, res) => {
     });
 })
 
+// ********************** PUT (UPDATE) **********************************************
+
+plantRouter.put('/plant', function(req, res){
+    const sqlQuery = 'UPDATE userplants SET ownName = ? AND nextWateringDay = ? WHERE user_id LIKE ? AND plant_id LIKE ?';
+    dbPool.query(sqlQuery, [req.body.ownName, req.body.nextWateringDay, req.body.user_id, req.body.plant_id], function(err, result) {
+        if(err) throw err;
+        res.send(result);
+    })
+})
 
 // ********************** DELETE **********************************************
 
 plantRouter.delete('/:ownName/:user_id', async (req, res) => {
-    console.log('in delete method', req.params.ownName);
     const sqlQuery = 'DELETE FROM userplants WHERE user_id = 1 AND ownName = ?';
     dbPool.query(sqlQuery, [req.params.ownName], function(err, result) {
         if(err) throw err;
