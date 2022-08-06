@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { OpenPlantService } from 'src/app/services/openPlant.service';
 import { PlantService } from 'src/app/services/plant.service';
 import { PlantListService } from 'src/app/services/plantList.service';
@@ -12,6 +12,7 @@ import { Plant } from '../../shared/models/plant';
 
 export class PlantDetailComponent implements OnInit {
   @Input() plant!: Plant;
+  @Output() plantDeleted = new EventEmitter<void>();
 
   // this will change between my_plants and all_plants -> needs setter-method or getting information by propsS + maybe enums?
   type: string = "all";
@@ -23,11 +24,11 @@ export class PlantDetailComponent implements OnInit {
     private _openPlantService: OpenPlantService,
     private _plantListService: PlantListService,
     private _plantService: PlantService,
-    ) {}
+  ) { }
 
   ngOnInit(): void {
     this.type = this._plantListService.getListType();
-    if(this.plant.nextWateringDay){
+    if (this.plant.nextWateringDay) {
       this.nextWateringDay = this.weekdays[new Date(this.plant.nextWateringDay).getDay()];
     }
   }
@@ -36,17 +37,18 @@ export class PlantDetailComponent implements OnInit {
     console.log('edit', name);
     //open new side
   }
-  
+
   public add(name: string, editMode: boolean) {
     this._openPlantService.setEditMode(editMode);
     this._openPlantService.setSelectedPlant(name);
     //open new side
   }
 
-  public delete(user_id: number, ownName: string){
+  public delete(user_id: number, ownName: string) {
     console.log('delete plant');
     this._plantService.deleteOwnPlant(user_id, ownName).subscribe((result) => {
       console.log('plant deleted', result);
+      this.plantDeleted.emit();
     })
   }
 }

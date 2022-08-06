@@ -49,6 +49,10 @@ import { Observable, startWith, switchMap, Subject } from 'rxjs';
       return this._http.delete<any>(this._rootAdress + ownName + '/' + user_id);
     }
 
+    refreshPlants(): void {
+      this._refresh$.next();
+    }
+
     /*
     getMyPlants(){
       return this.myPlants;

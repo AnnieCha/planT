@@ -51,6 +51,10 @@ export class PlantlistComponent implements OnInit {
     });
   }
 
+  onPlantDelete(): void {
+    this._plantService.refreshPlants();
+  }
+
   /*
   get plants(): Observable<Plant[]>{
     if(this.type === "all") {

@@ -5,7 +5,7 @@
         <div class="row">
             <ng-container *ngIf="plants && plants.length > 0; else noOwnPlants">
                 <ng-container *ngFor="let specificPlant of plants; let i = index">
-                    <app-plant-detail [plant]="specificPlant" class="plantDetail"></app-plant-detail>
+                    <app-plant-detail [plant]="specificPlant" class="plantDetail" (plantDeleted)="onPlantDelete()"></app-plant-detail>
                 </ng-container>
             </ng-container>
         </div>
