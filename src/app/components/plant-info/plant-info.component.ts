@@ -11,6 +11,7 @@ import { Plant } from 'src/app/shared/models/plant';
   styleUrls: ['./plant-info.component.scss']
 })
 
+
 export class PlantInfoComponent implements OnInit {
   public currPlant!: Plant;
   private sub: any;
