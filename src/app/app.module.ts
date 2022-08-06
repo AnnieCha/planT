@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ReactiveComponentModule  } from '@ngrx/component';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -62,6 +63,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatNativeDateModule,
     FormsModule,
     ReactiveFormsModule,
+    ReactiveComponentModule,
     HttpClientModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',

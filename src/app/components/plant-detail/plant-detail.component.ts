@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { OpenPlantService } from 'src/app/services/openPlant.service';
+import { PlantService } from 'src/app/services/plant.service';
 import { PlantListService } from 'src/app/services/plantList.service';
 import { Plant } from '../../shared/models/plant';
 
@@ -21,11 +22,11 @@ export class PlantDetailComponent implements OnInit {
   constructor(
     private _openPlantService: OpenPlantService,
     private _plantListService: PlantListService,
+    private _plantService: PlantService,
     ) {}
 
   ngOnInit(): void {
     this.type = this._plantListService.getListType();
-    console.log('detail plant', this.plant);
     if(this.plant.nextWateringDay){
       this.nextWateringDay = this.weekdays[new Date(this.plant.nextWateringDay).getDay()];
     }
@@ -40,5 +41,12 @@ export class PlantDetailComponent implements OnInit {
     this._openPlantService.setEditMode(editMode);
     this._openPlantService.setSelectedPlant(name);
     //open new side
+  }
+
+  public delete(user_id: number, ownName: string){
+    console.log('delete plant');
+    this._plantService.deleteOwnPlant(user_id, ownName).subscribe((result) => {
+      console.log('plant deleted', result);
+    })
   }
 }

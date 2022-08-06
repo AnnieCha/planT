@@ -47,6 +47,20 @@ plantRouter.post('/plant/newplant', async (req, res) => {
         res.send(result);
     });
 })
+
+
+// ********************** DELETE **********************************************
+
+plantRouter.delete('/:ownName/:user_id', async (req, res) => {
+    console.log('in delete method', req.params.ownName);
+    const sqlQuery = 'DELETE FROM userplants WHERE user_id = 1 AND ownName = ?';
+    dbPool.query(sqlQuery, [req.params.ownName], function(err, result) {
+        if(err) throw err;
+        res.send(result);
+    })
+})
+
+
 /*
 pool.connect((err: { message: any; }) => {
     if(err){

@@ -3,6 +3,7 @@ import { Plant } from 'src/app/shared/models/plant';
 import { PlantService } from 'src/app/services/plant.service';
 import { ActivatedRoute } from '@angular/router';
 import { PlantListService } from 'src/app/services/plantList.service';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-plantlist',
@@ -15,6 +16,10 @@ export class PlantlistComponent implements OnInit {
   public title: string = "Alle Pflanzen";
   private _sub: any;
 
+  plants$?: Observable<Plant[]> = this._plantService.allPlants$.pipe(
+    map((plants: Plant[]) => (plants ? plants.filter((plant: Plant) => !!plant) : []))
+  );
+
   constructor(
     private _plantService: PlantService,
     private _plantListService: PlantListService,
@@ -22,6 +27,7 @@ export class PlantlistComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     this._sub = this.route.params.subscribe(params => {
       //console.log("params", params);
       //TODO: der routerlink ist so noch nicht korrekt
@@ -29,18 +35,28 @@ export class PlantlistComponent implements OnInit {
         this.title = 'MENU.OWN-PLANTS';
         this.type = "own";
         this._plantService.getMyPlantsFromDB(1);
+        this.plants$ = this._plantService.myPlants$?.pipe(
+          map((plants: Plant[]) => (plants ? plants.filter((plant: Plant) => !!plant) : []))
+        );
         this._plantListService.setListType('own');
       } else {
         this.title = 'MENU.ALL-PLANTS';
         this.type = "all";
         this._plantListService.setListType('all');
+        this.plants$ = this._plantService.allPlants$.pipe(
+          map((plants: Plant[]) => (plants ? plants.filter((plant: Plant) => !!plant) : []))
+        );
       }
       console.log('type in plantlist:', this.type);
     });
   }
 
-  get plants(): Plant[]{
-    return this.type === "all" ? this._plantService.getAllPlants() : this._plantService.getMyPlants();
+  /*
+  get plants(): Observable<Plant[]>{
+    if(this.type === "all") {
+      this.plants$ = this._plantService.allPlants$?
+    }
+ //   return this.type === "all" ? this._plantService.getAllPlants() : this._plantService.getMyPlants();
   }
 /*
   get allPlants(): Plant[]{

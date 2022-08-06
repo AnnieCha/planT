@@ -1,7 +1,7 @@
 import { Plant } from '../shared/models/plant';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, startWith, switchMap, Subject } from 'rxjs';
 
 
 @Injectable({
@@ -9,46 +9,53 @@ import { Observable } from 'rxjs';
   })
   export class PlantService {
     private _rootAdress = 'http://localhost:5200/';
-    myPlants: Plant[] = [];
-    allPlants: Plant[] = [];
+    myPlants$?: Observable<Plant[]>;
+    allPlants$: Observable<Plant[]>;
     specificPlant?: Plant;
+    private _refresh$: Subject<void> = new Subject<void>();
   
     constructor(private _http: HttpClient) {
-      this.getAllPlantsFromDB();
+      this.allPlants$ = this._refresh$.pipe(
+        startWith(''),
+        switchMap(() =>this._http.get<Plant[]>(this._rootAdress + 'all-plants')))
      }
 
-    addPlant(ownName: string, plant: Plant){
+     /*
+    addPlantOld(ownName: string, plant: Plant){
       this.myPlants.push(new Plant(plant.plant_id, plant.name, plant.short_desc, plant.long_desc, plant.wateramount, plant.sunamount, plant.water_liter, plant.water_frequency, plant.imageUrl, ownName, plant.nextWateringDay))
     }
 
+    /*
     getAllPlantsFromDB() {
-      this._http.get<Plant[]>(this._rootAdress + 'all-plants').subscribe((result) => {
-        this.allPlants = result;
-      })
-    }
+      this.allPlants$ = this._refresh$.pipe(
+        startWith(''),
+        switchMap(() =>this._http.get<Plant[]>(this._rootAdress + 'all-plants')))
+     // this._http.get<Plant[]>(this._rootAdress + 'all-plants').subscribe((result) => {
+     //   this.allPlants = result;
+     // })
+    }*/
 
     getPlantByName(name: string): Observable<Plant[]> {
       return (this._http.get<Plant[]>(this._rootAdress + 'plant/' + name));
     }
 
-    getAllPlants(): Plant[] {
-      return this.allPlants;
-    }
-
     getMyPlantsFromDB(user_id: number) {
-      console.log(this.getMyPlantsFromDB)
-      this._http.get<Plant[]>(this._rootAdress + 'my-plants/' + user_id).subscribe((result) => {
-        this.myPlants = result;
-        console.log('in my plants', result);
-      })
+      this.myPlants$ = this._refresh$.pipe(
+        startWith(''),
+        switchMap(() =>this._http.get<Plant[]>(this._rootAdress + 'my-plants/' + user_id)))
     }
 
+    deleteOwnPlant(user_id: number, ownName: string) {
+      return this._http.delete<any>(this._rootAdress + ownName + '/' + user_id);
+    }
+
+    /*
     getMyPlants(){
       return this.myPlants;
-    }
+    }*/
 
     addPlantToUser(newPlant: any): Observable<any>{
-      return this._http.post(this._rootAdress + 'plant/newplant', newPlant);
+      return this._http.post<any>(this._rootAdress + 'plant/newplant', newPlant);
     }
 
     getCurrenPlant(name: string) {

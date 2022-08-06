@@ -1,14 +1,16 @@
-<div class="plantlistComponent">
-    <h1>{{title | translate}}</h1>
-    <hr>
-    <div class="row">
-        <ng-container *ngIf="plants && plants.length > 0; else noOwnPlants">
-            <ng-container *ngFor="let specificPlant of plants; let i = index">
-                <app-plant-detail [plant]="specificPlant" class="plantDetail"></app-plant-detail>
+<ng-container *ngrxLet="plants$; let plants">
+    <div class="plantlistComponent">
+        <h1>{{title | translate}}</h1>
+        <hr>
+        <div class="row">
+            <ng-container *ngIf="plants && plants.length > 0; else noOwnPlants">
+                <ng-container *ngFor="let specificPlant of plants; let i = index">
+                    <app-plant-detail [plant]="specificPlant" class="plantDetail"></app-plant-detail>
+                </ng-container>
             </ng-container>
-        </ng-container>
+        </div>
     </div>
-</div>
+</ng-container>
 
 <ng-template #noOwnPlants>
     <h4>{{'HINT.NO-PLANTS' | translate}}</h4>
