@@ -1,12 +1,12 @@
 import * as path from 'path';
 import * as express from 'express';
-import * as dotenv from 'dotenv';
+//import * as dotenv from 'dotenv';
 import { dbPool } from './db';
 
 export const plantRouter = express.Router();
 plantRouter.use(express.json());
 
-dotenv.config({ path: path.resolve(__dirname, './env') });
+//dotenv.config({ path: path.resolve(__dirname, './env') });
 
 
 // ********************** GET `**********************************************
@@ -33,6 +33,14 @@ plantRouter.get('/plant/:name', async (req, res) => {
 plantRouter.get('/my-plants/:user_id', async (req, res) => {
     const sqlQuery = 'SELECT * FROM plant, userplants WHERE userplants.user_id LIKE ? AND plant.plant_id = userplants.plant_id';
     dbPool.query(sqlQuery, [req.params.user_id], function(err, response) {
+        if(err) throw err;
+        res.send(response);
+    })
+});
+
+plantRouter.get('/user/:name/:password', async (req, res) => {
+    const sqlQuery = 'SELECT * FROM user WHERE name LIKE ? AND password LIKE ?';
+    dbPool.query(sqlQuery, [req.params.name, req.params.password], function(err, response) {
         if(err) throw err;
         res.send(response);
     })
