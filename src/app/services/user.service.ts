@@ -20,7 +20,10 @@ export class UserService {
     return (this._http.get<User[]>(this._rootAdress + 'user/' + user_name + '/' + user_password));
     }
 
-    /* ******************************** */
+  userExist(user_name: string, user_email: string): Observable<User[]> {
+    return (this._http.get<User[]>(this._rootAdress + 'user/' + user_name + '/' + user_email));
+    }
+
   insertUser(newUser: any): Observable<any> {
     return this._http.post<any>(this._rootAdress + 'user/newuser', newUser);
   }

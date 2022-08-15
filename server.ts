@@ -47,6 +47,15 @@ plantRouter.get('/user/:name/:password', async (req, res) => {
     })
 });
 
+plantRouter.get('/user/:name/:email', async (req, res) => {
+    const sqlQuery = 'SELECT * FROM user WHERE name LIKE ? OR mail LIKE ?';
+    console.log("!!!!!!!!!!!!!");
+    dbPool.query(sqlQuery, [req.params.name, req.params.email], function(err, response) {
+        console.log(req.params.name + req.params.email+ "!!!!");
+        if(err) throw err;
+        res.send(response);
+    })
+});
 // ********************** POST **********************************************
 
 plantRouter.post('/plant/newplant', async (req, res) => {

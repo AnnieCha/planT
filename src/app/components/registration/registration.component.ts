@@ -36,8 +36,15 @@ export class RegistrationComponent implements OnInit {
       alert("Bitte Vollständig ausfüllen");
     } else {
       let newUser = {'nameUser': nameUser, 'emailUser': emailUser, 'passwordUser': passwordUser};
-      this._userService.insertUser(newUser).subscribe((result) => {
-        console.log(result);
+      this._userService.userExist(nameUser, emailUser).subscribe((result) => {
+        if (result.length>0) {
+          alert("User existiert bereits");
+        } else {
+          // TODO später fehlermeldung implementieren
+          this._userService.insertUser(newUser).subscribe((result) => {
+            console.log(result);
+          })
+        }
       })
     }
   }
