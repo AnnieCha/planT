@@ -21,7 +21,7 @@ export class UserService {
     }
 
   userExist(user_name: string, user_email: string): Observable<User[]> {
-    return (this._http.get<User[]>(this._rootAdress + 'user/' + user_name + '/' + user_email));
+    return (this._http.get<User[]>(this._rootAdress + 'userexist/' + user_name + '/' + user_email));
     }
 
   insertUser(newUser: any): Observable<any> {
