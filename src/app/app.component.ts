@@ -30,7 +30,7 @@ export class AppComponent {
   }
   
   onBtnClick = () => {
-    document.body.classList.toggle("dark-theme");
+    document.body.classList.toggle("dark");
     console.log("darkThemeWorks");
   };
 
