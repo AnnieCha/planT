@@ -7,6 +7,7 @@ import { EditPlantComponent } from './components/edit-plant/edit-plant.component
 import { InfotextComponent } from './components/infotext/infotext.component';
 import { LoginComponent } from './components/login/login.component';
 import { CareAccordionComponent } from './components/care-accordion/care-accordion.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
     ]
   },
   //todo: nicht schön gelöst
+  { path: 'registration', component: RegistrationComponent},
   { path: 'mein-kalender', component: CareAccordionComponent},
   { path: ':area', component: PlantlistComponent},
   { path: '', component: LoginComponent}

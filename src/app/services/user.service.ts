@@ -20,6 +20,12 @@ export class UserService {
     return (this._http.get<User[]>(this._rootAdress + 'user/' + user_name + '/' + user_password));
     }
 
+    /* ******************************** */
+  insertUser(newUser: any): Observable<any> {
+    return this._http.post<any>(this._rootAdress + 'user/newuser', newUser);
+  }
+
+
   getLoggedIn() {
     return this.loginUser;
   }

@@ -6,6 +6,7 @@ import { dbPool } from './db';
 export const plantRouter = express.Router();
 plantRouter.use(express.json());
 
+
 //dotenv.config({ path: path.resolve(__dirname, './env') });
 
 
@@ -51,6 +52,14 @@ plantRouter.get('/user/:name/:password', async (req, res) => {
 plantRouter.post('/plant/newplant', async (req, res) => {
     const sqlQuery = 'INSERT INTO userplants (plant_id, user_id, ownName, nextWateringDay) VALUES (?, ?, ?, ?)';
     dbPool.query(sqlQuery, [req.body.plant_id, req.body.user_id, req.body.ownname, new Date(req.body.startdate)], function(err, result) {
+        if(err) throw err;
+        res.send(result);
+    });
+})
+
+plantRouter.post('/user/newuser', async (req, res) => {
+    const sqlQuery = 'INSERT INTO user (name, mail, password) VALUES (?, ?, ?)';
+    dbPool.query(sqlQuery, [req.body.nameUser, req.body.emailUser, req.body.passwordUser], function(err, result) {
         if(err) throw err;
         res.send(result);
     });
