@@ -37,10 +37,6 @@ export class AppComponent {
     //localStorage.setItem(PrefferedThemeKey, this.isLightMode ? 'light' : 'dark');
   }
   
-  onBtnClick = () => {
-    document.body.classList.toggle("dark");
-    console.log("darkThemeWorks");
-  };
 
 
 }
