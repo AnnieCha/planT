@@ -9,7 +9,7 @@ plantRouter.use(express.json());
 dotenv.config({ path: path.resolve(__dirname, './env') });
 
 
-// ********************** GET `**********************************************
+// ********************** GET **********************************************
 plantRouter.get('/', async (req, res) => {
     res.json({ message: "Welcome" })
     console.log("welcome to landing page");
@@ -50,9 +50,9 @@ plantRouter.post('/plant/newplant', async (req, res) => {
 
 // ********************** PUT (UPDATE) **********************************************
 
-plantRouter.put('/plant', function(req, res){
-    const sqlQuery = 'UPDATE userplants SET ownName = ? AND nextWateringDay = ? WHERE user_id LIKE ? AND plant_id LIKE ?';
-    dbPool.query(sqlQuery, [req.body.ownName, req.body.nextWateringDay, req.body.user_id, req.body.plant_id], function(err, result) {
+plantRouter.put('/plant/:plantName', function(req, res){
+    const sqlQuery = 'UPDATE userplants SET ownName = ? AND nextWateringDay = ? WHERE user_id = ? AND ownName = ?';
+    dbPool.query(sqlQuery, [req.body.ownName, req.body.nextWateringDay, req.body.user_id, req.params.plantName], function(err, result) {
         if(err) throw err;
         res.send(result);
     })
@@ -60,9 +60,10 @@ plantRouter.put('/plant', function(req, res){
 
 // ********************** DELETE **********************************************
 
-plantRouter.delete('/:ownName/:user_id', async (req, res) => {
+// delete plant from user
+plantRouter.delete('/:plantName/:user_id', async (req, res) => {
     const sqlQuery = 'DELETE FROM userplants WHERE user_id = 1 AND ownName = ?';
-    dbPool.query(sqlQuery, [req.params.ownName], function(err, result) {
+    dbPool.query(sqlQuery, [req.params.plantName], function(err, result) {
         if(err) throw err;
         res.send(result);
     })

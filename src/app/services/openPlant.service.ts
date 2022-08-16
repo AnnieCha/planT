@@ -11,8 +11,8 @@ import { DateRange } from '@angular/material/datepicker';
     ownName?: string;
     startDate?: Date;
     
-    public setEditMode(editmode: boolean): void {
-        this.editMode = editmode;
+    public setEditMode(editMode: boolean): void {
+        this.editMode = editMode;
     }
 
     public getEditMode(): boolean {
@@ -22,7 +22,11 @@ import { DateRange } from '@angular/material/datepicker';
     public setCurrentValues(ownName: string, nextWateringDay: Date): void{
         this.ownName = ownName;
         this.startDate = nextWateringDay;
-        this.updatePlantMode = true;
+    }
+
+    public setUpdatePlantMode(updatePlantMode: boolean): void {
+        this.updatePlantMode = updatePlantMode;
+        console.log('updateplantmode setting', updatePlantMode);
     }
 
     public getUpdatePlantMode(): boolean {

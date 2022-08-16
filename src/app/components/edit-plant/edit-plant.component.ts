@@ -16,7 +16,6 @@ import { OpenPlantService } from 'src/app/services/openPlant.service';
 
 export class EditPlantComponent implements OnInit {
   @Input() currentFormGroup!: FormGroup;
-  public currPlant?: any;
   private sub: any;
   private plantName: string = "";
   ownName: string = "";
@@ -27,19 +26,16 @@ export class EditPlantComponent implements OnInit {
     private _plantService: PlantService,
     private _openPlantService: OpenPlantService,
     private route: ActivatedRoute
-    ) {}
+    ) { }
 
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.plantName = params['name'];
     })
-    this.updatePlantMode = this._openPlantService.getUpdatePlantMode();
-    this.getPlantInfo();
   }
 
-  public getPlantInfo(){
-    this.currPlant = this._plantService.getCurrenPlant(this.plantName);
+  public setPlantInfo(): void {
     if (this.updatePlantMode) {
       this.ownName = this._openPlantService.getOwnName();
       this.startDate = this._openPlantService.getStartDate();
@@ -48,14 +44,6 @@ export class EditPlantComponent implements OnInit {
         startDate: this.startDate
       })
     }
-  }
-
-  public savePlant(){
-    let newPlant = {'plant_id': 0, 'user_id': 0, 'ownname': 'name from form'};
-    this._plantService.addPlantToUser(newPlant).subscribe((result) => {
-      console.log(result);
-    })
-
   }
 
   ngOnChange() {

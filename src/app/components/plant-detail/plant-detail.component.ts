@@ -36,12 +36,13 @@ export class PlantDetailComponent implements OnInit {
   }
 
   public edit(name: string, ownName: string, startDate: Date) {
-    this.openPlant(name, true);
+    this.openPlant(name, true, true);
     this._openPlantService.setCurrentValues(ownName, startDate);
   }
 
-  public openPlant(name: string, editMode: boolean) {
+  public openPlant(name: string, editMode: boolean, updatePlantMode?: boolean) {
     this._openPlantService.setEditMode(editMode);
+    this._openPlantService.setUpdatePlantMode(updatePlantMode ? updatePlantMode : false);
     this._router.navigate(['/plant', name]);
   }
 

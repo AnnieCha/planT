@@ -1,21 +1,19 @@
-<ng-container *ngIf="currPlant">
-  <div [formGroup]="currentFormGroup">
-    <mat-form-field class="form-field" appearance="outline">
-        <mat-label>{{'FORM.NAME' | translate}}</mat-label>
-        <input matInput type="text" name="ownName" formControlName="ownName">
-        <mat-hint align="start">{{'HINT.MAX' | translate}}</mat-hint>
-    </mat-form-field>
-    <mat-form-field class="form-field" appearance="outline">
-        <mat-label>{{'FORM.DATE-START' | translate}}</mat-label>
-        <input matInput [matDatepicker]="datepicker" formControlName="startDate">
-        <mat-hint align="start">{{'HINT.DATE' | translate}}</mat-hint>
-        <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-        <mat-datepicker #datepicker>
-          <mat-datepicker-actions>
-            <button mat-button matDatepickerCancel>Cancel</button>
-            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
-          </mat-datepicker-actions>
-        </mat-datepicker>
-    </mat-form-field>
-  </div>
-</ng-container>
+<div [formGroup]="currentFormGroup">
+  <mat-form-field class="form-field" appearance="outline">
+    <mat-label>{{'FORM.NAME' | translate}}</mat-label>
+    <input matInput type="text" name="ownName" formControlName="ownName">
+    <mat-hint align="start">{{'HINT.MAX' | translate}}</mat-hint>
+  </mat-form-field>
+  <mat-form-field class="form-field" appearance="outline">
+    <mat-label>{{'FORM.DATE-START' | translate}}</mat-label>
+    <input matInput [matDatepicker]="datepicker" formControlName="startDate">
+    <mat-hint align="start">{{'HINT.DATE' | translate}}</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+    <mat-datepicker #datepicker>
+      <mat-datepicker-actions>
+        <button mat-button matDatepickerCancel>Cancel</button>
+        <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+      </mat-datepicker-actions>
+    </mat-datepicker>
+  </mat-form-field>
+</div>
