@@ -1,18 +1,19 @@
-<div *ngIf="currPlant">
-    <form>
-        <mat-form-field class="form-field" appearance="outline">
-            <mat-label>Neuer Name</mat-label>
-            <input matInput type="text" name="ownName" [(ngModel)]="ownName">
-            <mat-hint align="start">Maximal 20 Zeichen.</mat-hint>
-            <mat-hint align="end">{{ownName.length}}/20</mat-hint>
-        </mat-form-field>
-        <mat-form-field class="form-field" appearance="outline">
-            <mat-label>Startdatum</mat-label>
-            <input matInput type="date" name="startDate">
-            <mat-hint align="start">Wählen Sie einen Termin für die erste Erinnerung.</mat-hint>
-        </mat-form-field>
-        <mat-card-actions>
-            <button (click)="savePlant()" mat-raised-button color="primary">Save</button>
-        </mat-card-actions>
-    </form>
+<div [formGroup]="currentFormGroup">
+  <mat-form-field class="form-field" appearance="outline">
+    <mat-label>{{'FORM.NAME' | translate}}</mat-label>
+    <input matInput type="text" name="ownName" formControlName="ownName">
+    <mat-hint align="start">{{'HINT.MAX' | translate}}</mat-hint>
+  </mat-form-field>
+  <mat-form-field class="form-field" appearance="outline">
+    <mat-label>{{'FORM.DATE-START' | translate}}</mat-label>
+    <input matInput [matDatepicker]="datepicker" formControlName="startDate">
+    <mat-hint align="start">{{'HINT.DATE' | translate}}</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+    <mat-datepicker #datepicker>
+      <mat-datepicker-actions>
+        <button mat-button matDatepickerCancel>Cancel</button>
+        <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+      </mat-datepicker-actions>
+    </mat-datepicker>
+  </mat-form-field>
 </div>
