@@ -1,12 +1,13 @@
 import * as path from 'path';
 import * as express from 'express';
-import * as dotenv from 'dotenv';
+//import * as dotenv from 'dotenv';
 import { dbPool } from './db';
 
 export const plantRouter = express.Router();
 plantRouter.use(express.json());
 
-dotenv.config({ path: path.resolve(__dirname, './env') });
+
+//dotenv.config({ path: path.resolve(__dirname, './env') });
 
 
 // ********************** GET **********************************************
@@ -38,11 +39,34 @@ plantRouter.get('/my-plants/:user_id', async (req, res) => {
     })
 });
 
+plantRouter.get('/user/:name/:password', async (req, res) => {
+    const sqlQuery = 'SELECT * FROM user WHERE name LIKE ? AND password LIKE ?';
+    dbPool.query(sqlQuery, [req.params.name, req.params.password], function(err, response) {
+        if(err) throw err;
+        res.send(response);
+    })
+});
+
+plantRouter.get('/userexist/:name/:mail', async (req, res) => {
+    const sqlQuery = 'SELECT * FROM user WHERE name LIKE ? OR mail LIKE ?';
+    dbPool.query(sqlQuery, [req.params.name, req.params.mail], function(err, response) {
+        if(err) throw err;
+        res.send(response);
+    })
+});
 // ********************** POST **********************************************
 
 plantRouter.post('/plant/newplant', async (req, res) => {
     const sqlQuery = 'INSERT INTO userplants (plant_id, user_id, ownName, nextWateringDay) VALUES (?, ?, ?, ?)';
     dbPool.query(sqlQuery, [req.body.plant_id, req.body.user_id, req.body.ownname, new Date(req.body.startdate)], function(err, result) {
+        if(err) throw err;
+        res.send(result);
+    });
+})
+
+plantRouter.post('/user/newuser', async (req, res) => {
+    const sqlQuery = 'INSERT INTO user (name, mail, password) VALUES (?, ?, ?)';
+    dbPool.query(sqlQuery, [req.body.nameUser, req.body.emailUser, req.body.passwordUser], function(err, result) {
         if(err) throw err;
         res.send(result);
     });
