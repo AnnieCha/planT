@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EditPlantService } from 'src/app/services/editPlant.service';
 import { PlantService } from 'src/app/services/plant.service';
 import { Plant } from 'src/app/shared/models/plant';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { response } from 'express';
+import { OpenPlantService } from 'src/app/services/openPlant.service';
 
 
 @Component({
@@ -14,34 +15,39 @@ import { response } from 'express';
 })
 
 export class EditPlantComponent implements OnInit {
+  @Input() currentFormGroup!: FormGroup;
   public currPlant?: any;
   private sub: any;
   private plantName: string = "";
   ownName: string = "";
   startDate: Date = new Date();
-
-  formGroup: FormGroup = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(1)]),
-    date: new FormControl('', [Validators.required, Validators.minLength(1)])
-  });
+  updatePlantMode!: boolean;
 
   constructor(
     private _plantService: PlantService,
-    private _editPlantService: EditPlantService,
+    private _openPlantService: OpenPlantService,
     private route: ActivatedRoute
     ) {}
 
 
   ngOnInit(): void {
-    //this.currPlant = this._plantService.getCurrenPlant();
-    this.sub = this.route.params.subscribe(params => {
+    this.route.params.subscribe(params => {
       this.plantName = params['name'];
     })
+    this.updatePlantMode = this._openPlantService.getUpdatePlantMode();
     this.getPlantInfo();
   }
 
   public getPlantInfo(){
     this.currPlant = this._plantService.getCurrenPlant(this.plantName);
+    if (this.updatePlantMode) {
+      this.ownName = this._openPlantService.getOwnName();
+      this.startDate = this._openPlantService.getStartDate();
+      this.currentFormGroup.patchValue({
+        ownName: this.ownName,
+        startDate: this.startDate
+      })
+    }
   }
 
   public savePlant(){

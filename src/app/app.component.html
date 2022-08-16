@@ -2,8 +2,8 @@
     <mat-toolbar class="toolbar">
         <mat-toolbar-row class="header">
             <span [routerLink]="'/'">PlanT</span>
-            <button mat-icon-button *ngIf="showMenue()" class="example-icon" aria-label="Example icon-button with menu icon"
-                (click)="toggleMenu()">
+            <button mat-icon-button *ngIf="showMenue()" class="example-icon"
+                aria-label="Example icon-button with menu icon" (click)="toggleMenu()">
                 <mat-icon>menu</mat-icon>
             </button>
         </mat-toolbar-row>
@@ -17,13 +17,11 @@
                     <ul>
                         <li><a (click)="chooseLanguage('en')">English</a></li>
                         <li><a (click)="chooseLanguage('de')">Deutsch</a></li>
-                        <li><a id="btn-dark-theme" (click)="onBtnClick()">
-                                Dark Mode</a>
-                        </li>
+                        <li><a (click)="changeLightMode()">Dark Mode</a></li>
                     </ul>
                 </div>
-            </div>     
-            <a>{{ 'MENU.LOG-OUT' | translate }}</a> 
+            </div>
+            <a>{{ 'MENU.LOG-OUT' | translate }}</a>
         </mat-toolbar-row>
     </mat-toolbar>
 

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { DateRange } from '@angular/material/datepicker';
 
 @Injectable({
     providedIn: 'root'
@@ -6,21 +7,33 @@ import { Injectable } from '@angular/core';
   export class OpenPlantService {
     // TODO: suchbegriff statt daten, die in der suchfeld-component ermittelt werden
     editMode: boolean = false;
-    selectedPlant!: string; // später vielleicht eher Plant? 
+    updatePlantMode: boolean = false;
+    ownName?: string;
+    startDate?: Date;
     
-    public setEditMode(editmode: boolean){
+    public setEditMode(editmode: boolean): void {
         this.editMode = editmode;
     }
 
-    public getEditMode(){
+    public getEditMode(): boolean {
         return this.editMode;
     }
 
-    public setSelectedPlant(plant: string){
-        this.selectedPlant = plant;
+    public setCurrentValues(ownName: string, nextWateringDay: Date): void{
+        this.ownName = ownName;
+        this.startDate = nextWateringDay;
+        this.updatePlantMode = true;
     }
 
-    public getSelectedPlant(){
-        return this.selectedPlant;
+    public getUpdatePlantMode(): boolean {
+        return this.updatePlantMode;
+    }
+
+    public getOwnName() {
+        return this.ownName ? this.ownName : '';
+    }
+
+    public getStartDate(): Date {
+        return this.startDate ? this.startDate : new Date();
     }
 }
