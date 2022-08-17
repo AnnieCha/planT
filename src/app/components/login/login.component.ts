@@ -4,6 +4,8 @@ import { FormBuilder } from '@angular/forms';
 import {UserService} from 'src/app/services/user.service';
 import {Router} from '@angular/router'; 
 import { User } from 'src/app/shared/models/user';
+import * as crypto from 'crypto-js';
+
 
 @Component({
   selector: 'app-login',
@@ -28,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     var nameUser = this.loginForm.value.username;
-    var namePassword = this.loginForm.value.password;
+    var namePassword = crypto.SHA256(this.loginForm.value.password).toString();
 
     if (nameUser.length<1 || namePassword.length<1) {
       alert("Bitte Vollständig ausfüllen");

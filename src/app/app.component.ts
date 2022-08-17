@@ -29,7 +29,7 @@ export class AppComponent {
 
  
   showMenue(): boolean {
-    console.log(this._userService.getLoggedIn());
+  //  console.log(this._userService.getLoggedIn());
     return this._userService.getLoggedIn();
   }
 
