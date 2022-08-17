@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DarkmodeComponent } from './darkmode.component';
+import { FormDialogComponent } from './form-dialog.component';
 
-describe('DarkmodeComponent', () => {
-  let component: DarkmodeComponent;
-  let fixture: ComponentFixture<DarkmodeComponent>;
+describe('FormDialogComponent', () => {
+  let component: FormDialogComponent;
+  let fixture: ComponentFixture<FormDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DarkmodeComponent ]
+      declarations: [ FormDialogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DarkmodeComponent);
+    fixture = TestBed.createComponent(FormDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

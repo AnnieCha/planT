@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import {UserService} from 'src/app/services/user.service';
 
 @Component({
@@ -9,31 +8,10 @@ import {UserService} from 'src/app/services/user.service';
 })
 export class AppComponent {
   title = 'plant-app';
-  menuOpen: boolean = false;
+
+  constructor(private _userService: UserService) {
+  }
 
   
-  constructor(private _translateService: TranslateService, private _userService: UserService) {
-    _translateService.setDefaultLang('en');
-    _translateService.use('en');
-  }
-
-  toggleMenu(): void {
-    this.menuOpen = !this.menuOpen;
-  }
-
-  chooseLanguage(lang: string){
-    this._translateService.use(lang);
-  }
-
-  showMenue() {
-    return this._userService.getLoggedIn()
-  }
-  
-  onBtnClick = () => {
-    document.body.classList.toggle("dark-theme");
-    console.log("darkThemeWorks");
-  };
-
-
 }
 

@@ -19,7 +19,7 @@
     },
     "FORM": {
         "NAME": "Name",
-        "DATE-START": "Start date"
+        "DATE-START": "Date"
     },
     "MY_PLANTS": {
         "MONDAY": "Monday",
@@ -30,5 +30,14 @@
         "SATURDAY": "Saturday",
         "SUNDAY": "Sunday",
         "NEXT_WATERING": "Next watering on:"
+    },
+    "DIALOG": {
+        "TITLE_CANCEL": "Are you sure?",
+        "MESSAGE_CANCEL": "The data will be lost by leaving this page.",
+        "YES_CANCEL": "Yes",
+        "NO_CANCEL": "No",
+        "TITLE_DUPLICATE_ENTRY": "Error: Duplicate name",
+        "MESSAGE_DUPLICATE_ENTRY": "You already have a plant with this name. Please choose a unique name.",
+        "YES_DUPLICATE_ENTRY": "Ok"
     }
 }

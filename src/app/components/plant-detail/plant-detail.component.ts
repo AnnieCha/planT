@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { OpenPlantService } from 'src/app/services/openPlant.service';
 import { PlantService } from 'src/app/services/plant.service';
 import { PlantListService } from 'src/app/services/plantList.service';
@@ -18,12 +19,14 @@ export class PlantDetailComponent implements OnInit {
   type: string = "all";
   nextWateringDay: string = "";
   weekdays = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+  imgPath = '../../../assets/img/';
 
 
   constructor(
     private _openPlantService: OpenPlantService,
     private _plantListService: PlantListService,
     private _plantService: PlantService,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -31,17 +34,18 @@ export class PlantDetailComponent implements OnInit {
     if (this.plant.nextWateringDay) {
       this.nextWateringDay = this.weekdays[new Date(this.plant.nextWateringDay).getDay()];
     }
+    this.imgPath = this.imgPath + this.plant.plant_id + ".jpg";
   }
 
-  public edit(plant_id: number) {
-    console.log('edit', plant_id);
-    
+  public edit(name: string, ownName: string, startDate: Date) {
+    this.openPlant(name, true, true);
+    this._openPlantService.setCurrentValues(ownName, startDate);
   }
 
-  public add(name: string, editMode: boolean) {
+  public openPlant(name: string, editMode: boolean, updatePlantMode?: boolean) {
     this._openPlantService.setEditMode(editMode);
-    this._openPlantService.setSelectedPlant(name);
-    //open new side
+    this._openPlantService.setUpdatePlantMode(updatePlantMode ? updatePlantMode : false);
+    this._router.navigate(['/plant', name]);
   }
 
   public delete(user_id: number, ownName: string) {

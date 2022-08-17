@@ -4,6 +4,9 @@ import { OpenPlantService } from 'src/app/services/openPlant.service';
 import { PlantService } from 'src/app/services/plant.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Plant } from 'src/app/shared/models/plant';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { FormDialogComponent } from '../form-dialog/form-dialog.component';
 
 @Component({
   selector: 'app-plant-info',
@@ -12,62 +15,105 @@ import { Plant } from 'src/app/shared/models/plant';
 })
 
 export class PlantInfoComponent implements OnInit {
-  public currPlant!: Plant;
+  currPlant!: Plant;
   private sub: any;
-  private _plantName: string = "";
-  public editMode: boolean = false;
-  //ownName: string = "";
-  //startDate: Date = new Date();
+  private _plantName: string = '';
+  editMode: boolean = false;
+  imgPath = '../../../assets/img/';
+  private _updatePlantMode: boolean = false
 
-  formGroup: FormGroup = new FormGroup({
+  myGroup: FormGroup = new FormGroup({
     ownName: new FormControl('', [Validators.required, Validators.minLength(1)]),
     startDate: new FormControl('', [Validators.required])
-  }); 
+  });
 
   constructor(
     private _plantService: PlantService,
     private _openPlantService: OpenPlantService,
     private _router: Router,
-    private _route: ActivatedRoute
-    ) {}
-
+    private _route: ActivatedRoute,
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
- //   this.currPlant = this._plantService.getCurrenPlant();
     this.sub = this._route.params.subscribe(params => {
       this._plantName = params['name'];
     })
-    this.getPlantInfo();
+    this._updatePlantMode = this._openPlantService.getUpdatePlantMode();
     this.editMode = this._openPlantService.getEditMode();
+    this.setPlantInfo();
   }
 
-  public getPlantInfo(){
+  public setPlantInfo() {
     this._plantService.getPlantByName(this._plantName).subscribe((result) => {
       this.currPlant = result[0];
-      console.log(this.currPlant);
-      console.log('name', this.currPlant.name);
-    })
-    // old: this.currPlant = this._plantService.getCurrenPlant(this._plantName);
+      this.imgPath = this.imgPath + this.currPlant.plant_id + ".jpg";
+    });
+    if (this._updatePlantMode) {
+      this.myGroup.patchValue({
+        ownName: this._openPlantService.getOwnName(),
+        startDate: this._openPlantService.getStartDate()
+      })
+    }
   }
 
   public onFormSubmit(): void {
-    console.log("Date", this.formGroup.get('startDate')?.value);
-    console.log("Name", this.formGroup.get('ownName')?.value);
-    const myPlant = {'user_id': 1, 'plant_id': this.currPlant.plant_id, 'ownname': this.formGroup.get('ownName')?.value, 'startdate': this.formGroup.get('startDate')?.value}
-    this._plantService.addPlantToUser(myPlant).subscribe((result) => {
-      if(result.affectedRows == 1){
-        console.log('erfolgreich hinzugefügt');
-      } else {
-        console.log('Fehler');
+    if (this._updatePlantMode) {
+      const updatedPlant = { 'user_id': 1, 'plant_id': this.currPlant.plant_id, 'ownName': this.myGroup.get('ownName')?.value, 'startDate': this.myGroup.get('startDate')?.value, 'plantName': this._openPlantService.getOwnName() }
+      this._plantService.updatePlantFromUser(updatedPlant).subscribe(result => {
+        if (result.affectedRows == 1) {
+          this.onSuccess();
+        } else {
+          if (result.errno == 1062) this.openDialog('DUPLICATE_ENTRY', 1);
+          console.log('Fehler');
+        }
+      })
+    } else {
+      const newPlant = { 'user_id': 1, 'plant_id': this.currPlant.plant_id, 'ownname': this.myGroup.get('ownName')?.value, 'startdate': this.myGroup.get('startDate')?.value }
+      this._plantService.addPlantToUser(newPlant).subscribe(result => {
+        if (result.affectedRows == 1) {
+          this.onSuccess();
+        } else {
+          if (result.errno == 1062) {
+            this.openDialog('DUPLICATE_ENTRY', 1)
+          } else {
+            console.log('Fehler');
+          }
+        }
+      })
+    }
+  }
+
+  openDialog(type: string, buttonNo: number): void {
+    const dialogRef = this.dialog.open(FormDialogComponent, {
+      data: {
+        type: type,
+        buttonNo: buttonNo
       }
     });
-  //  this._plantService.addPlant( this.currPlant, this.formGroup.get('ownName')?.value,this.formGroup.get('startDate')?.value);
-    this.setEditMode(false);
-   // this._router.navigate(['/meine-pflanzen']);
+    dialogRef.afterClosed().subscribe(result => {
+      if (type == 'CANCEL') {
+        if (result == 'cancel') {
+          this.editMode = false;
+          if (this._updatePlantMode) {
+            this._router.navigate(['/meine-pflanzen']);
+          }
+        }
+      }
+    })
   }
 
-  public setEditMode(status: boolean){
+  public onSuccess(): void {
+    this._router.navigate(['/meine-pflanzen']);
+    this.editMode = false;
+    let message = this._updatePlantMode ? " erfolgreich geändert" : " erfolgreich hinzugefügt";
+    this._snackBar.open(this.currPlant.name + ' (' + this.myGroup.get('ownName')?.value + ') ' + message, 'Ok', {
+      duration: 2000
+    });
+  }
+
+  public setEditMode(status: boolean): void {
     this.editMode = status;
   }
-
 }

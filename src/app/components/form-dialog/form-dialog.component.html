@@ -1,0 +1,14 @@
+<h1>{{'DIALOG.TITLE_' + data.type | translate}}</h1>
+<p>{{'DIALOG.MESSAGE_' + data.type | translate}}</p>
+<ng-container *ngIf="data.buttonNo == 2; else singleButtonTemplate">
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>{{'DIALOG.NO_' + data.type | translate}}</button>
+        <button mat-button mat-dialog-close="cancel" cdkFocusInitial>{{'DIALOG.YES_' + data.type | translate}}</button>
+    </div>
+</ng-container>
+
+<ng-template #singleButtonTemplate>
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>{{'DIALOG.YES_' + data.type | translate}}</button>
+    </div>
+</ng-template>

@@ -27,9 +27,7 @@ export class PlantlistComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     this._sub = this.route.params.subscribe(params => {
-      //console.log("params", params);
       //TODO: der routerlink ist so noch nicht korrekt
       if(params['area'] === "meine-pflanzen"){
         this.title = 'MENU.OWN-PLANTS';
@@ -47,7 +45,6 @@ export class PlantlistComponent implements OnInit {
           map((plants: Plant[]) => (plants ? plants.filter((plant: Plant) => !!plant) : []))
         );
       }
-      console.log('type in plantlist:', this.type);
     });
   }
 

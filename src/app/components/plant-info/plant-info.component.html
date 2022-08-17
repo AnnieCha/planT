@@ -7,7 +7,8 @@
     <hr>
     <div class="wrapper">
         <div class="leftInfo">
-            <img src={{currPlant.imageUrl}}>
+            <img *ngIf="currPlant.plant_id < 4" class="plantImage" src={{imgPath}}>
+            <img *ngIf="currPlant.plant_id > 3" class="plantImage" src={{currPlant.imageUrl}}>
             <div class="icon-row" *ngIf="!editMode">
                 <mat-icon [ngClass]="{'lightgray-icon': currPlant.wateramount < 1}" aria-hidden="false"
                     aria-label="Icon Information">water_drop</mat-icon>
@@ -34,40 +35,23 @@
                 </button>
             </div>
             <p class="main">{{currPlant.long_desc}}</p>
-
-          <!--  <app-infotext class="main"></app-infotext>-->
         </ng-container>
     </div>
 </div>
 
 <ng-template #editModeTemplate>
-    <!-- hier kommt eigentlich die app-add-plant component hin-->
-    <form [formGroup]="formGroup" (ngSubmit)="onFormSubmit()">
+    <form [formGroup]="myGroup" (ngSubmit)="onFormSubmit()">
         <div class="row header">
             <p>{{currPlant.name}}</p>
-            <button mat-icon-button class="icon-button innerBtn" aria-label="Pflanzeneintrag bearbeiten" type="submit" [disabled]="formGroup.invalid">
+            <button mat-icon-button type="submit" class="icon-button innerBtn" aria-label="Daten abschicken"
+                [disabled]="myGroup.invalid">
                 <mat-icon>check</mat-icon>
             </button>
-            <button mat-icon-button class="icon-button" aria-label="Pflanzeneintrag bearbeiten" (click)="setEditMode(false)">
+            <button mat-icon-button type="button" class="icon-button" aria-label="Hinzufügen oder Bearbeiten abbrechen"
+                (click)="openDialog('CANCEL', 2)">
                 <mat-icon>close</mat-icon>
             </button>
         </div>
-        <mat-form-field class="form-field" appearance="outline">
-            <mat-label>{{'FORM.NAME' | translate}}</mat-label>
-            <input matInput type="text" name="ownName" formControlName="ownName">
-            <mat-hint align="start">{{'HINT.MAX' | translate}}</mat-hint>
-        </mat-form-field>
-        <mat-form-field class="form-field" appearance="outline">
-            <mat-label>{{'FORM.DATE-START' | translate}}</mat-label>
-            <input matInput [matDatepicker]="datepicker" formControlName="startDate">
-            <mat-hint align="start">{{'HINT.DATE' | translate}}</mat-hint>
-            <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-            <mat-datepicker #datepicker>
-              <mat-datepicker-actions>
-                <button mat-button matDatepickerCancel>Cancel</button>
-                <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
-              </mat-datepicker-actions>
-            </mat-datepicker>
-        </mat-form-field>
+        <app-edit-plant [currentFormGroup]="myGroup"></app-edit-plant>
     </form>
 </ng-template>
