@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import {UserService} from 'src/app/services/user.service';
+import {Router} from '@angular/router'; 
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent {
   isLightMode: boolean = true;
 
   
-  constructor(private _translateService: TranslateService, private _userService: UserService) {
+  constructor(private _translateService: TranslateService, private _userService: UserService, private route:Router) {
     _translateService.setDefaultLang('en');
     _translateService.use('en');
   }
@@ -26,10 +27,10 @@ export class AppComponent {
     this._translateService.use(lang);
   }
 
-  //TODO: reset this
+ 
   showMenue(): boolean {
-    return true;
-    // return this._userService.getLoggedIn()
+  //  console.log(this._userService.getLoggedIn());
+    return this._userService.getLoggedIn();
   }
 
   changeLightMode(): void {
@@ -37,6 +38,10 @@ export class AppComponent {
     //localStorage.setItem(PrefferedThemeKey, this.isLightMode ? 'light' : 'dark');
   }
   
+  logout() : void {
+    this._userService.logoutUser();
+    this.route.navigate(['/']);
+  }
 
 
 }

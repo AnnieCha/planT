@@ -4,6 +4,8 @@ import { FormBuilder } from '@angular/forms';
 import {UserService} from 'src/app/services/user.service';
 import {Router} from '@angular/router'; 
 import { User } from 'src/app/shared/models/user';
+import * as crypto from 'crypto-js';
+
 
 @Component({
   selector: 'app-login',
@@ -27,9 +29,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.loginForm.value);
     var nameUser = this.loginForm.value.username;
-    var namePassword = this.loginForm.value.password;
+    var namePassword = crypto.SHA256(this.loginForm.value.password).toString();
 
     if (nameUser.length<1 || namePassword.length<1) {
       alert("Bitte Vollständig ausfüllen");
@@ -37,10 +38,6 @@ export class LoginComponent implements OnInit {
       this._userService.getUser(nameUser, namePassword).subscribe((result) => {
         if (result.length>0) {
           this.currUser = result[0];
-          console.log(result.length);
-          console.log(this.currUser);
-          console.log("'name', this.currUser.name");
-          console.log('name', this.currUser.name);
           this._userService.setLoggedIn();
           this.route.navigate(['/meine-pflanzen']);
         } else {
@@ -54,6 +51,7 @@ export class LoginComponent implements OnInit {
   navigateRegistration() {
     this.route.navigate(['/registration']);
   }
+
 
 }
 

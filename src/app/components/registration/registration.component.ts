@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { User } from 'src/app/shared/models/user';
 import {UserService} from 'src/app/services/user.service';
 import {Router} from '@angular/router'; 
+import * as crypto from 'crypto-js';
 
 @Component({
   selector: 'app-registration',
@@ -15,6 +16,7 @@ export class RegistrationComponent implements OnInit {
     username: new FormControl(''),
     email: new FormControl(''),
     password: new FormControl(''),
+    password2: new FormControl(''),
   });
   /*loginForm: FormGroup = new FormGroup({
     username: new FormControl(''),
@@ -30,10 +32,15 @@ export class RegistrationComponent implements OnInit {
     console.log(this.registrationForm.value);
     var nameUser = this.registrationForm.value.username;
     var emailUser = this.registrationForm.value.email;
-    var passwordUser = this.registrationForm.value.password;
+    var passwordUser = crypto.SHA256(this.registrationForm.value.password).toString();
+
+    console.log(this.registrationForm.value.password);
+    console.log(passwordUser.length);
 
     if (nameUser.length<1 || passwordUser.length<1 || emailUser.length<1) {
       alert("Bitte Vollständig ausfüllen");
+    } else if(this.registrationForm.value.password != this.registrationForm.value.password2) {
+      alert("Passwörter stimmen nicht überein");
     } else {
       let newUser = {'nameUser': nameUser, 'emailUser': emailUser, 'passwordUser': passwordUser};
       this._userService.userExist(nameUser, emailUser).subscribe((result) => {
@@ -44,6 +51,7 @@ export class RegistrationComponent implements OnInit {
           this._userService.insertUser(newUser).subscribe((result) => {
             console.log(result);
           })
+          this.route.navigate(['/']);
         }
       })
     }
