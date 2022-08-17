@@ -1,12 +1,14 @@
 <mat-toolbar class="toolbar">
     <mat-toolbar-row class="header">
-        <span [routerLink]="'/'">PlanT</span>
+        <span [routerLink]="'/'"><img src="../assets/img/logo_wide.png" alt="planT logo" width="100"
+                height="auto"></span>
         <app-search-bar></app-search-bar>
-        <button mat-icon-button class="menu-icon"
-            aria-label="Example icon-button with menu icon" (click)="toggleMenu()">
+        <button mat-icon-button class="menu-icon" aria-label="Example icon-button with menu icon"
+            (click)="toggleMenu()">
             <mat-icon>menu</mat-icon>
         </button>
     </mat-toolbar-row>
+
     <mat-toolbar-row [ngClass]="{'menu-row': this.menuOpen, 'menu': true}">
         <a [routerLink]="'/meine-pflanzen'">{{ 'MENU.OWN-PLANTS' | translate }}</a>
         <a [routerLink]="'/all'">{{ 'MENU.ALL-PLANTS' | translate }}</a>
@@ -22,5 +24,7 @@
             </div>
         </div>
         <a>{{ 'MENU.LOG-OUT' | translate }}</a>
+
     </mat-toolbar-row>
+
 </mat-toolbar>

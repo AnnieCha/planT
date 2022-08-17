@@ -44,14 +44,19 @@ $angular-dark-theme: mat.define-dark-theme(
 
 
 :root {
-  --color-primary: #f1f8f1;
-  --color-secondary: #d6e3d6;
-  --color-three: #646E64;
+  --color-primary: #f8f8f8;
+  --color-secondary: #0a5457;
+  --color-three: #2a2b2a;
 
-  --color-dark-primary: #2c2c2c;
-  --color-dark-secondary: #aaaaaa;
-  --color-dark-three: #bebebe;
+  --color-dark-primary: #383838;
+  --color-dark-secondary: #202020;
+  --color-dark-three: #cbcbcb;
 }
+
+
+
+
+
 
 
 html,
