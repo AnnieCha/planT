@@ -7,6 +7,7 @@ import { Plant } from 'src/app/shared/models/plant';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { FormDialogComponent } from '../form-dialog/form-dialog.component';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-plant-info',
@@ -33,6 +34,7 @@ export class PlantInfoComponent implements OnInit {
     private _router: Router,
     private _route: ActivatedRoute,
     private _snackBar: MatSnackBar,
+    private _userService: UserService,
     public dialog: MatDialog
   ) { }
 
@@ -60,7 +62,7 @@ export class PlantInfoComponent implements OnInit {
 
   public onFormSubmit(): void {
     if (this._updatePlantMode) {
-      const updatedPlant = { 'user_id': 1, 'plant_id': this.currPlant.plant_id, 'ownName': this.myGroup.get('ownName')?.value, 'startDate': this.myGroup.get('startDate')?.value, 'plantName': this._openPlantService.getOwnName() }
+      const updatedPlant = { 'user_id': this._userService.getCurrentUserId(), 'plant_id': this.currPlant.plant_id, 'ownName': this.myGroup.get('ownName')?.value, 'startDate': this.myGroup.get('startDate')?.value, 'plantName': this._openPlantService.getOwnName() }
       this._plantService.updatePlantFromUser(updatedPlant).subscribe(result => {
         if (result.affectedRows == 1) {
           this.onSuccess();
@@ -70,7 +72,7 @@ export class PlantInfoComponent implements OnInit {
         }
       })
     } else {
-      const newPlant = { 'user_id': 1, 'plant_id': this.currPlant.plant_id, 'ownname': this.myGroup.get('ownName')?.value, 'startdate': this.myGroup.get('startDate')?.value }
+      const newPlant = { 'user_id': this._userService.getCurrentUserId(), 'plant_id': this.currPlant.plant_id, 'ownname': this.myGroup.get('ownName')?.value, 'startdate': this.myGroup.get('startDate')?.value }
       this._plantService.addPlantToUser(newPlant).subscribe(result => {
         if (result.affectedRows == 1) {
           this.onSuccess();

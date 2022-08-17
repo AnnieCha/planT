@@ -1,9 +1,11 @@
 <form>
-    <mat-label>Search</mat-label>
-    <input matInput type="text" placeholder="Suche" aria-label="Suche" [formControl]="filter" [matAutocomplete]="auto">
-    <mat-autocomplete #auto=matAutocomplete>
-        <mat-option *ngFor="let plant of filteredPlants$ | async" [value]="plant">
-            {{plant}}
-        </mat-option>
-    </mat-autocomplete>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <input matInput type="text" placeholder="Nach einer Pflanze suchen" aria-label="Suche" [formControl]="filter"
+            [matAutocomplete]="auto">
+        <mat-autocomplete #auto=matAutocomplete>
+            <mat-option *ngFor="let plant of filteredPlants$ | async" [value]="plant" #matOption (onSelectionChange)="openPlant(plant)">
+                {{plant}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
 </form>

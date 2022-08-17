@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { map, Observable, startWith } from 'rxjs';
+import { OpenPlantService } from 'src/app/services/openPlant.service';
 import { PlantService } from 'src/app/services/plant.service';
 //used code example from angular material autocomplete: https://material.angular.io/components/autocomplete/examples
 
@@ -14,7 +16,7 @@ export class SearchBarComponent implements OnInit {
   plantNames: string[] = [];
   filteredPlants$!: Observable<string[]>;
 
-  constructor(private _plantService: PlantService) { }
+  constructor(private _plantService: PlantService, private _openPlantService: OpenPlantService, private _router: Router) { }
 
   ngOnInit(): void {
     this._plantService.getPlantNamesFromDb().subscribe(result => {
@@ -32,9 +34,17 @@ export class SearchBarComponent implements OnInit {
   }
 
   private _filter(value: string): string[] {
+    console.log('filter value: ', value);
     const filterValue = value.toLowerCase();
-    console.log(this.plantNames.filter(option => option.toLowerCase().includes(filterValue)));
     return this.plantNames.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
+  openPlant(name: string): void {
+    console.log('open plant: ', name)
+    this._openPlantService.setEditMode(false);
+    this._openPlantService.setUpdatePlantMode(false);
+    this._router.navigate(['/plant', name]);
+    this.filter.setValue('');
   }
 
 }

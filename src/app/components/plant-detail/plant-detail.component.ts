@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { OpenPlantService } from 'src/app/services/openPlant.service';
 import { PlantService } from 'src/app/services/plant.service';
 import { PlantListService } from 'src/app/services/plantList.service';
+import { UserService } from 'src/app/services/user.service';
 import { Plant } from '../../shared/models/plant';
 
 @Component({
@@ -26,6 +27,7 @@ export class PlantDetailComponent implements OnInit {
     private _openPlantService: OpenPlantService,
     private _plantListService: PlantListService,
     private _plantService: PlantService,
+    private _userService: UserService,
     private _router: Router
   ) { }
 
@@ -48,8 +50,8 @@ export class PlantDetailComponent implements OnInit {
     this._router.navigate(['/plant', name]);
   }
 
-  public delete(user_id: number, ownName: string) {
-    this._plantService.deleteOwnPlant(user_id, ownName).subscribe((result) => {
+  public delete(ownName: string) {
+    this._plantService.deleteOwnPlant(this._userService.getCurrentUserId(), ownName).subscribe((result) => {
       this.plantDeleted.emit();
     })
   }
