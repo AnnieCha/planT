@@ -26,7 +26,6 @@ import { DateRange } from '@angular/material/datepicker';
 
     public setUpdatePlantMode(updatePlantMode: boolean): void {
         this.updatePlantMode = updatePlantMode;
-        console.log('updateplantmode setting', updatePlantMode);
     }
 
     public getUpdatePlantMode(): boolean {

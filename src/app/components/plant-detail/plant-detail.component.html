@@ -1,13 +1,15 @@
 <div *ngIf="plant" class="wrapper">
-    <img class="plantImage" src={{plant.imageUrl}}>
+    <img *ngIf="plant.plant_id < 4" class="plantImage" src={{imgPath}}>
+    <img *ngIf="plant.plant_id > 3" class="plantImage" src={{plant.imageUrl}}>
     <ng-container *ngIf="type === 'all'; else personalPlants">
         <div class="header">
             <h4 (click)="openPlant(plant.name, false)">{{plant.name}}</h4>
             <button mat-icon-button class="icon-button innerBtn" aria-label="Pflanze zu eigenen Pflanzen hinzufügen"
-            (click)="openPlant(plant.name, true)">
+                (click)="openPlant(plant.name, true)">
                 <mat-icon aria-hidden="false">add</mat-icon>
             </button>
-            <button mat-icon-button class="icon-button" aria-label="Weitere Informationen" (click)="openPlant(plant.name, false)">
+            <button mat-icon-button class="icon-button" aria-label="Weitere Informationen"
+                (click)="openPlant(plant.name, false)">
                 <mat-icon aria-hidden="false">information</mat-icon>
             </button>
         </div>
@@ -18,10 +20,12 @@
 <ng-template #personalPlants>
     <div class="header">
         <h4 (click)="openPlant(plant.name, false)">{{plant.name}}</h4>
-        <button mat-icon-button class="icon-button innerBtn" aria-label="Pflanzeneintrag bearbeiten" (click)="edit(plant.name, plant.ownName!, plant.nextWateringDay!)">
+        <button mat-icon-button class="icon-button innerBtn" aria-label="Pflanzeneintrag bearbeiten"
+            (click)="edit(plant.name, plant.ownName!, plant.nextWateringDay!)">
             <mat-icon aria-hidden="false">edit</mat-icon>
         </button>
-        <button mat-icon-button class="icon-button" aria-label="Weitere Informationen" (click)="delete(1, plant.ownName!)">
+        <button mat-icon-button class="icon-button" aria-label="Weitere Informationen"
+            (click)="delete(1, plant.ownName!)">
             <mat-icon aria-hidden="false">delete</mat-icon>
         </button>
     </div>

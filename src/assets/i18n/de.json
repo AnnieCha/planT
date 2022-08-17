@@ -11,7 +11,7 @@
     },
     "HINT": {
         "NO-PLANTS": "Du hast noch keine Pflanzen hinzugefügt.",
-        "DATE": "Wählen Sie einen Termin für die erste Erinnerung.",
+        "DATE": "Wählen Sie einen Termin für die nächste Gieß-Erinnerung.",
         "MAX": "Maximal 20 Zeichen."
     },
     "BUTTON": {
@@ -19,7 +19,7 @@
     },
     "FORM": {
         "NAME": "Name",
-        "DATE-START": "Startdatum"
+        "DATE-START": "Datum"
     },
     "MY_PLANTS": {
         "MONDAY": "Montag",
@@ -30,5 +30,14 @@
         "SATURDAY": "Samstag",
         "SUNDAY": "Sonntag",
         "NEXT_WATERING": "Nächstes mal gießen am:"
+    },
+    "DIALOG": {
+        "TITLE_CANCEL": "Sind Sie sicher?",
+        "MESSAGE_CANCEL": "Die eingegebenen Daten gehen beim Verlassen der Seite verloren",
+        "YES_CANCEL": "Ja",
+        "NO_CANCEL": "Nein",
+        "TITLE_DUPLICATE_ENTRY": "Fehler: Doppelter Name",
+        "MESSAGE_DUPLICATE_ENTRY": "Sie haben diese Pflanze bereits mit diesem Namen angegeben. Bitte wählen Sie einen anderen Namen",
+        "YES_DUPLICATE_ENTRY": "Ok"
     }
 }

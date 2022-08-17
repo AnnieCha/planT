@@ -7,7 +7,8 @@
     <hr>
     <div class="wrapper">
         <div class="leftInfo">
-            <img src={{currPlant.imageUrl}}>
+            <img *ngIf="currPlant.plant_id < 4" class="plantImage" src={{imgPath}}>
+            <img *ngIf="currPlant.plant_id > 3" class="plantImage" src={{currPlant.imageUrl}}>
             <div class="icon-row" *ngIf="!editMode">
                 <mat-icon [ngClass]="{'lightgray-icon': currPlant.wateramount < 1}" aria-hidden="false"
                     aria-label="Icon Information">water_drop</mat-icon>
@@ -34,8 +35,6 @@
                 </button>
             </div>
             <p class="main">{{currPlant.long_desc}}</p>
-
-          <!--  <app-infotext class="main"></app-infotext>-->
         </ng-container>
     </div>
 </div>
@@ -44,10 +43,12 @@
     <form [formGroup]="myGroup" (ngSubmit)="onFormSubmit()">
         <div class="row header">
             <p>{{currPlant.name}}</p>
-            <button mat-icon-button class="icon-button innerBtn" aria-label="Daten abschicken" type="submit" [disabled]="myGroup.invalid">
+            <button mat-icon-button type="submit" class="icon-button innerBtn" aria-label="Daten abschicken"
+                [disabled]="myGroup.invalid">
                 <mat-icon>check</mat-icon>
             </button>
-            <button mat-icon-button class="icon-button" aria-label="Hinzufügen oder Bearbeiten abbrechen" (click)="setEditMode(false)">
+            <button mat-icon-button type="button" class="icon-button" aria-label="Hinzufügen oder Bearbeiten abbrechen"
+                (click)="openDialog('CANCEL', 2)">
                 <mat-icon>close</mat-icon>
             </button>
         </div>

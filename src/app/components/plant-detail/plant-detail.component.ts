@@ -19,6 +19,7 @@ export class PlantDetailComponent implements OnInit {
   type: string = "all";
   nextWateringDay: string = "";
   weekdays = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+  imgPath = '../../../assets/img/';
 
 
   constructor(
@@ -33,6 +34,7 @@ export class PlantDetailComponent implements OnInit {
     if (this.plant.nextWateringDay) {
       this.nextWateringDay = this.weekdays[new Date(this.plant.nextWateringDay).getDay()];
     }
+    this.imgPath = this.imgPath + this.plant.plant_id + ".jpg";
   }
 
   public edit(name: string, ownName: string, startDate: Date) {
