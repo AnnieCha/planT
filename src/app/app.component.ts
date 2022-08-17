@@ -37,7 +37,5 @@ export class AppComponent {
     //localStorage.setItem(PrefferedThemeKey, this.isLightMode ? 'light' : 'dark');
   }
   
-
-
 }
 

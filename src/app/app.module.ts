@@ -4,6 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
@@ -11,7 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { ReactiveComponentModule  } from '@ngrx/component';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,13 +26,13 @@ import { PlantInfoComponent } from './components/plant-info/plant-info.component
 import { MaterialModule } from './material/material.module';
 import { CareInstructionComponent } from './components/care-instruction/care-instruction.component';
 import { CareEventsComponent } from './components/care-events/care-events.component';
-import { DarkmodeComponent } from './components/darkmode/darkmode.component';
 import { EditPlantComponent } from './components/edit-plant/edit-plant.component';
 import { InfotextComponent } from './components/infotext/infotext.component';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { CareAccordionComponent } from './components/care-accordion/care-accordion.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { FormDialogComponent } from './components/form-dialog/form-dialog.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
@@ -44,13 +46,13 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     CareInstructionComponent,
     CareEventsComponent,
     PlantInfoComponent,
-    DarkmodeComponent,
     EditPlantComponent,
     InfotextComponent,
     SearchbarComponent,
     CareAccordionComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    FormDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +63,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatInputModule,
     MaterialModule,
     MatMenuModule,
+    MatSnackBarModule,
+    MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
@@ -76,7 +80,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
       },
     })
   ],
-  providers: [],
+  providers: [MatSnackBarModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

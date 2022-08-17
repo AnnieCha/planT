@@ -34,8 +34,6 @@
                 </button>
             </div>
             <p class="main">{{currPlant.long_desc}}</p>
-
-          <!--  <app-infotext class="main"></app-infotext>-->
         </ng-container>
     </div>
 </div>
@@ -44,10 +42,10 @@
     <form [formGroup]="myGroup" (ngSubmit)="onFormSubmit()">
         <div class="row header">
             <p>{{currPlant.name}}</p>
-            <button mat-icon-button class="icon-button innerBtn" aria-label="Daten abschicken" type="submit" [disabled]="myGroup.invalid">
+            <button mat-icon-button type="submit" class="icon-button innerBtn" aria-label="Daten abschicken" [disabled]="myGroup.invalid">
                 <mat-icon>check</mat-icon>
             </button>
-            <button mat-icon-button class="icon-button" aria-label="Hinzufügen oder Bearbeiten abbrechen" (click)="setEditMode(false)">
+            <button mat-icon-button type="button" class="icon-button" aria-label="Hinzufügen oder Bearbeiten abbrechen" (click)="openDialog('CANCEL', 2)">
                 <mat-icon>close</mat-icon>
             </button>
         </div>

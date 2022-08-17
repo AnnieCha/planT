@@ -53,6 +53,6 @@ export class PlantService {
   }
 
   updatePlantFromUser(updatedPlant: any): Observable<any> {
-    return this._http.put(this._rootAdress + '/plant', updatedPlant);
+    return this._http.put(this._rootAdress + 'plant', updatedPlant);
   }
 }
