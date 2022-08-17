@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
@@ -28,11 +29,13 @@ import { CareInstructionComponent } from './components/care-instruction/care-ins
 import { CareEventsComponent } from './components/care-events/care-events.component';
 import { EditPlantComponent } from './components/edit-plant/edit-plant.component';
 import { InfotextComponent } from './components/infotext/infotext.component';
-import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { CareAccordionComponent } from './components/care-accordion/care-accordion.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { FormDialogComponent } from './components/form-dialog/form-dialog.component';
+import { HeaderComponent } from './components/header/header.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { FavoriteAdComponent } from './components/favorite-ad/favorite-ad.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
@@ -48,11 +51,13 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     PlantInfoComponent,
     EditPlantComponent,
     InfotextComponent,
-    SearchbarComponent,
     CareAccordionComponent,
     LoginComponent,
     RegistrationComponent,
-    FormDialogComponent
+    FormDialogComponent,
+    HeaderComponent,
+    SearchBarComponent,
+    FavoriteAdComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +68,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatInputModule,
     MaterialModule,
     MatMenuModule,
+    MatAutocompleteModule,
     MatSnackBarModule,
     MatDialogModule,
     MatDatepickerModule,

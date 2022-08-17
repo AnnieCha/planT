@@ -23,6 +23,13 @@ plantRouter.get('/all-plants', async (req, res) => {
     });
 });
 
+plantRouter.get('/plantnames', async (req, res) => {
+    dbPool.query('SELECT plant.name FROM plant', function (err, response) {
+        if (err) throw err;
+        res.send(response);
+    });
+});
+
 plantRouter.get('/plant/:name', async (req, res) => {
     const sqlQuery = 'SELECT * FROM plant WHERE name LIKE ?';
     dbPool.query(sqlQuery, [req.params.name], function (err, response) {

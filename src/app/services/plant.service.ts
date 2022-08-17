@@ -12,12 +12,14 @@ export class PlantService {
   myPlants$?: Observable<Plant[]>;
   allPlants$: Observable<Plant[]>;
   specificPlant?: Plant;
+  plantNames!: string[];
   private _refresh$: Subject<void> = new Subject<void>();
 
   constructor(private _http: HttpClient) {
     this.allPlants$ = this._refresh$.pipe(
       startWith(''),
       switchMap(() => this._http.get<Plant[]>(this._rootAdress + 'all-plants')))
+    //this.plantNames = this.getPlantNamesFromDb();
   }
 
   /*
@@ -32,6 +34,10 @@ export class PlantService {
 
   getPlantByName(name: string): Observable<Plant[]> {
     return (this._http.get<Plant[]>(this._rootAdress + 'plant/' + name));
+  }
+
+  getPlantNamesFromDb(): Observable<any[]> {
+    return this._http.get<any[]>(this._rootAdress + 'plantnames');
   }
 
   getMyPlantsFromDB(user_id: number) {

@@ -1,10 +1,6 @@
 <div *ngIf="plant" class="wrapper">
-    <div *ngIf="plant.plant_id < 4">
-        <img class="plantImage" src={{imgPath}}>
-    </div>
-    <div *ngIf="plant.plant_id > 3">
-        <img class="plantImage" src={{plant.imageUrl}}>
-    </div>
+    <img *ngIf="plant.plant_id < 4" class="plantImage" src={{imgPath}}>
+    <img *ngIf="plant.plant_id > 3" class="plantImage" src={{plant.imageUrl}}>
     <ng-container *ngIf="type === 'all'; else personalPlants">
         <div class="header">
             <h4 (click)="openPlant(plant.name, false)">{{plant.name}}</h4>

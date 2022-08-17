@@ -19,7 +19,8 @@ export class PlantInfoComponent implements OnInit {
   private sub: any;
   private _plantName: string = '';
   editMode: boolean = false;
-  private _updatePlantMode: boolean = false;
+  imgPath = '../../../assets/img/';
+  private _updatePlantMode: boolean = false
 
   myGroup: FormGroup = new FormGroup({
     ownName: new FormControl('', [Validators.required, Validators.minLength(1)]),
@@ -47,6 +48,7 @@ export class PlantInfoComponent implements OnInit {
   public setPlantInfo() {
     this._plantService.getPlantByName(this._plantName).subscribe((result) => {
       this.currPlant = result[0];
+      this.imgPath = this.imgPath + this.currPlant.plant_id + ".jpg";
     });
     if (this._updatePlantMode) {
       this.myGroup.patchValue({
