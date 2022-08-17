@@ -17,7 +17,6 @@ import { UserService } from 'src/app/services/user.service';
 
 export class PlantInfoComponent implements OnInit {
   currPlant!: Plant;
-  private sub: any;
   private _plantName: string = '';
   editMode: boolean = false;
   imgPath = '../../../assets/img/';
@@ -39,12 +38,12 @@ export class PlantInfoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.sub = this._route.params.subscribe(params => {
+    this._route.params.subscribe(params => {
       this._plantName = params['name'];
+      this._updatePlantMode = this._openPlantService.getUpdatePlantMode();
+      this.editMode = this._openPlantService.getEditMode();
+      this.setPlantInfo();
     })
-    this._updatePlantMode = this._openPlantService.getUpdatePlantMode();
-    this.editMode = this._openPlantService.getEditMode();
-    this.setPlantInfo();
   }
 
   public setPlantInfo() {

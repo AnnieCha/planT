@@ -25,6 +25,7 @@ plantRouter.get('/all-plants', async (req, res) => {
 
 plantRouter.get('/plantnames', async (req, res) => {
     dbPool.query('SELECT plant.name FROM plant', function (err, response) {
+        console.log(response);
         if (err) throw err;
         res.send(response);
     });

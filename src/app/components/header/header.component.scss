@@ -3,10 +3,11 @@
     color: var(--color-three);
     display: flex;
     align-items: center;
+   // position: fixed;
 }
 
 .header {
-    height: 50px;
+    height: 100px;
     display: flex;
     justify-content: space-between;
 }
@@ -17,7 +18,6 @@
     height: 30px;
     background-color: var(--color-three);
     color: white;
-    //z-index: 5;
 
     a {
         all: unset;

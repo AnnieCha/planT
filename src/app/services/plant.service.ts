@@ -19,7 +19,6 @@ export class PlantService {
     this.allPlants$ = this._refresh$.pipe(
       startWith(''),
       switchMap(() => this._http.get<Plant[]>(this._rootAdress + 'all-plants')))
-    //this.plantNames = this.getPlantNamesFromDb();
   }
 
   getPlantByName(name: string): Observable<Plant[]> {
