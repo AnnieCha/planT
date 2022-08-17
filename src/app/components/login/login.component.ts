@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.loginForm.value);
     var nameUser = this.loginForm.value.username;
     var namePassword = this.loginForm.value.password;
 
@@ -37,10 +36,6 @@ export class LoginComponent implements OnInit {
       this._userService.getUser(nameUser, namePassword).subscribe((result) => {
         if (result.length>0) {
           this.currUser = result[0];
-          console.log(result.length);
-          console.log(this.currUser);
-          console.log("'name', this.currUser.name");
-          console.log('name', this.currUser.name);
           this._userService.setLoggedIn();
           this.route.navigate(['/meine-pflanzen']);
         } else {

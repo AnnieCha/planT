@@ -8,7 +8,8 @@ import { Observable, startWith, switchMap, Subject } from 'rxjs';
 })
 export class UserService {
   private loginUser = false;
-  logedUser$?: Observable<User[]>;
+  userObserv$?: Observable<User[]>;
+  logedInUser$?: User;
   private _rootAdress = 'http://localhost:5200/';
   private _refresh$: Subject<void> = new Subject<void>();
   
@@ -17,8 +18,13 @@ export class UserService {
   constructor(private _http: HttpClient) { }
 
   getUser(user_name: string, user_password: string): Observable<User[]> {
-    return (this._http.get<User[]>(this._rootAdress + 'user/' + user_name + '/' + user_password));
-    }
+    this.userObserv$ = (this._http.get<User[]>(this._rootAdress + 'user/' + user_name + '/' + user_password));
+    this.userObserv$.subscribe((result) =>{
+      this.logedInUser$ = result[0];
+    });
+    
+    return this.userObserv$;
+  }
 
   userExist(user_name: string, user_email: string): Observable<User[]> {
     return (this._http.get<User[]>(this._rootAdress + 'userexist/' + user_name + '/' + user_email));
