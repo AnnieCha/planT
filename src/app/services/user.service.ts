@@ -36,10 +36,14 @@ export class UserService {
 
 
   getLoggedIn() {
-    return this.loginUser;
+    return this.logedInUser$ != undefined;
   }
 
   setLoggedIn() {
     this.loginUser = true;
+  }
+
+  logoutUser() {
+    this.logedInUser$ = undefined;
   }
 }
