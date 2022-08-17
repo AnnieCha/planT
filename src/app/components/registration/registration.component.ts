@@ -16,6 +16,7 @@ export class RegistrationComponent implements OnInit {
     username: new FormControl(''),
     email: new FormControl(''),
     password: new FormControl(''),
+    password2: new FormControl(''),
   });
   /*loginForm: FormGroup = new FormGroup({
     username: new FormControl(''),
@@ -38,6 +39,8 @@ export class RegistrationComponent implements OnInit {
 
     if (nameUser.length<1 || passwordUser.length<1 || emailUser.length<1) {
       alert("Bitte Vollständig ausfüllen");
+    } else if(this.registrationForm.value.password != this.registrationForm.value.password2) {
+      alert("Passwörter stimmen nicht überein");
     } else {
       let newUser = {'nameUser': nameUser, 'emailUser': emailUser, 'passwordUser': passwordUser};
       this._userService.userExist(nameUser, emailUser).subscribe((result) => {

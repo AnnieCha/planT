@@ -8,18 +8,14 @@ import { InfotextComponent } from './components/infotext/infotext.component';
 import { LoginComponent } from './components/login/login.component';
 import { CareAccordionComponent } from './components/care-accordion/care-accordion.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { AuthGuard } from './services/authGuard.service';
 
 const routes: Routes = [
   {
-    path: 'plant/:name', component: PlantInfoComponent, children: [
-      { path: '', component: InfotextComponent, outlet: "right-side" },
-      { path: 'add-plant', component: EditPlantComponent, outlet: "right-side" },
-    ]
-  },
-  //todo: nicht schön gelöst
+    path: 'plant/:name', component: PlantInfoComponent, canActivate: [AuthGuard]},
   { path: 'registration', component: RegistrationComponent},
-  { path: 'mein-kalender', component: CareAccordionComponent},
-  { path: ':area', component: PlantlistComponent},
+  { path: 'mein-kalender', component: CareAccordionComponent, canActivate: [AuthGuard]},
+  { path: ':area', component: PlantlistComponent, canActivate: [AuthGuard]},
   { path: '', component: LoginComponent}
 ];
 
