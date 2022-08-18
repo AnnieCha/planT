@@ -37,4 +37,8 @@ export class HeaderComponent implements OnInit {
     this._translateService.use(language);
   }
 
+  logout(): void {
+    this._userService.logoutUser();
+  }
+
 }

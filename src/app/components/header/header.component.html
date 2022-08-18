@@ -22,14 +22,6 @@
         <a [routerLink]="'/meine-pflanzen'">{{ 'MENU.OWN-PLANTS' | translate }}</a>
         <a [routerLink]="'/all'">{{ 'MENU.ALL-PLANTS' | translate }}</a>
         <a [routerLink]="'/mein-kalender'">{{ 'MENU.CALENDAR' | translate }}</a>
-        <div class="dropdown">
-            <span><a>{{ 'MENU.SETTINGS' | translate }}</a></span>
-            <div class="dropdown-content">
-                <ul>
-                    <li><a (click)="changeLightMode()">Dark Mode</a></li>
-                </ul>
-            </div>
-        </div>
-        <a>{{ 'MENU.LOG-OUT' | translate }}</a>
+        <a [routerLink]="'/'" (click)="logout()">{{ 'MENU.LOG-OUT' | translate }}</a>
     </mat-toolbar-row>
 </mat-toolbar>
