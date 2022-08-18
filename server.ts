@@ -1,7 +1,8 @@
 import { plantRouter } from "./routes";
-//import * as express from "express";
-const serverless = require('serverless-http');
-const express = require('express');
+import * as express from "express";
+
+// Folgende Zeile ist relevant, wenn wir unser Backend über Netlify laufen lassen
+//const serverless = require('serverless-http');
 const app = express();
 const apiRoute = '.netlify/functions/server/plant';
 const port = 5200; // default port to listen
@@ -14,8 +15,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended : false }));
 
-//app.use(plantRouter);
-app.use(apiRoute,plantRouter);
+app.use(plantRouter);
+// Folgende Zeile ist relevant, wenn wir unser Backend über Netlify laufen lassen
+//app.use(apiRoute,plantRouter);
 
 //const PORT = process.env.PORT || 5200;
 app.listen(port, () => {
@@ -23,4 +25,5 @@ app.listen(port, () => {
 })
 
 module.exports = app;
-module.exports.handler = serverless(app);
+// Folgende Zeile ist relevant, wenn wir unser Backend über Netlify laufen lassen
+// module.exports.handler = serverless(app);

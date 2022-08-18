@@ -78,11 +78,9 @@
           "configurations": {
             "production": {
               "browserTarget": "plant-app:build:production",
-              "proxyConfig": "src/proxy.conf.json"
             },
             "development": {
               "browserTarget": "plant-app:build:development",
-              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
