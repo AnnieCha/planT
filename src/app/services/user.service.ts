@@ -20,8 +20,8 @@ export class UserService {
     this.userObserv$ = (this._http.get<User[]>(this._rootAdress + 'user/' + user_name + '/' + user_password));
     this.userObserv$.subscribe((result) => {
       this.logedInUser$ = result[0];
+      console.log(this.logedInUser$.name + this.logedInUser$.id + this.logedInUser$.password);
     });
-
     return this.userObserv$;
   }
 
