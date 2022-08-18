@@ -16,10 +16,6 @@ export class HeaderComponent implements OnInit {
     _translateService.setDefaultLang('en');
     _translateService.use('en');
   }
-  
-  chooseLanguage(lang: string): void {
-    this._translateService.use(lang);
-  }
 
   ngOnInit(): void {  }
 
@@ -33,9 +29,12 @@ export class HeaderComponent implements OnInit {
 
   changeLightMode(): void {
     document.body.classList.toggle('dark-mode');
+    this.isLightMode = !this.isLightMode;
     //localStorage.setItem(PrefferedThemeKey, this.isLightMode ? 'light' : 'dark');
   }
 
+  onValueChange(language: string): void {
+    this._translateService.use(language);
+  }
 
- 
 }

@@ -3,34 +3,59 @@
     color: var(--color-three);
     display: flex;
     align-items: center;
-}
+    position: fixed;
 
-.header {
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-}
 
-.menu {
-    display: flex;
-    justify-content: space-around;
-    height: 40px;
-    background-color: var(--color-three);
-    color: var(--color-primary);
-    font-style: bold;
-    font-size: larger;
-    //z-index: 5;
+    .header {
+        display: flex;
+        justify-content: space-between;
 
-    a {
-        all: unset;
-        font-size: medium;
-        font-weight: 100;
-        cursor: pointer;
+        .logo {
+            height: 50px;
+        }    
+
+        .right-site{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
     }
 
-    a:hover {
-        color: var(--color-secondary);
+    
+    .menu {
+        display: flex;
+        justify-content: space-around;
+        height: 40px;
+        margin-top: 10px;
+        background-color: var(--color-accent);
+        color: var(--color-primary);
+        font-style: bold;
+        font-size: larger;
+        z-index: 5;
+
+        a {
+            all: unset;
+            font-size: medium;
+            font-weight: 100;
+            cursor: pointer;
+        }
+
+        a:hover {
+            color: var(--color-secondary);
+        }
     }
+}
+
+::ng-deep .mat-button-toggle {
+    background-color: var(--color-primary);
+  }
+
+  ::ng-deep  .mat-button-toggle-checked {
+    background-color: var(--color-primary);
+  }
+
+.language {
+    font-size: small;
 }
 
 .dropdown {
@@ -56,7 +81,10 @@ ul {
     list-style: none;
 }
 
-
+::ng-deep .mat-icon{
+    font-size:20px !important;
+    color: black;
+}
 @media screen and (max-width: 600px) {
     .menu {
         flex-direction: column;
@@ -74,7 +102,3 @@ ul {
         display: none;
     }
 }
-
-
-  
-  

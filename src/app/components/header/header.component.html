@@ -1,9 +1,20 @@
 <mat-toolbar class="toolbar">
     <mat-toolbar-row class="header">
-        <span [routerLink]="'/'">PlanT</span>
-        <app-search-bar *ngIf="showMenu()"></app-search-bar>
-        <button *ngIf="showMenu()" mat-icon-button class="menu-icon"
-            aria-label="Example icon-button with menu icon" (click)="toggleMenu()">
+        <img [routerLink]="'/'" src="../../../assets/img/logo_wide.png" class="logo" />
+        <div class="right-site">
+            <app-search-bar *ngIf="showMenu()"></app-search-bar>
+            <button mat-icon-button class="icon-button" aria-label="Weitere Informationen" (click)="changeLightMode()">
+                <mat-icon aria-hidden="false" class="darkmode-icon">{{isLightMode ? 'bedtime' : 'sunny'}}</mat-icon>
+            </button>
+            <mat-button-toggle-group name="language" aria-label="Language oder Sprache" class="language">
+                <mat-button-toggle value="english" aria-label="Englisch" (change)="onValueChange('en')">En
+                </mat-button-toggle>
+                <mat-button-toggle value="german" aria-label="Deutsch" (change)="onValueChange('de')">De
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+        <button *ngIf="showMenu()" mat-icon-button class="menu-icon" aria-label="Example icon-button with menu icon"
+            (click)="toggleMenu()">
             <mat-icon>menu</mat-icon>
         </button>
     </mat-toolbar-row>
@@ -15,8 +26,6 @@
             <span><a>{{ 'MENU.SETTINGS' | translate }}</a></span>
             <div class="dropdown-content">
                 <ul>
-                    <li><a (click)="chooseLanguage('en')">English</a></li>
-                    <li><a (click)="chooseLanguage('de')">Deutsch</a></li>
                     <li><a (click)="changeLightMode()">Dark Mode</a></li>
                 </ul>
             </div>

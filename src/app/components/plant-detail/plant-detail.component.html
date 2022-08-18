@@ -12,7 +12,7 @@
                 <mat-icon aria-hidden="false">information</mat-icon>
             </button>
         </div>
-        <p class="content">{{plant.short_desc}}</p>
+        <p class="content">{{lang == 'de' ? plant.short_desc : plant.short_desc_engl}}</p>
     </ng-container>
 </div>
 

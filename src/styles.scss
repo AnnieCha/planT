@@ -7,9 +7,10 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 
-$plant-app-primary: mat.define-palette(mat.$green-palette);
+$plant-app-primary: mat.define-palette(mat.$teal-palette);
 $plant-app-accent: mat.define-palette(mat.$orange-palette, A200, A100, A400);
 $plant-app-warn: mat.define-palette(mat.$red-palette);
+
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
@@ -45,18 +46,14 @@ $angular-dark-theme: mat.define-dark-theme(
 
 :root {
   --color-primary: #f8f8f8;
-  --color-secondary: #0a5457;
+  --color-secondary: #1f7e81;
   --color-three: #2a2b2a;
+  --color-accent: #70c2b2;
 
   --color-dark-primary: #383838;
   --color-dark-secondary: #202020;
   --color-dark-three: #cbcbcb;
 }
-
-
-
-
-
 
 
 html,
@@ -68,7 +65,7 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: var(--color-primary);
-  color: var(--color-three);
+  color: var(--color-secondary);
 
   &.dark-mode {
     --color-primary: var(--color-dark-primary);

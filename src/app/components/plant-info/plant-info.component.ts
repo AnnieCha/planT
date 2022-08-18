@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { FormDialogComponent } from '../form-dialog/form-dialog.component';
 import { UserService } from 'src/app/services/user.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-plant-info',
@@ -21,6 +22,7 @@ export class PlantInfoComponent implements OnInit {
   editMode: boolean = false;
   imgPath = '../../../assets/img/';
   private _updatePlantMode: boolean = false
+  lang: string = this._translateService.currentLang;
 
   myGroup: FormGroup = new FormGroup({
     ownName: new FormControl('', [Validators.required, Validators.minLength(1)]),
@@ -34,6 +36,7 @@ export class PlantInfoComponent implements OnInit {
     private _route: ActivatedRoute,
     private _snackBar: MatSnackBar,
     private _userService: UserService,
+    private _translateService: TranslateService,
     public dialog: MatDialog
   ) { }
 

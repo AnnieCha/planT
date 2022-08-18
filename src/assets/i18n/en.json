@@ -7,19 +7,32 @@
         "LOG-OUT": "Log out"
     },
     "TITLE": {
-        "PLANT": "Plant"
+        "PLANT": "Plant",
+        "REGISTRATION": "Registration",
+        "LOGIN": "Login"
     },
     "HINT": {
         "NO-PLANTS": "You don't have any plants yet.",
         "DATE": "Choose a date for the next watering.",
         "MAX": "Maximum 20 characters."
     },
+     "INFO": {
+        "BACK_LOGIN": "Back to Login",
+        "GO_TO_REGISTRATION": "No account yet? Registrate now"
+    },
     "BUTTON": {
-        "OVERVIEW": "New plant"
+        "OVERVIEW": "New plant",
+        "LOGIN": "Login",
+        "REGISTRATE": "Registrate",
+        "CREATE_ACCOUNT": "Create Account"
     },
     "FORM": {
         "NAME": "Name",
-        "DATE-START": "Date"
+        "DATE-START": "Date",
+        "USERNAME": "Username",
+        "PASSWORD": "Password",
+        "EMAIL": "E-Mail",
+        "REPEAT_PASSWORD": "Repeat password"
     },
     "MY_PLANTS": {
         "MONDAY": "Monday",

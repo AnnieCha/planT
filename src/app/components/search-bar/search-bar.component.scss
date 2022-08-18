@@ -1,6 +1,10 @@
 ::ng-deep .mat-form-field {
     font-size: medium;
+    margin-top: 10px;
+    color: var(--color-accent);
+    // border-color: var(--color-accent);
 }
+
 
 .search-bar {
     margin-right: 50px;
@@ -12,4 +16,9 @@
 
 .example-full-width {
     width: 100%;
+
+    .mat-form-field-wrapper {
+        padding-bottom: 0 !important;
+    }
+
 }

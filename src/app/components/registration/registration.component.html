@@ -1,28 +1,28 @@
 <div class="registrationContainer">
-    <h2>Registration</h2>
+    <h2>{{'TITLE.REGISTRATION' | translate}}</h2>
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
       <div class="form-fields">
         <mat-form-field appearance="outline">
-          <mat-label for="username">Username</mat-label>
+          <mat-label for="username">{{'FORM.USERNAME' | translate}}</mat-label>
           <input matInput formControlName="username" placeholder="Type your username">
         </mat-form-field>
         <mat-form-field appearance="outline">
-            <mat-label for="email">Email</mat-label>
+            <mat-label for="email">{{'FORM.EMAIL' | translate}}</mat-label>
             <input matInput formControlName="email" placeholder="Type your email">
         </mat-form-field>
         <mat-form-field appearance="outline">
-            <mat-label for="password">Password</mat-label>
+            <mat-label for="password">{{'FORM.PASSWORD' | translate}}</mat-label>
             <input type="password" matInput formControlName="password" placeholder="Type your password">
         </mat-form-field>
         <mat-form-field appearance="outline">
-          <mat-label for="password">Password widerholen</mat-label>
+          <mat-label for="password">{{'FORM.REPEAT_PASSWORD' | translate}}</mat-label>
           <input type="password" matInput formControlName="password2" placeholder="Password widerholen">
       </mat-form-field>
       </div>
       <div class="btn">
-        <button mat-raised-button>Create Account</button>
-        <p>Back to Login</p>
-        <button mat-raised-button (click)="navigateLogin()">Login</button>
+        <button mat-raised-button color="primary" >{{'BUTTON.CREATE_ACCOUNT' | translate}}</button>
+        <p>{{'INFO.BACK_LOGIN' | translate}}</p>
+        <button mat-raised-button color="primary"  (click)="navigateLogin()">{{'BUTTON.LOGIN' | translate}}</button>
       </div>
     </form>
     </div>

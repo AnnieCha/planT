@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { OpenPlantService } from 'src/app/services/openPlant.service';
 import { PlantService } from 'src/app/services/plant.service';
 import { PlantListService } from 'src/app/services/plantList.service';
@@ -19,8 +20,9 @@ export class PlantDetailComponent implements OnInit {
   // this will change between my_plants and all_plants -> needs setter-method or getting information by propsS + maybe enums?
   type: string = "all";
   nextWateringDay: string = "";
-  weekdays = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
-  imgPath = '../../../assets/img/';
+  weekdays: string[] = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+  imgPath: string = '../../../assets/img/';
+  lang: string = this._translateService.currentLang;
 
 
   constructor(
@@ -28,6 +30,7 @@ export class PlantDetailComponent implements OnInit {
     private _plantListService: PlantListService,
     private _plantService: PlantService,
     private _userService: UserService,
+    private _translateService: TranslateService,
     private _router: Router
   ) { }
 

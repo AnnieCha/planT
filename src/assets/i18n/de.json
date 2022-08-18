@@ -7,7 +7,13 @@
         "LOG-OUT": "Ausloggen"
     },
     "TITLE": {
-        "PLANT": "Pflanze"
+        "PLANT": "Pflanze",
+        "REGISTRATION": "Registrierung",
+        "LOGIN": "Login"
+    },
+    "INFO": {
+        "BACK_LOGIN": "Zurück zum Login",
+        "GO_TO_REGISTRATION": "Noch kein Nutzerkonto? Jetzt registrieren"
     },
     "HINT": {
         "NO-PLANTS": "Du hast noch keine Pflanzen hinzugefügt.",
@@ -15,11 +21,19 @@
         "MAX": "Maximal 20 Zeichen."
     },
     "BUTTON": {
-        "OVERVIEW": "Neue Pflanze"
+        "OVERVIEW": "Neue Pflanze",
+        "LOGIN": "Login",
+        "REGISTRATE": "Registrieren",
+        "CREATE_ACCOUNT": "Konto erstellen"
     },
     "FORM": {
         "NAME": "Name",
-        "DATE-START": "Datum"
+        "DATE-START": "Datum",
+        "USERNAME": "Nutzername",
+        "PASSWORD": "Passwort",
+        "EMAIL": "E-Mail",
+        "REPEAT_PASSWORD": "Passwort wiederholen"
+
     },
     "MY_PLANTS": {
         "MONDAY": "Montag",

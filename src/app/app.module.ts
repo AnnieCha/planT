@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -68,6 +69,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatInputModule,
     MaterialModule,
     MatMenuModule,
+    MatSlideToggleModule,
     MatAutocompleteModule,
     MatSnackBarModule,
     MatDialogModule,
