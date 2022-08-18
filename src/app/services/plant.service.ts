@@ -8,7 +8,9 @@ import { Observable, startWith, switchMap, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class PlantService {
-  private _rootAdress = 'http://localhost:5200/';
+  private _rootAdress: string = 'http://localhost:5200/';
+  private _BASE_URL: string = '/.netlify/functions/server/plant';
+
   myPlants$?: Observable<Plant[]>;
   allPlants$: Observable<Plant[]>;
   specificPlant?: Plant;
@@ -18,25 +20,25 @@ export class PlantService {
   constructor(private _http: HttpClient) {
     this.allPlants$ = this._refresh$.pipe(
       startWith(''),
-      switchMap(() => this._http.get<Plant[]>(this._rootAdress + 'all-plants')))
+      switchMap(() => this._http.get<Plant[]>(this._BASE_URL + 'all-plants')))
   }
 
   getPlantByName(name: string): Observable<Plant[]> {
-    return (this._http.get<Plant[]>(this._rootAdress + 'plant/' + name));
+    return (this._http.get<Plant[]>(this._BASE_URL + 'plant/' + name));
   }
 
   getPlantNamesFromDb(): Observable<any[]> {
-    return this._http.get<any[]>(this._rootAdress + 'plantnames');
+    return this._http.get<any[]>(this._BASE_URL + 'plantnames');
   }
 
   getMyPlantsFromDB(user_id: number) {
     this.myPlants$ = this._refresh$.pipe(
       startWith(''),
-      switchMap(() => this._http.get<Plant[]>(this._rootAdress + 'my-plants/' + user_id)))
+      switchMap(() => this._http.get<Plant[]>(this._BASE_URL + 'my-plants/' + user_id)))
   }
 
   deleteOwnPlant(user_id: number, ownName: string) {
-    return this._http.delete<any>(this._rootAdress + ownName + '/' + user_id);
+    return this._http.delete<any>(this._BASE_URL + ownName + '/' + user_id);
   }
 
   refreshPlants(): void {
@@ -44,10 +46,10 @@ export class PlantService {
   }
 
   addPlantToUser(newPlant: any): Observable<any> {
-    return this._http.post<any>(this._rootAdress + 'plant/newplant', newPlant);
+    return this._http.post<any>(this._BASE_URL + 'plant/newplant', newPlant);
   }
 
   updatePlantFromUser(updatedPlant: any): Observable<any> {
-    return this._http.put(this._rootAdress + 'plant', updatedPlant);
+    return this._http.put(this._BASE_URL + 'plant', updatedPlant);
   }
 }

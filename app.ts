@@ -1,15 +1,14 @@
 import * as express from "express";
 import { plantRouter } from "./server";
+const serverless = require('serverless-http');
 
 const app = express();
+const apiRoute = '/.netlify/functions/server/plant';
 const port = 5200; // default port to listen
 const cors = require('cors');
-const serverless = require('serverless-http');
 
 //const dotenv = require('dotenv');
 //dotenv.config({ path: path.resolve(__dirname, './env') });
-
-const apiRoute = '/.netlify/functions/server/plantapp';
 
 app.use(cors());
 app.use(express.json());
