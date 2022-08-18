@@ -1,5 +1,5 @@
-import * as express from "express";
 import { plantRouter } from "./routes";
+import * as express from "express";
 const serverless = require('serverless-http');
 
 const app = express();

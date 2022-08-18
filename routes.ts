@@ -5,8 +5,6 @@ import { dbPool } from './db';
 
 export const plantRouter = express.Router();
 plantRouter.use(express.json());
-
-
 //dotenv.config({ path: path.resolve(__dirname, './env') });
 
 
