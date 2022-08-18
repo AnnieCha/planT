@@ -1,7 +1,7 @@
 import { plantRouter } from "./routes";
-import * as express from "express";
+//import * as express from "express";
 const serverless = require('serverless-http');
-
+const express = require('express');
 const app = express();
 const apiRoute = '.netlify/functions/server/plant';
 const port = 5200; // default port to listen
