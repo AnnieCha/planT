@@ -46,11 +46,16 @@ plantRouter.get('/my-plants/:user_id', async (req, res) => {
 });
 
 plantRouter.get('/user/:name/:password', async (req, res) => {
-    const sqlQuery = 'SELECT * FROM user WHERE name LIKE ? AND password LIKE ?';
-    dbPool.query(sqlQuery, [req.params.name, req.params.password], function (err, response) {
-        if (err) throw err;
-        res.send(response);
-    })
+    try {
+        const sqlQuery = 'SELECT * FROM user WHERE name LIKE ? AND password LIKE ?';
+        dbPool.query(sqlQuery, [req.params.name, req.params.password], function (err, response) {
+            if (err) throw err;
+            res.send(response);
+        })
+    } catch (err) {
+        res.send('Failed to log in');
+    }
+
 });
 
 plantRouter.get('/userexist/:name/:mail', async (req, res) => {
