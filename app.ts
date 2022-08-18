@@ -14,7 +14,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended : false }));
 
-app.use(apiRoute,plantRouter);
+app.use(plantRouter);
+//app.use(apiRoute,plantRouter);
 
 //const PORT = process.env.PORT || 5200;
 app.listen(port, () => {
@@ -22,4 +23,4 @@ app.listen(port, () => {
 })
 
 module.exports = app;
-module.exports.handler = serverless(app);
+//module.exports.handler = serverless(app);
