@@ -10,8 +10,8 @@ export class UserService {
   private loginUser = false;
   userObserv$?: Observable<User[]>;
   logedInUser$?: User;
-  private _rootAdress: string = '/.netlify/functions/server/plant';
- // private _rootAdress = 'http://localhost:5200/';
+ // private _rootAdress: string = '/.netlify/functions/server/plant';
+  private _rootAdress = 'http://localhost:5200/';
   private _refresh$: Subject<void> = new Subject<void>();
 
   constructor(private _http: HttpClient) { }
