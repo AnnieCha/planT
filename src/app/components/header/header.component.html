@@ -1,7 +1,7 @@
 <mat-toolbar class="toolbar">
     <mat-toolbar-row class="header">
         <span [routerLink]="'/'">PlanT</span>
-        <app-search-bar></app-search-bar>
+        <app-search-bar *ngIf="showMenu()"></app-search-bar>
         <button *ngIf="showMenu()" mat-icon-button class="menu-icon"
             aria-label="Example icon-button with menu icon" (click)="toggleMenu()">
             <mat-icon>menu</mat-icon>

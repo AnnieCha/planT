@@ -16,16 +16,16 @@ export class SearchBarComponent implements OnInit {
   plantNames: string[] = [];
   filteredPlants$!: Observable<string[]>;
 
-  constructor(private _plantService: PlantService, private _openPlantService: OpenPlantService, private _router: Router) { }
-
-  ngOnInit(): void {
+  constructor(private _plantService: PlantService, private _openPlantService: OpenPlantService, private _router: Router) { 
     this._plantService.getPlantNamesFromDb().subscribe(result => {
-      console.log('result plantnames', result);
       this.plantNames = result.map(function (nameObject) {
         return nameObject['name'];
       });
+      console.log('plantnames after map', this.plantNames);
     });
+  }
 
+  ngOnInit(): void {
     this.filteredPlants$ = this.filter.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value || '')),
@@ -34,13 +34,11 @@ export class SearchBarComponent implements OnInit {
   }
 
   private _filter(value: string): string[] {
-    console.log('filter value: ', value);
     const filterValue = value.toLowerCase();
     return this.plantNames.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   openPlant(name: string): void {
-    console.log('open plant: ', name)
     this._openPlantService.setEditMode(false);
     this._openPlantService.setUpdatePlantMode(false);
     this._router.navigate(['/plant', name]);

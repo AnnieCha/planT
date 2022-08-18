@@ -10,7 +10,8 @@ export class UserService {
   private loginUser = false;
   userObserv$?: Observable<User[]>;
   logedInUser$?: User;
-  private _rootAdress = 'http://localhost:5200/';
+  private _rootAdress: string = '/.netlify/functions/server/plant';
+ // private _rootAdress = 'http://localhost:5200/';
   private _refresh$: Subject<void> = new Subject<void>();
 
   constructor(private _http: HttpClient) { }
@@ -19,8 +20,8 @@ export class UserService {
     this.userObserv$ = (this._http.get<User[]>(this._rootAdress + 'user/' + user_name + '/' + user_password));
     this.userObserv$.subscribe((result) => {
       this.logedInUser$ = result[0];
+      console.log(this.logedInUser$.name + this.logedInUser$.id + this.logedInUser$.password);
     });
-
     return this.userObserv$;
   }
 

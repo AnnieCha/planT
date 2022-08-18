@@ -8,7 +8,9 @@ import { Observable, startWith, switchMap, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class PlantService {
-  private _rootAdress = 'http://localhost:5200/';
+  //private _rootAdress: string = 'http://localhost:5200/';
+  private _rootAdress: string = '/.netlify/functions/server';
+
   myPlants$?: Observable<Plant[]>;
   allPlants$: Observable<Plant[]>;
   specificPlant?: Plant;
@@ -19,7 +21,6 @@ export class PlantService {
     this.allPlants$ = this._refresh$.pipe(
       startWith(''),
       switchMap(() => this._http.get<Plant[]>(this._rootAdress + 'all-plants')))
-    //this.plantNames = this.getPlantNamesFromDb();
   }
 
   getPlantByName(name: string): Observable<Plant[]> {
