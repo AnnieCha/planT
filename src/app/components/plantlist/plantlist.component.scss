@@ -14,9 +14,6 @@ hr {
     margin-bottom: 20px;
 }
 
-//try responsive design with gridlayout
-
-
 .row {
    // width: 800px;
     display: grid;
@@ -25,18 +22,6 @@ hr {
     margin: auto;
 }
 
-//try responsive design with flexlayout
-/*
-.row {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.plantDetail {
-    flex: 40%;
-    padding: 50px;
-}
-*/
 @media screen and (max-width: 600px) {
     .row {
         grid-template-columns: 1fr;

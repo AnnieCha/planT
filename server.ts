@@ -25,6 +25,7 @@ plantRouter.get('/all-plants', async (req, res) => {
 
 plantRouter.get('/plantnames', async (req, res) => {
     dbPool.query('SELECT plant.name FROM plant', function (err, response) {
+        console.log(response);
         if (err) throw err;
         res.send(response);
     });
@@ -102,8 +103,8 @@ plantRouter.put('/plant', function (req, res) {
 
 // delete plant from user
 plantRouter.delete('/:plantName/:user_id', async (req, res) => {
-    const sqlQuery = 'DELETE FROM userplants WHERE user_id = 1 AND ownName = ?';
-    dbPool.query(sqlQuery, [req.params.plantName], function (err, result) {
+    const sqlQuery = 'DELETE FROM userplants WHERE user_id = ? AND ownName = ?';
+    dbPool.query(sqlQuery, [req.params.user_id, req.params.plantName], function (err, result) {
         if (err) throw err;
         res.send(result);
     })

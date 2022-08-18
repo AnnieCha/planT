@@ -4,6 +4,7 @@ import { PlantService } from 'src/app/services/plant.service';
 import { ActivatedRoute } from '@angular/router';
 import { PlantListService } from 'src/app/services/plantList.service';
 import { Observable, map } from 'rxjs';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-plantlist',
@@ -23,6 +24,7 @@ export class PlantlistComponent implements OnInit {
   constructor(
     private _plantService: PlantService,
     private _plantListService: PlantListService,
+    private _userService: UserService,
     private route: ActivatedRoute,
   ) { }
 
@@ -32,7 +34,7 @@ export class PlantlistComponent implements OnInit {
       if(params['area'] === "meine-pflanzen"){
         this.title = 'MENU.OWN-PLANTS';
         this.type = "own";
-        this._plantService.getMyPlantsFromDB(1);
+        this._plantService.getMyPlantsFromDB(this._userService.getCurrentUserId());
         this.plants$ = this._plantService.myPlants$?.pipe(
           map((plants: Plant[]) => (plants ? plants.filter((plant: Plant) => !!plant) : []))
         );

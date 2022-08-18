@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit {
   menuOpen: boolean = false;
   isLightMode: boolean = true;
 
-  constructor(private _translateService: TranslateService) {
+  constructor(private _translateService: TranslateService, private _userService: UserService) {
     _translateService.setDefaultLang('en');
     _translateService.use('en');
   }
@@ -26,6 +27,10 @@ export class HeaderComponent implements OnInit {
     this.menuOpen = !this.menuOpen;
   }
   
+  showMenu(): boolean {
+    return this._userService.getLoggedIn();
+  }
+
   changeLightMode(): void {
     document.body.classList.toggle('dark-mode');
     //localStorage.setItem(PrefferedThemeKey, this.isLightMode ? 'light' : 'dark');

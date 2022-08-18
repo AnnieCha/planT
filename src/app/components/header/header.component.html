@@ -1,13 +1,13 @@
 <mat-toolbar class="toolbar">
     <mat-toolbar-row class="header">
         <span [routerLink]="'/'">PlanT</span>
-        <app-search-bar></app-search-bar>
-        <button mat-icon-button class="menu-icon"
+        <app-search-bar *ngIf="showMenu()"></app-search-bar>
+        <button *ngIf="showMenu()" mat-icon-button class="menu-icon"
             aria-label="Example icon-button with menu icon" (click)="toggleMenu()">
             <mat-icon>menu</mat-icon>
         </button>
     </mat-toolbar-row>
-    <mat-toolbar-row [ngClass]="{'menu-row': this.menuOpen, 'menu': true}">
+    <mat-toolbar-row *ngIf="showMenu()" [ngClass]="{'menu-row': this.menuOpen, 'menu': true}">
         <a [routerLink]="'/meine-pflanzen'">{{ 'MENU.OWN-PLANTS' | translate }}</a>
         <a [routerLink]="'/all'">{{ 'MENU.ALL-PLANTS' | translate }}</a>
         <a [routerLink]="'/mein-kalender'">{{ 'MENU.CALENDAR' | translate }}</a>
