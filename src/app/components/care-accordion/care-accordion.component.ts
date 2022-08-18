@@ -1,7 +1,10 @@
 import {FlatTreeControl} from '@angular/cdk/tree';
-import {Component} from '@angular/core';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import {EventService} from 'src/app/services/event.service';
+import { Component, OnInit } from '@angular/core';
+import { Wateringevent } from 'src/app/shared/models/wateringevent';
+import { Observable, map } from 'rxjs';
+import { UserService } from 'src/app/services/user.service';
 
 interface CareEventNode {
   name: string;
@@ -10,7 +13,7 @@ interface CareEventNode {
 
 interface SingleInformation {
   name: string;
-}
+}  
 
 
 const TREE_DATA: CareEventNode[] = [
@@ -35,7 +38,11 @@ interface ExampleFlatNode {
   templateUrl: './care-accordion.component.html',
   styleUrls: ['./care-accordion.component.scss']
 })
-export class CareAccordionComponent {
+
+export class CareAccordionComponent implements OnInit {
+  events$?: Observable<Wateringevent[]> = this.events$ = this._eventService.currentEvents$.pipe(
+    map((events: Wateringevent[]) => (events ? events.filter((event: Wateringevent) => !!event) : []))
+  );
 
   private _transformer = (node: CareEventNode, level: number) => {
     return {
@@ -59,6 +66,7 @@ export class CareAccordionComponent {
  
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);  // dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
+
   constructor(private _eventService: EventService) {
     // this.dataSource.data = TREE_DATA;
     var data =  _eventService.getCurrenPlant("Heute");
@@ -68,6 +76,12 @@ export class CareAccordionComponent {
     this.dataSource.data = TREE_DATA;
   }
   
+  ngOnInit(): void {
+
+  }
+
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
+
+  
 
 }

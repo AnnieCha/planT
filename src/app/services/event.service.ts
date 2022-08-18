@@ -1,11 +1,21 @@
 import { Injectable } from '@angular/core';
+import { Wateringevent } from '../shared/models/wateringevent';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, startWith, switchMap, Subject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
   })
   export class EventService {
+    private _rootAdress = 'http://localhost:5200/';
+    currentEvents$: Observable<Wateringevent[]>;
+    private _refresh$: Subject<void> = new Subject<void>();
 
-    constructor() { }
+    constructor(private _http: HttpClient) { 
+      
+      this.currentEvents$ = this._refresh$.pipe(
+      startWith(''),
+      switchMap(() => this._http.get<Wateringevent[]>(this._rootAdress + 'userevents/37')))}
 
     /*
         Event:
@@ -48,8 +58,17 @@ import { Injectable } from '@angular/core';
           ]
     }
 
+    getAllEvents() {
+      
+  }
+
     /*
         Get All Plants from Date to Date ??
     */
+
+    
+    getUser(user_id: number): Observable<Wateringevent[]> {
+        return (this._http.get<Wateringevent[]>(this._rootAdress + 'userevents/' + user_id));
+    }
 
   }
