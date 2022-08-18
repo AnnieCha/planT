@@ -51,7 +51,6 @@ plantRouter.get('/user/:name/:password', async (req, res) => {
     dbPool.query(sqlQuery, [req.params.name, req.params.password], function (err, response) {
         if (err) throw err;
         res.send(response);
-        console.log(response);
     })
 });
 

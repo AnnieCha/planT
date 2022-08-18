@@ -3,3 +3,30 @@
   --background-color: (--color-dark-secondary);
   --text-bg: (--color-dark-three);
 }
+
+.full-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  footer {
+    width: 100%;
+    background-color: gray;
+    height: 50px;
+    margin-top: 50px;
+    
+    .footer-row {
+      justify-content: center;
+    }
+
+    a {
+      all: unset;
+      margin-right: 10px;
+      color: white;
+    }
+  }
+}
+
+
+
