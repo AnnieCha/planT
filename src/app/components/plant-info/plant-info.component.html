@@ -7,8 +7,7 @@
     <hr>
     <div class="wrapper">
         <div class="leftInfo">
-            <img *ngIf="currPlant.plant_id < 4" class="plantImage" src={{imgPath}}>
-            <img *ngIf="currPlant.plant_id > 3" class="plantImage" src={{currPlant.imageUrl}}>
+            <img *ngIf="currPlant.plant_id" class="plantImage" src={{imgPath}}>
             <div class="icon-row" *ngIf="!editMode">
                 <mat-icon [ngClass]="{'lightgray-icon': currPlant.wateramount < 1}" aria-hidden="false"
                     aria-label="Icon Information">water_drop</mat-icon>
@@ -28,13 +27,17 @@
         </div>
         <ng-container *ngIf="currPlant && !editMode; else editModeTemplate">
             <div class="row header">
-                <p>{{currPlant.name}}</p>
+                <h2>{{lang == 'de' ? currPlant.name : currPlant.name_engl}}</h2>
                 <button mat-icon-button class="icon-button" (click)="setEditMode(true)"
                     aria-label="Pflanzeneintrag bearbeiten">
                     <mat-icon>add</mat-icon>
                 </button>
             </div>
             <p class="main">{{lang == 'de' ? currPlant.long_desc : currPlant.long_desc_engl}}</p>
+            <div class="info">
+                <p>{{'INFO.WATER_FREQUENCY_START' | translate}} {{currPlant.water_frequency}} {{'INFO.WATER_FREQUENCY_END' | translate}}</p>
+                <p>{{'INFO.WATER_AMOUNT_START' | translate}} {{currPlant.water_liter}} {{'INFO.WATER_AMOUNT_END' | translate}}</p>
+            </div>
         </ng-container>
     </div>
 </div>
@@ -42,7 +45,7 @@
 <ng-template #editModeTemplate>
     <form [formGroup]="myGroup" (ngSubmit)="onFormSubmit()">
         <div class="row header">
-            <p>{{currPlant.name}}</p>
+            <h2>{{lang == 'de' ? currPlant.name : currPlant.name_engl}}</h2>
             <button mat-icon-button type="submit" class="icon-button innerBtn" aria-label="Daten abschicken"
                 [disabled]="myGroup.invalid">
                 <mat-icon>check</mat-icon>

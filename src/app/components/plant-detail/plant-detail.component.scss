@@ -6,7 +6,7 @@
     align-items: baseline;
     justify-content: space-between;
     grid-area: header;
-    width: 200px;
+    width: 300px;
 }
 
 button {
@@ -22,7 +22,7 @@ button {
 }
 
 .content {
-    font-size: smaller;
+    font-size: small;
     grid-area: content;
 }
 
@@ -32,8 +32,13 @@ button {
     grid-column-gap: 15px;
     grid-template-areas: 
         "sidebar header"
+        "sidebar content"
+        "sidebar content"        
+        "sidebar content"
+        "sidebar content"
+        "sidebar content"
         "sidebar content";
-    width: 320px;
+    width: 465px;
     justify-content: flex-start;
 }
 
@@ -43,7 +48,8 @@ img {
     border-radius: 10%;
 }
 
-h4 {
+h3 {
+    font-size: large;
     cursor: pointer;
 }
 
@@ -53,7 +59,23 @@ h4 {
     z-index: 0;
 }
 
-@media screen and (max-width: 600px) {
+
+@media screen and (max-width: 800px) {
+    .header {
+        width: 200px;
+    }
+
+    .content {
+        width: 220px;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    .wrapper {
+        width: 300px;
+    }
+
     .header {
         width: 200px;
     }

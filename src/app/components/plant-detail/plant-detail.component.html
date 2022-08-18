@@ -2,7 +2,7 @@
     <img *ngIf="plant.plant_id" class="plantImage" src={{imgPath}}>
        <ng-container *ngIf="type === 'all'; else personalPlants">
         <div class="header">
-            <h4 (click)="openPlant(plant.name, false)">{{plant.name}}</h4>
+            <h3 (click)="openPlant(plant.name, false)">{{lang == 'de' ? plant.name : plant.name_engl}}</h3>
             <button mat-icon-button class="icon-button innerBtn" aria-label="Pflanze zu eigenen Pflanzen hinzufügen"
                 (click)="openPlant(plant.name, true)">
                 <mat-icon aria-hidden="false">add</mat-icon>
@@ -18,7 +18,7 @@
 
 <ng-template #personalPlants>
     <div class="header">
-        <h4 (click)="openPlant(plant.name, false)">{{plant.name}}</h4>
+        <h3 (click)="openPlant(plant.name, false)">{{lang == 'de' ? plant.name : plant.name_engl}}</h3>
         <button mat-icon-button class="icon-button innerBtn" aria-label="Pflanzeneintrag bearbeiten"
             (click)="edit(plant.name, plant.ownName!, plant.nextWateringDay!)">
             <mat-icon aria-hidden="false">edit</mat-icon>

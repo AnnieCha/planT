@@ -1,58 +1,53 @@
 .toolbar {
-    background-color: var(--color-secondary);
     color: var(--color-three);
     display: flex;
     align-items: center;
-    position: fixed;
     z-index: 5;
-
 
     .header {
         display: flex;
         justify-content: space-between;
+        background-color: var(--color-secondary);
+        z-index: 5;
+
 
         .logo {
             height: 50px;
-        }    
+            cursor: pointer;
+        }
 
-        .right-site{
+        .right-site {
             display: flex;
             align-items: center;
             gap: 20px;
         }
     }
 
-    
     .menu {
         display: flex;
         justify-content: space-around;
-        height: 30px;
-        margin-top: 10px;
+        height: 35px;
         background-color: var(--color-accent);
-        color: var(--color-primary);
-        font-style: bold;
-        font-size: larger;
+        color: var(--color-secondary);
 
-        a {
-            all: unset;
+        span {
             font-size: large;
-            font-weight: 200;
             cursor: pointer;
         }
 
-        a:hover {
-            color: var(--color-secondary);
+        span:hover {
+            color: var(--color-primary);
         }
     }
 }
 
 ::ng-deep .mat-button-toggle {
     background-color: var(--color-primary);
-  }
+}
 
-  ::ng-deep  .mat-button-toggle-checked {
+::ng-deep .mat-button-toggle-checked {
     background-color: var(--color-primary);
-  }
+}
 
 .language {
     font-size: small;
@@ -66,23 +61,57 @@ ul {
     list-style: none;
 }
 
-::ng-deep .mat-icon{
-    font-size:20px !important;
+::ng-deep .mat-icon {
+    font-size: 20px !important;
 }
-@media screen and (max-width: 600px) {
-    .menu {
-        flex-direction: column;
-        height: 200px;
-        align-items: flex-start;
-    }
 
-    .menu-row {
+@media screen and (max-width: 600px) {
+    .toolbar {
+        .menu {
+            flex-direction: column;
+            height: 200px;
+            align-items: flex-start;
+        }
+
+        .menu-row {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .language,
+    .darkmode-button,
+    .search-bar {
         display: none;
     }
 }
+
+
+@media screen and (max-width: 400px) {
+    .logo {
+        width: 100px;
+        height: 20px;
+    }
+}
+
 
 @media screen and (min-width: 600px) {
-    .menu-icon {
+    .mobile-mode {
         display: none;
+    }
+
+    .toolbar {
+        .header {
+            position: fixed;
+
+        }
+
+        .menu {
+            position: fixed;
+            margin-top: 64px;
+            z-index: 5;
+        }
     }
 }

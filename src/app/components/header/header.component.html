@@ -1,10 +1,11 @@
 <mat-toolbar class="toolbar">
     <mat-toolbar-row class="header">
-        <img [routerLink]="'/'" src="../../../assets/img/logo_wide.png" class="logo" />
+        <img [routerLink]="'/all'" src="../../../assets/img/logo_wide.png" class="logo" />
         <div class="right-site">
-            <app-search-bar *ngIf="showMenu()"></app-search-bar>
-            <button mat-icon-button class="icon-button" aria-label="Weitere Informationen" (click)="changeLightMode()">
-                <mat-icon aria-hidden="false" class="darkmode-icon">{{isLightMode ? 'bedtime' : 'sunny'}}</mat-icon>
+            <app-search-bar *ngIf="showMenu()" class="search-bar"></app-search-bar>
+            <button mat-icon-button class="darkmode-button" aria-label="Weitere Informationen"
+                (click)="changeLightMode()">
+                <mat-icon aria-hidden="false">{{isLightMode ? 'bedtime' : 'sunny'}}</mat-icon>
             </button>
             <mat-button-toggle-group name="language" aria-label="Language oder Sprache" class="language">
                 <mat-button-toggle value="english" aria-label="Englisch" (change)="onValueChange('en')">En
@@ -13,15 +14,16 @@
                 </mat-button-toggle>
             </mat-button-toggle-group>
         </div>
-        <button *ngIf="showMenu()" mat-icon-button class="menu-icon" aria-label="Example icon-button with menu icon"
+        <button mat-icon-button class="mobile-mode" aria-label="Example icon-button with menu icon"
             (click)="toggleMenu()">
             <mat-icon>menu</mat-icon>
         </button>
     </mat-toolbar-row>
     <mat-toolbar-row *ngIf="showMenu()" [ngClass]="{'menu-row': this.menuOpen, 'menu': true}">
-        <a [routerLink]="'/meine-pflanzen'">{{ 'MENU.OWN-PLANTS' | translate }}</a>
-        <a [routerLink]="'/all'">{{ 'MENU.ALL-PLANTS' | translate }}</a>
-        <a [routerLink]="'/mein-kalender'">{{ 'MENU.CALENDAR' | translate }}</a>
-        <a [routerLink]="'/'" (click)="logout()">{{ 'MENU.LOG-OUT' | translate }}</a>
+        <span [routerLink]="'/meine-pflanzen'">{{ 'MENU.OWN-PLANTS' | translate }}</span>
+        <span [routerLink]="'/all'">{{ 'MENU.ALL-PLANTS' | translate }}</span>
+        <span [routerLink]="'/mein-kalender'">{{ 'MENU.CALENDAR' | translate }}</span>
+        <span [routerLink]="'/'" (click)="logout()">{{ 'MENU.LOG-OUT' | translate }}</span>
+        <span class="mobile-mode" (click)="changeLightMode()">Darkmode</span>
     </mat-toolbar-row>
 </mat-toolbar>
