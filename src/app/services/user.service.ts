@@ -10,7 +10,7 @@ export class UserService {
   private loginUser = false;
   userObserv$?: Observable<User[]>;
   logedInUser$?: User;
-  private _rootAdress: string = '/.netlify/functions/app/plant';
+  private _rootAdress: string = '/.netlify/functions/server/plant';
  // private _rootAdress = 'http://localhost:5200/';
   private _refresh$: Subject<void> = new Subject<void>();
 

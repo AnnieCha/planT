@@ -9,7 +9,7 @@ import { Observable, startWith, switchMap, Subject } from 'rxjs';
 })
 export class PlantService {
   //private _rootAdress: string = 'http://localhost:5200/';
-  private _rootAdress: string = '/.netlify/functions/app/plant';
+  private _rootAdress: string = '/.netlify/functions/server';
 
   myPlants$?: Observable<Plant[]>;
   allPlants$: Observable<Plant[]>;
