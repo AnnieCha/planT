@@ -4,16 +4,24 @@
         "OWN-PLANTS": "Meine Pflanzen",
         "SETTINGS": "Einstellungen",
         "CALENDAR": "Kalender",
-        "LOG-OUT": "Ausloggen"
+        "LOG-OUT": "Ausloggen",
+        "IMPRINT": "Impressum",
+        "DATA_PRIVACY": "Datenschutz"
     },
     "TITLE": {
         "PLANT": "Pflanze",
         "REGISTRATION": "Registrierung",
-        "LOGIN": "Login"
+        "LOGIN": "Login",
+        "IMPRINT": "Impressum"
     },
     "INFO": {
         "BACK_LOGIN": "Zurück zum Login",
-        "GO_TO_REGISTRATION": "Noch kein Nutzerkonto? Jetzt registrieren"
+        "GO_TO_REGISTRATION": "Noch kein Nutzerkonto? Jetzt registrieren",
+        "IMPRINT": "Diese Webseite wurde im Rahmen des Moduls Advanced Web Development von Annie Berend, Normen Völlmecke und Alisa Schumann entwickelt. Dozent des Seminars war Johannes Mändle. ",
+        "WATER_FREQUENCY_START": "Häufigkeit des Gießens: alle ",
+        "WATER_FREQUENCY_END": " Tage",
+        "WATER_AMOUNT_START": "Wassermenge: ",
+        "WATER_AMOUNT_END": " Liter"
     },
     "HINT": {
         "NO-PLANTS": "Du hast noch keine Pflanzen hinzugefügt.",

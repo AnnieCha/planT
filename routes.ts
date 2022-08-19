@@ -112,12 +112,3 @@ plantRouter.delete('/:plantName/:user_id', async (req, res) => {
         res.send(result);
     })
 })
-
-
-/*
-pool.connect((err: { message: any; }) => {
-    if(err){
-        console.log(err.message);
-    }
-    console.log('db', pool.state);
-})*/

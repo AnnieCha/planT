@@ -7,8 +7,9 @@
     </div>
     <footer>
         <mat-toolbar-row class="footer-row">
-            <a [routerLink]="'/meine-pflanzen'">Impressum</a>
-            <a [routerLink]="'/all'">Datenschutz</a>
+            <a [routerLink]="'/impressum'">{{'MENU.IMPRINT' | translate}}</a>
+            <a [routerLink]="'/all'">{{'MENU.DATA_PRIVACY' | translate}}</a>
         </mat-toolbar-row>
+        <p>Copyright © 2022 planT GmbH</p>
     </footer>
 </div>

@@ -5,7 +5,7 @@
             <app-search-bar *ngIf="showMenu()" class="search-bar"></app-search-bar>
             <button mat-icon-button class="darkmode-button" aria-label="Weitere Informationen"
                 (click)="changeLightMode()">
-                <mat-icon aria-hidden="false">{{isLightMode ? 'bedtime' : 'sunny'}}</mat-icon>
+                <mat-icon aria-hidden="false">{{lightMode ? 'bedtime' : 'sunny'}}</mat-icon>
             </button>
             <mat-button-toggle-group name="language" aria-label="Language oder Sprache" class="language">
                 <mat-button-toggle value="english" aria-label="Englisch" (change)="onValueChange('en')">En

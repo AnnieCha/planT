@@ -4,12 +4,15 @@
         "OWN-PLANTS": "My plants",
         "SETTINGS": "Settings",
         "CALENDAR": "Calendar",
-        "LOG-OUT": "Log out"
+        "LOG-OUT": "Log out",
+        "IMPRINT": "Imprint",
+        "DATA_PRIVACY": "Data privacy"
     },
     "TITLE": {
         "PLANT": "Plant",
         "REGISTRATION": "Registration",
-        "LOGIN": "Login"
+        "LOGIN": "Login",
+        "IMPRINT": "Imprint"
     },
     "HINT": {
         "NO-PLANTS": "You don't have any plants yet.",
@@ -18,7 +21,12 @@
     },
      "INFO": {
         "BACK_LOGIN": "Back to Login",
-        "GO_TO_REGISTRATION": "No account yet? Registrate now"
+        "GO_TO_REGISTRATION": "No account yet? Registrate now",
+        "IMPRINT": "This website was developed by Annie Berend, Normen Völlmecke and Alisa Schumann as part of the Advanced Web Development module. The seminar lecturer was Johannes Mändle.",
+        "WATER_FREQUENCY_START": "Watering all ",
+        "WATER_FREQUENCY_END": " days",
+        "WATER_AMOUNT_START": "Amount of water: ",
+        "WATER_AMOUNT_END": " liter"
     },
     "BUTTON": {
         "OVERVIEW": "New plant",

@@ -50,9 +50,11 @@ $angular-dark-theme: mat.define-dark-theme(
   --color-three: #2a2b2a;
   --color-accent: #70c2b2;
 
-  --color-dark-primary: #383838;
-  --color-dark-secondary: #202020;
-  --color-dark-three: #cbcbcb;
+  --color-dark-primary: #133536;
+  --color-dark-secondary: #194849;
+  --color-dark-three: #f8f8f8;
+  --color-dark-accent: #0c1c1d;
+  --color-dark-font: #70c2b2;
 }
 
 
@@ -71,6 +73,8 @@ body {
     --color-primary: var(--color-dark-primary);
     --color-secondary: var(--color-dark-secondary);
     --color-three: var(--color-dark-three);
+    --color-accent: var(--color-dark-accent);
+    color: var(--color-dark-font);
   }
 }
 

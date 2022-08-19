@@ -36,7 +36,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { FormDialogComponent } from './components/form-dialog/form-dialog.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
-import { FavoriteAdComponent } from './components/favorite-ad/favorite-ad.component';
+import { ImpressumComponent } from './components/impressum/impressum.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
@@ -58,7 +58,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     FormDialogComponent,
     HeaderComponent,
     SearchBarComponent,
-    FavoriteAdComponent
+    ImpressumComponent
   ],
   imports: [
     BrowserModule,

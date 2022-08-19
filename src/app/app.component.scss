@@ -13,22 +13,49 @@
   footer {
     width: 100%;
     background-color: gray;
-    //height: 50px;
     margin-top: 50px;
     margin-bottom: 0;
-    
+
     .footer-row {
       justify-content: center;
+      gap: 20px;
     }
 
     a {
       all: unset;
       margin-right: 10px;
-      color: white;
+      color: var(--color-primary);
+      cursor: pointer;
+    }
+
+    p {
+      text-align: center;
+      color: var(--color-primary);
+      font-size: x-small;
+      margin-bottom: 10px;
     }
   }
+
 }
 
 .content {
-  margin-top: 150px;
+  margin-top: 80px;
+}
+
+@media screen and (max-width: 1000px) {
+  .content {
+    margin-top: 65px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .content {
+    margin-top: 50px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .content {
+    margin-top: 10px;
+  }
 }
