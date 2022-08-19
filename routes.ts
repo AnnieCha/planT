@@ -67,7 +67,7 @@ plantRouter.get('/userexist/:name/:mail', async (req, res) => {
 });
 
 plantRouter.get('/userevents/:user_id', async (req, res) => {
-    const sqlQuery = 'SELECT plant_id, nextWateringDay, ownName, DAYOFWEEK(nextWateringDay) As weekday from userplants where DATE(nextWateringDay) >= CURDATE() And DATE(nextWateringDay) < (CURDATE() + INTERVAL 8 DAY) and user_id LIKE ?;';
+    const sqlQuery = 'SELECT plant_id, nextWateringDay, ownName, DAYOFWEEK(nextWateringDay) As weekday from userplants where DATE(nextWateringDay) >= CURDATE() And DATE(nextWateringDay) < (CURDATE() + INTERVAL 8 DAY) and user_id LIKE ? Order by nextWateringDay;';
     dbPool.query(sqlQuery, [req.params.user_id], function (err, response) {
         if (err) throw err;
         res.send(response);

@@ -52,12 +52,11 @@ import { Observable, startWith, switchMap, Subject } from 'rxjs';
     }
     return { children: [{ name: 'Gießen Aloe Vera' }, { name: 'Gießen Palme' }, { name: 'Gießen Palme2' }] };
   }
-  
+
     getMyEvents(user_id:number) {
       this.currentEvents$ = this._refresh$.pipe(
         startWith(''),
         switchMap(() => this._http.get<Wateringevent[]>(this._rootAdress + 'userevents/'+user_id)))
-        console.log(user_id + "!!!!! user id");
   }
 
     /*

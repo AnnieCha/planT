@@ -5,6 +5,7 @@ import { Observable, map } from 'rxjs';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import {EventService} from 'src/app/services/event.service';
 import { UserService } from 'src/app/services/user.service';
+import { CalenderDay } from 'src/app/shared/models/calenderDay';
 
 interface CareEventNode {
   name: string;
@@ -41,6 +42,8 @@ interface ExampleFlatNode {
 
 export class CareAccordionComponent implements OnInit {
   events$?: Observable<Wateringevent[]>;
+  days: CalenderDay[] = new Array(7);
+  weekdays: string[] = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
 
   private _transformer = (node: CareEventNode, level: number) => {
     return {
@@ -71,6 +74,7 @@ export class CareAccordionComponent implements OnInit {
     this.events$ = this._eventService.currentEvents$?.pipe(
       map((events: Wateringevent[]) => (events ? events.filter((event: Wateringevent) => !!event) : []))
     );
+    this.eventsToDays();
     var data =  _eventService.getCurrenPlant("Heute");
     console.log(data);
     TREE_DATA[0].children = data.children;
@@ -80,6 +84,71 @@ export class CareAccordionComponent implements OnInit {
   
   ngOnInit(): void {
     
+  }
+
+
+  eventsToDays() {
+    this.events$?.forEach( event => {
+      var count = 0;
+      for (let i=0; i<event.length; i++) {
+        event[i].weekdayString = this.weekdays[event[i].weekday-1];
+        var wateringDate = new Date(event[i].nextWateringDay);
+        var today = new Date();
+        var tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        if(today.setHours(0,0,0,0) == wateringDate.setHours(0,0,0,0)) {
+          if (this.days.length <1) {
+            this.days[0] = new CalenderDay(event[i].weekdayString);
+            count++;
+          }
+          this.days[0].setWateringevent(event[i]);
+        } else if (tomorrow.setHours(0,0,0,0) == wateringDate.setHours(0,0,0,0)) {
+          if (this.days.length <2) {
+            this.days[1] = new CalenderDay(event[i].weekdayString);
+            count++;
+          }
+          this.days[1].setWateringevent(event[i]);
+        } else {
+          console.log(wateringDate+"NOOT   ");
+        }
+        /*
+        if()
+        this.days[0] = new CalenderDay(1);
+
+        switch(event[i].weekday) { 
+          case 1: { 
+             //statements; 
+             break; 
+          } 
+          case 2: { 
+             //statements; 
+             break; 
+          } 
+          case 3: { 
+             //statements; 
+             break; 
+          } 
+          case 4: { 
+             //statements; 
+             break; 
+          } 
+          case 5: { 
+             //statements; 
+             break; 
+          } 
+          case 6: { 
+             //statements; 
+             break; 
+          }
+          
+          default: { 
+             //statements; 
+             break; 
+          } 
+       } */
+      }
+    })
+
   }
 
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
