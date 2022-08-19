@@ -1,4 +1,4 @@
-<div class="accordion-container">
+<div class="accordion-container" *ngrxLet="events$; let events">
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
     <!-- This is the tree node template for leaf nodes -->
     <mat-tree-node *matTreeNodeDef="let node">
@@ -17,4 +17,16 @@
       </button>
     </mat-tree-node> 
 </mat-tree>
+
+<ng-container *ngIf="events && events.length > 0; else noOwnPlants">
+  <ng-container *ngFor="let singleEvent of events; let i = index">
+      <p>{{singleEvent.plant_id}} id {{singleEvent.nextWateringDay}} date {{singleEvent.ownName}} name {{singleEvent.weekday}}</p>
+      <!--<app-plant-detail [event]="singleEvent" class="singleEvent" (plantDeleted)="onPlantDelete()"></app-plant-detail> -->
+  </ng-container>
+</ng-container>
+
+<ng-template #noOwnPlants>
+  <h4>{{'HINT.NO-PLANTS' | translate}}</h4>
+  <button mat-raised-button color="primary" [routerLink]="'/all'">{{'BUTTON.OVERVIEW' | translate}}</button>
+</ng-template>
 </div>

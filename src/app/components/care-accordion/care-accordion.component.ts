@@ -1,5 +1,7 @@
 import {FlatTreeControl} from '@angular/cdk/tree';
-import {Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Wateringevent } from 'src/app/shared/models/wateringevent';
+import { Observable, map } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import {EventService} from 'src/app/services/event.service';
@@ -12,7 +14,7 @@ interface CareEventNode {
 
 interface SingleInformation {
   name: string;
-}
+}  
 
 
 const TREE_DATA: CareEventNode[] = [
@@ -37,7 +39,9 @@ interface ExampleFlatNode {
   templateUrl: './care-accordion.component.html',
   styleUrls: ['./care-accordion.component.scss']
 })
-export class CareAccordionComponent {
+
+export class CareAccordionComponent implements OnInit {
+  events$?: Observable<Wateringevent[]>;
 
   private _transformer = (node: CareEventNode, level: number) => {
     return {
@@ -66,6 +70,10 @@ export class CareAccordionComponent {
     
     constructor(private _eventService: EventService, private _userService: UserService, private _snackBar: MatSnackBar,) {
     // this.dataSource.data = TREE_DATA;
+    this._eventService.getMyEvents(this._userService.getCurrentUserId());
+    this.events$ = this._eventService.currentEvents$?.pipe(
+      map((events: Wateringevent[]) => (events ? events.filter((event: Wateringevent) => !!event) : []))
+    );
     var data =  _eventService.getCurrenPlant("Heute");
     console.log(data);
     TREE_DATA[0].children = data.children;
@@ -73,6 +81,10 @@ export class CareAccordionComponent {
     this.dataSource.data = TREE_DATA;
   }
   
+  ngOnInit(): void {
+    
+  }
+
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
   updateEvent(): void {
