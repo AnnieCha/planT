@@ -2,7 +2,7 @@
   <h2>{{'TITLE.LOGIN' | translate}}</h2>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div>
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" color="var(--color-font)">
         <mat-label for="username">{{'FORM.USERNAME' | translate}}</mat-label>
         <input matInput formControlName="username" placeholder="Type your username">
       </mat-form-field>
@@ -16,7 +16,8 @@
     <div class="btn">
       <button mat-raised-button color="primary">{{'BUTTON.LOGIN' | translate}}</button>
       <p>{{'INFO.GO_TO_REGISTRATION' | translate}}</p>
-      <button mat-raised-button color="primary" (click)="navigateRegistration()">{{'BUTTON.REGISTRATE' | translate}}</button>
+      <button mat-raised-button color="primary" (click)="navigateRegistration()">{{'BUTTON.REGISTRATE' |
+        translate}}</button>
     </div>
   </form>
 </div>

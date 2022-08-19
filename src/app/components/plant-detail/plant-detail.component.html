@@ -1,5 +1,5 @@
 <div *ngIf="plant" class="wrapper">
-    <img *ngIf="plant.plant_id" class="plantImage" src={{imgPath}}>
+    <img *ngIf="plant.plant_id" class="plantImage" alt={{imgAlt}} src={{imgPath}}>
        <ng-container *ngIf="type === 'all'; else personalPlants">
         <div class="header">
             <h3 (click)="openPlant(plant.name, false)">{{lang == 'de' ? plant.name : plant.name_engl}}</h3>

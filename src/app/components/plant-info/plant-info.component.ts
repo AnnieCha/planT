@@ -20,8 +20,11 @@ export class PlantInfoComponent implements OnInit {
   currPlant!: Plant;
   private _plantName: string = '';
   editMode: boolean = false;
+  ownPlant: boolean = false;
   imgPath = '../../../assets/img/';
+  imgAlt = 'Abbildung von ';
   private _updatePlantMode: boolean = false
+  
   lang: string = this._translateService.currentLang;
 
   myGroup: FormGroup = new FormGroup({
@@ -47,12 +50,14 @@ export class PlantInfoComponent implements OnInit {
       this.editMode = this._openPlantService.getEditMode();
       this.setPlantInfo();
     })
+    this.ownPlant = this._openPlantService.getOwnPlant();
   }
 
   public setPlantInfo() {
     this._plantService.getPlantByName(this._plantName).subscribe((result) => {
       this.currPlant = result[0];
       this.imgPath = this.imgPath + this.currPlant.plant_id + ".jpg";
+      this.imgAlt = this.imgAlt + this.currPlant.name;
     });
     if (this._updatePlantMode) {
       this.myGroup.patchValue({

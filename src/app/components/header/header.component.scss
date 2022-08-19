@@ -41,12 +41,18 @@
     }
 }
 
+.search-bar {
+    margin-top: 10px;
+}
+
 ::ng-deep .mat-button-toggle {
     background-color: var(--color-primary);
+    color: var(--color-font);
 }
 
 ::ng-deep .mat-button-toggle-checked {
     background-color: var(--color-primary);
+    color: var(--color-font);
 }
 
 .language {
@@ -55,10 +61,6 @@
 
 .dropdown:hover .dropdown-content {
     display: block;
-}
-
-ul {
-    list-style: none;
 }
 
 ::ng-deep .mat-icon {

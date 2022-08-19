@@ -47,12 +47,14 @@ $angular-dark-theme: mat.define-dark-theme(
 :root {
   --color-primary: #f8f8f8;
   --color-secondary: #1f7e81;
-  --color-three: #2a2b2a;
+  --color-three: #3b3b3b;
   --color-accent: #70c2b2;
+  --color-font: #1f7e81;
+
 
   --color-dark-primary: #133536;
-  --color-dark-secondary: #194849;
-  --color-dark-three: #f8f8f8;
+  --color-dark-secondary: #226768;
+  --color-dark-three: #c9c2c2;
   --color-dark-accent: #0c1c1d;
   --color-dark-font: #70c2b2;
 }
@@ -67,14 +69,14 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: var(--color-primary);
-  color: var(--color-secondary);
+  color: var(--color-font);
 
   &.dark-mode {
     --color-primary: var(--color-dark-primary);
     --color-secondary: var(--color-dark-secondary);
     --color-three: var(--color-dark-three);
     --color-accent: var(--color-dark-accent);
-    color: var(--color-dark-font);
+    --color-font: var(--color-dark-font);
   }
 }
 

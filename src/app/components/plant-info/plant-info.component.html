@@ -7,7 +7,7 @@
     <hr>
     <div class="wrapper">
         <div class="leftInfo">
-            <img *ngIf="currPlant.plant_id" class="plantImage" src={{imgPath}}>
+            <img *ngIf="currPlant.plant_id" class="plantImage" alt={{imgAlt}} src={{imgPath}}>
             <div class="icon-row" *ngIf="!editMode">
                 <mat-icon [ngClass]="{'lightgray-icon': currPlant.wateramount < 1}" aria-hidden="false"
                     aria-label="Icon Information">water_drop</mat-icon>
@@ -28,7 +28,7 @@
         <ng-container *ngIf="currPlant && !editMode; else editModeTemplate">
             <div class="row header">
                 <h2>{{lang == 'de' ? currPlant.name : currPlant.name_engl}}</h2>
-                <button mat-icon-button class="icon-button" (click)="setEditMode(true)"
+                <button *ngIf="ownPlant" mat-icon-button class="icon-button" (click)="setEditMode(true)"
                     aria-label="Pflanzeneintrag bearbeiten">
                     <mat-icon>add</mat-icon>
                 </button>
