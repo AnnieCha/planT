@@ -7,6 +7,7 @@ import { DateRange } from '@angular/material/datepicker';
   export class OpenPlantService {
     // TODO: suchbegriff statt daten, die in der suchfeld-component ermittelt werden
     editMode: boolean = false;
+    ownPlant: boolean = false;
     updatePlantMode: boolean = false;
     ownName?: string;
     startDate?: Date;
@@ -32,11 +33,19 @@ import { DateRange } from '@angular/material/datepicker';
         return this.updatePlantMode;
     }
 
-    public getOwnName() {
+    public getOwnName(): string {
         return this.ownName ? this.ownName : '';
     }
 
     public getStartDate(): Date {
         return this.startDate ? this.startDate : new Date();
+    }
+
+    public setOwnPlant(ownPlant: boolean): void {
+        this.ownPlant = ownPlant;
+    }
+
+    public getOwnPlant(): boolean {
+        return this.ownPlant;
     }
 }

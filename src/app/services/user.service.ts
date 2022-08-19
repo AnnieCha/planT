@@ -8,8 +8,8 @@ import { Observable, startWith, switchMap, Subject } from 'rxjs';
 })
 export class UserService {
   private loginUser = false;
-  private userObserv$?: Observable<User[]>;
-  private logedInUser$?: User;
+  private _userObserv$?: Observable<User[]>;
+  private _logedInUser$?: User;
  // private _rootAdress: string = '/.netlify/functions/server/plant';
   private _rootAdress = 'http://localhost:5200/';
   private _refresh$: Subject<void> = new Subject<void>();
@@ -17,12 +17,12 @@ export class UserService {
   constructor(private _http: HttpClient) { }
 
   getUser(user_name: string, user_password: string): Observable<User[]> {
-    this.userObserv$ = (this._http.get<User[]>(this._rootAdress + 'user/' + user_name + '/' + user_password));
-    this.userObserv$.subscribe((result) => {
-      this.logedInUser$ = result[0];
-      console.log(this.logedInUser$.name + this.logedInUser$.id + this.logedInUser$.password);
+    this._userObserv$ = (this._http.get<User[]>(this._rootAdress + 'user/' + user_name + '/' + user_password));
+    this._userObserv$.subscribe((result) => {
+      this._logedInUser$ = result[0];
+      console.log(this._logedInUser$.name + this._logedInUser$.id + this._logedInUser$.password);
     });
-    return this.userObserv$;
+    return this._userObserv$;
   }
 
   userExist(user_name: string, user_email: string): Observable<User[]> {
@@ -34,11 +34,11 @@ export class UserService {
   }
 
   getCurrentUserId(): number {
-    return this.logedInUser$ ? this.logedInUser$.id : 0;
+    return this._logedInUser$ ? this._logedInUser$.id : 0;
   }
 
   getLoggedIn() {
-    return this.logedInUser$ != undefined;
+    return this._logedInUser$ != undefined;
   }
 
   setLoggedIn() {
@@ -46,6 +46,6 @@ export class UserService {
   }
 
   logoutUser() {
-    this.logedInUser$ = undefined;
+    this._logedInUser$ = undefined;
   }
 }

@@ -1,31 +1,50 @@
-.plantlistComponent {
-    margin: 0 15%;
-}
-
 .underline {
     border-bottom: 1px solid black;
     width: 100%;
     display: block;
 }
 
-hr {
-    border: 0;
-    border-top: 1px solid gray;
-    margin-bottom: 20px;
+p {
+    font-size: medium;
+}
+
+.button {
+    font-size: medium;
+}
+
+.plantlistComponent {
+    margin: 0 10%;
+
+    hr {
+        border: 0;
+        border-top: 1px solid gray;
+        margin-bottom: 20px;
+    }    
+    
 }
 
 .row {
-   // width: 800px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
     margin: auto;
+
+    .plantDetail {
+        margin-bottom: 20px;
+        width: 465px;
+    }
+    
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1200px) {
     .row {
         grid-template-columns: 1fr;
-        justify-items:normal;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .row {
+        margin: 0;
     }
 
     .plantlistComponent {

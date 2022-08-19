@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PlantListService } from 'src/app/services/plantList.service';
 import { Observable, map } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
+import { OpenPlantService } from 'src/app/services/openPlant.service';
 
 @Component({
   selector: 'app-plantlist',
@@ -12,10 +13,8 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./plantlist.component.scss']
 })
 export class PlantlistComponent implements OnInit {
-  // type eher als enum?
   public type: string = "all";
   public title: string = "Alle Pflanzen";
-  private _sub: any;
 
   plants$?: Observable<Plant[]> = this._plantService.allPlants$.pipe(
     map((plants: Plant[]) => (plants ? plants.filter((plant: Plant) => !!plant) : []))
@@ -25,16 +24,17 @@ export class PlantlistComponent implements OnInit {
     private _plantService: PlantService,
     private _plantListService: PlantListService,
     private _userService: UserService,
+    private _openPlantService: OpenPlantService,
     private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this._sub = this.route.params.subscribe(params => {
-      //TODO: der routerlink ist so noch nicht korrekt
+    this.route.params.subscribe(params => {
       if(params['area'] === "meine-pflanzen"){
         this.title = 'MENU.OWN-PLANTS';
         this.type = "own";
         this._plantService.getMyPlantsFromDB(this._userService.getCurrentUserId());
+        this._openPlantService.setOwnPlant(true);
         this.plants$ = this._plantService.myPlants$?.pipe(
           map((plants: Plant[]) => (plants ? plants.filter((plant: Plant) => !!plant) : []))
         );
@@ -42,6 +42,7 @@ export class PlantlistComponent implements OnInit {
       } else {
         this.title = 'MENU.ALL-PLANTS';
         this.type = "all";
+        this._openPlantService.setOwnPlant(false);
         this._plantListService.setListType('all');
         this.plants$ = this._plantService.allPlants$.pipe(
           map((plants: Plant[]) => (plants ? plants.filter((plant: Plant) => !!plant) : []))
@@ -53,17 +54,4 @@ export class PlantlistComponent implements OnInit {
   onPlantDelete(): void {
     this._plantService.refreshPlants();
   }
-
-  /*
-  get plants(): Observable<Plant[]>{
-    if(this.type === "all") {
-      this.plants$ = this._plantService.allPlants$?
-    }
- //   return this.type === "all" ? this._plantService.getAllPlants() : this._plantService.getMyPlants();
-  }
-/*
-  get allPlants(): Plant[]{
-    return this._plantService.getAllPlants();
-  }
-  */
 }

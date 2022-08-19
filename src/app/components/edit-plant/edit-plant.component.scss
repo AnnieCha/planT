@@ -6,6 +6,13 @@
     margin-right: 50px;
 }
 
+
+@media screen and (max-width: 400px) {
+    mat-form-field {
+        width: 200px;
+    }
+}
+
 @media screen and (max-width: 600px) {
     ::ng-deep .mat-form-field {
         margin-right: 0px;

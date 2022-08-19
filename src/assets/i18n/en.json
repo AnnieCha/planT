@@ -4,22 +4,45 @@
         "OWN-PLANTS": "My plants",
         "SETTINGS": "Settings",
         "CALENDAR": "Calendar",
-        "LOG-OUT": "Log out"
+        "LOG-OUT": "Log out",
+        "IMPRINT": "Imprint",
+        "DATA_PRIVACY": "Data privacy"
     },
     "TITLE": {
-        "PLANT": "Plant"
+        "PLANT": "Plant",
+        "REGISTRATION": "Registration",
+        "LOGIN": "Login",
+        "IMPRESSUM": "Imprint",
+        "DATENSCHUTZ": "Data privacy"
     },
     "HINT": {
         "NO-PLANTS": "You don't have any plants yet.",
         "DATE": "Choose a date for the next watering.",
         "MAX": "Maximum 20 characters."
     },
+     "INFO": {
+        "BACK_LOGIN": "Back to Login",
+        "GO_TO_REGISTRATION": "No account yet?",
+        "IMPRESSUM": "This website was developed by Annie Berend, Alisa Schumann and Normen Völlmecke as part of the Advanced Web Development module. The seminar lecturer was Johannes Mändle.",
+        "DATENSCHUTZ": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "WATER_FREQUENCY_START": "Watering all ",
+        "WATER_FREQUENCY_END": " days",
+        "WATER_AMOUNT_START": "Amount of water: ",
+        "WATER_AMOUNT_END": " liter"
+    },
     "BUTTON": {
-        "OVERVIEW": "New plant"
+        "OVERVIEW": "New plant",
+        "LOGIN": "Login",
+        "REGISTRATE": "Registrate",
+        "CREATE_ACCOUNT": "Create Account"
     },
     "FORM": {
         "NAME": "Name",
-        "DATE-START": "Date"
+        "DATE-START": "Date",
+        "USERNAME": "Username",
+        "PASSWORD": "Password",
+        "EMAIL": "E-Mail",
+        "REPEAT_PASSWORD": "Repeat password"
     },
     "MY_PLANTS": {
         "MONDAY": "Monday",

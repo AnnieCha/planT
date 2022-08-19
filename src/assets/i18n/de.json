@@ -4,10 +4,26 @@
         "OWN-PLANTS": "Meine Pflanzen",
         "SETTINGS": "Einstellungen",
         "CALENDAR": "Kalender",
-        "LOG-OUT": "Ausloggen"
+        "LOG-OUT": "Ausloggen",
+        "IMPRINT": "Impressum",
+        "DATA_PRIVACY": "Datenschutz"
     },
     "TITLE": {
-        "PLANT": "Pflanze"
+        "PLANT": "Pflanze",
+        "REGISTRATION": "Registrierung",
+        "LOGIN": "Login",
+        "IMPRESSUM": "Impressum",
+        "DATENSCHUTZ": "Datenschutz"
+    },
+    "INFO": {
+        "BACK_LOGIN": "Zurück zum Login",
+        "GO_TO_REGISTRATION": "Noch kein Nutzerkonto?",
+        "IMPRESSUM": "Diese Webseite wurde im Rahmen des Moduls Advanced Web Development von Annie Berend, Alisa Schumann und Normen Völlmecke entwickelt. Dozent des Seminars war Johannes Mändle. ",
+        "DATENSCHUTZ": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "WATER_FREQUENCY_START": "Häufigkeit des Gießens: alle ",
+        "WATER_FREQUENCY_END": " Tage",
+        "WATER_AMOUNT_START": "Wassermenge: ",
+        "WATER_AMOUNT_END": " Liter"
     },
     "HINT": {
         "NO-PLANTS": "Du hast noch keine Pflanzen hinzugefügt.",
@@ -15,11 +31,19 @@
         "MAX": "Maximal 20 Zeichen."
     },
     "BUTTON": {
-        "OVERVIEW": "Neue Pflanze"
+        "OVERVIEW": "Neue Pflanze",
+        "LOGIN": "Login",
+        "REGISTRATE": "Registrieren",
+        "CREATE_ACCOUNT": "Konto erstellen"
     },
     "FORM": {
         "NAME": "Name",
-        "DATE-START": "Datum"
+        "DATE-START": "Datum",
+        "USERNAME": "Nutzername",
+        "PASSWORD": "Passwort",
+        "EMAIL": "E-Mail",
+        "REPEAT_PASSWORD": "Passwort wiederholen"
+
     },
     "MY_PLANTS": {
         "MONDAY": "Montag",

@@ -1,16 +1,15 @@
 <div class="full-page">
-<div>
-<app-header></app-header>
-<router-outlet class="content"></router-outlet>
-<router-outlet></router-outlet>
-<app-care-accordion></app-care-accordion>
-<app-care-events></app-care-events>
-<app-care-instruction></app-care-instruction>
-</div>
-<footer>
-    <mat-toolbar-row class="footer-row">
-        <a [routerLink]="'/meine-pflanzen'">Impressum</a>
-        <a [routerLink]="'/all'">Datenschutz</a>
-    </mat-toolbar-row>
-</footer>
+    <div class="page">
+        <app-header></app-header>
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <footer>
+        <mat-toolbar-row class="footer-row">
+            <a [routerLink]="'/impressum'">{{'MENU.IMPRINT' | translate}}</a>
+            <a [routerLink]="'/datenschutz'">{{'MENU.DATA_PRIVACY' | translate}}</a>
+        </mat-toolbar-row>
+        <p>Copyright © 2022 planT GmbH</p>
+    </footer>
 </div>

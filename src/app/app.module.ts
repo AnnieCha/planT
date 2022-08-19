@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -35,7 +36,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { FormDialogComponent } from './components/form-dialog/form-dialog.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
-import { FavoriteAdComponent } from './components/favorite-ad/favorite-ad.component';
+import { InfoComponent } from './components/info/info.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
@@ -57,7 +58,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     FormDialogComponent,
     HeaderComponent,
     SearchBarComponent,
-    FavoriteAdComponent
+    InfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +69,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatInputModule,
     MaterialModule,
     MatMenuModule,
+    MatSlideToggleModule,
     MatAutocompleteModule,
     MatSnackBarModule,
     MatDialogModule,

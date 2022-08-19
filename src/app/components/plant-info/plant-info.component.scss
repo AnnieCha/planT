@@ -1,3 +1,8 @@
+p {
+    font-size: medium;
+    line-height: 150%;
+}
+
 .plantinfoComponent {
     margin: 0 15%;
 }
@@ -36,7 +41,7 @@ h1 {
     justify-content: space-between;
     align-items: flex-start;
     width: 100%;
-    gap: 15px;
+    gap: 20px;
     align-items: baseline;
 
     .innerBtn {
@@ -63,6 +68,12 @@ img {
     grid-area: main;
 }
 
+.info {
+    grid-area: info;
+    display: flex;
+    flex-direction: column;
+}
+
 .leftInfo {
     grid-area: sidebar;
 }
@@ -73,7 +84,8 @@ img {
     grid-template-areas:
         "sidebar header header header"
         "sidebar main main main"
-        "sidebar main main main";
+        "sidebar main main main"
+        "sidebar info info info";
 }
 
 //Die form field sachen sind eigentlich im css der anderen komponente
