@@ -40,9 +40,7 @@ interface ExampleFlatNode {
 })
 
 export class CareAccordionComponent implements OnInit {
-  events$?: Observable<Wateringevent[]> = this.events$ = this._eventService.currentEvents$.pipe(
-    map((events: Wateringevent[]) => (events ? events.filter((event: Wateringevent) => !!event) : []))
-  );
+  events$?: Observable<Wateringevent[]>;
 
   private _transformer = (node: CareEventNode, level: number) => {
     return {
@@ -67,8 +65,12 @@ export class CareAccordionComponent implements OnInit {
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);  // dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
 
-  constructor(private _eventService: EventService) {
+  constructor(private _eventService: EventService, private _userService: UserService) {
     // this.dataSource.data = TREE_DATA;
+    this._eventService.getMyEvents(this._userService.getCurrentUserId());
+    this.events$ = this._eventService.currentEvents$?.pipe(
+      map((events: Wateringevent[]) => (events ? events.filter((event: Wateringevent) => !!event) : []))
+    );
     var data =  _eventService.getCurrenPlant("Heute");
     console.log(data);
     TREE_DATA[0].children = data.children;
@@ -77,7 +79,7 @@ export class CareAccordionComponent implements OnInit {
   }
   
   ngOnInit(): void {
-
+    
   }
 
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;

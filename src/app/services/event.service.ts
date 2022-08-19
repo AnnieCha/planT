@@ -8,14 +8,17 @@ import { Observable, startWith, switchMap, Subject } from 'rxjs';
   })
   export class EventService {
     private _rootAdress = 'http://localhost:5200/';
-    currentEvents$: Observable<Wateringevent[]>;
+    currentEvents$?: Observable<Wateringevent[]>;
     private _refresh$: Subject<void> = new Subject<void>();
 
     constructor(private _http: HttpClient) { 
-      
+     /* 
       this.currentEvents$ = this._refresh$.pipe(
       startWith(''),
-      switchMap(() => this._http.get<Wateringevent[]>(this._rootAdress + 'userevents/37')))}
+      switchMap(() => this._http.get<Wateringevent[]>(this._rootAdress + 'userevents/'+this.user_id)))
+      console.log(this.user_id + "!!!!! user id");
+      */
+    }
 
     /*
         Event:
@@ -58,17 +61,17 @@ import { Observable, startWith, switchMap, Subject } from 'rxjs';
           ]
     }
 
-    getAllEvents() {
-      
+    getMyEvents(user_id:number) {
+      this.currentEvents$ = this._refresh$.pipe(
+        startWith(''),
+        switchMap(() => this._http.get<Wateringevent[]>(this._rootAdress + 'userevents/'+user_id)))
+        console.log(user_id + "!!!!! user id");
   }
 
     /*
         Get All Plants from Date to Date ??
     */
 
-    
-    getUser(user_id: number): Observable<Wateringevent[]> {
-        return (this._http.get<Wateringevent[]>(this._rootAdress + 'userevents/' + user_id));
-    }
+
 
   }

@@ -8,8 +8,8 @@ import { Observable, startWith, switchMap, Subject } from 'rxjs';
 })
 export class UserService {
   private loginUser = false;
-  userObserv$?: Observable<User[]>;
-  logedInUser$?: User;
+  private userObserv$?: Observable<User[]>;
+  private logedInUser$?: User;
  // private _rootAdress: string = '/.netlify/functions/server/plant';
   private _rootAdress = 'http://localhost:5200/';
   private _refresh$: Subject<void> = new Subject<void>();
