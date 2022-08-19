@@ -2,7 +2,6 @@ import {FlatTreeControl} from '@angular/cdk/tree';
 import { Component, OnInit } from '@angular/core';
 import { Wateringevent } from 'src/app/shared/models/wateringevent';
 import { Observable, map } from 'rxjs';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import {EventService} from 'src/app/services/event.service';
 import { UserService } from 'src/app/services/user.service';
@@ -64,11 +63,9 @@ export class CareAccordionComponent implements OnInit {
   );
  
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);  // dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
-  //@Alisa: Diese Variable müsste auch mit dem Innerjoint befüllt werden, für die update-methode, die beim abhaken getriggert wird
-  // brauchen wir folgende Daten: plant_id, ownName, water_frequency
-  private _myPlant: any;
+
     
-    constructor(private _eventService: EventService, private _userService: UserService, private _snackBar: MatSnackBar,) {
+    constructor(private _eventService: EventService, private _userService: UserService) {
     // this.dataSource.data = TREE_DATA;
     this._eventService.getMyEvents(this._userService.getCurrentUserId());
     this.events$ = this._eventService.currentEvents$?.pipe(
@@ -86,23 +83,5 @@ export class CareAccordionComponent implements OnInit {
   }
 
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
-
-  updateEvent(): void {
-    const today: Date = new Date();
-    const nextWateringDay: Date = new Date();
-    // @Alisa: hier gerne einmal extra in der Datenbank überprüfen, ob das funktioniert, bin mir da nicht ganz sicher :D
-    nextWateringDay.setDate(today.getDate() + this._myPlant.water_frequency)
-
-    const updatedPlant = { 'user_id': this._userService.getCurrentUserId(), 'plant_id': this._myPlant.plant_id, 'ownName': this._myPlant.ownName, 'startDate': nextWateringDay }
-    this._eventService.updateEvent(updatedPlant).subscribe(result => {
-      if(result.affectedRows == 1){
-        this._snackBar.open(this._myPlant.ownName + ' erfolgreich gegossen.', 'Ok', {
-          duration: 2000
-        });
-      } else {
-        console.log('Fehler');
-      }
-    })
-  }
 
 }

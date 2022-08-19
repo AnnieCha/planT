@@ -112,8 +112,8 @@ plantRouter.put('/plant', function (req, res) {
 })
 
 plantRouter.put('/plant/date', function (req, res) {
-    const sqlQuery = 'UPDATE userplants SET nextWateringDay = ? WHERE user_id = ? AND ownName = ?';
-    dbPool.query(sqlQuery, [new Date(req.body.startDate), req.body.user_id, req.body.plantName], function (err, result) {
+    const sqlQuery = 'UPDATE userplants SET nextWateringDay = ? WHERE user_id = ? AND ownName = ? AND plant_id = ?';
+    dbPool.query(sqlQuery, [new Date(req.body.startDate), req.body.user_id, req.body.plantName, req.body.plant_id], function (err, result) {
         if (err?.errno == 1062) {
             res.send(err);
         } else if(err) {
