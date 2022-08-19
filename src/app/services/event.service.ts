@@ -1,19 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Wateringevent } from '../shared/models/wateringevent';
+import { Observable, startWith, switchMap, Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
-})
-export class EventService {
+    providedIn: 'root'
+  })
+  export class EventService {
+    private _rootAdress = 'http://localhost:5200/';
+    currentEvents$?: Observable<Wateringevent[]>;
+    private _refresh$: Subject<void> = new Subject<void>();
 
-  constructor(private _http: HttpClient) { }
-  // Folgende Zeile ist relevant, wenn wir unser Backend über Netlify laufen lassen
-  private _rootAdress: string = 'http://localhost:5200/';
-  //private _rootAdress: string = '/.netlify/functions/server';
-  /*
-      Event:
 
+    constructor(private _http: HttpClient) { 
+     /* 
+      this.currentEvents$ = this._refresh$.pipe(
+      startWith(''),
+      switchMap(() => this._http.get<Wateringevent[]>(this._rootAdress + 'userevents/'+this.user_id)))
+      console.log(this.user_id + "!!!!! user id");
+      */
+    }
+/*
       eventId: int;
       Datum: date; -> irgendwo über auswertung = heute / morgen 
       Pflanze: string;
@@ -44,20 +51,19 @@ export class EventService {
         return { children: [{ name: 'Gießen Aloe Vera' }, { name: 'Gießen Palme' }, { name: 'Gießen Palme2' }] };
     }
     return { children: [{ name: 'Gießen Aloe Vera' }, { name: 'Gießen Palme' }, { name: 'Gießen Palme2' }] };
-
+  }
+  
+    getMyEvents(user_id:number) {
+      this.currentEvents$ = this._refresh$.pipe(
+        startWith(''),
+        switchMap(() => this._http.get<Wateringevent[]>(this._rootAdress + 'userevents/'+user_id)))
+        console.log(user_id + "!!!!! user id");
   }
 
-  getAllPlants() {
-    return [
-      { eventId: 0, tag: "Heute", short_desc: "Monstrera muss gegossen werden." },
-      { eventId: 1, tag: "Heute", short_desc: "Klee muss gegossen werden." },
-      { eventId: 2, tag: "Morgen", short_desc: "Duftgeranie muss gegossen werden." },
-      { eventId: 3, tag: "Morgen", short_desc: "Klee muss gegossen werden." },
-    ]
+    /*
+        Get All Plants from Date to Date ??
+    */
+
+
+
   }
-
-  /*
-      Get All Plants from Date to Date ??
-  */
-
-}
