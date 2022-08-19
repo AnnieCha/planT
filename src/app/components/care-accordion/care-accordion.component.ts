@@ -75,6 +75,7 @@ export class CareAccordionComponent {
   
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
+  // @Alisa vergleichbar mit onPlantDelete in plant-list-component, wird dem child-component care instruction übergeben
   updateEvent(): void {
     const today: Date = new Date();
     const nextWateringDay: Date = new Date();
